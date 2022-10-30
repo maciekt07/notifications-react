@@ -4,7 +4,7 @@ const Length = (props) => {
   const input = props.input;
   return (
     <div
-      style={input.length <= 0 ? { visibility: "hidden" } : {}}
+      style={input.length <= 0 ? { display: "none" } : {}}
       className="TextLength"
     >
       Length: {input.length}
