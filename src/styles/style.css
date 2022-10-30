@@ -103,12 +103,12 @@ input[type=text] :focus-visible {
   margin-top: 5px;
   color: white;
   background: #6677d9;
-  padding: 5px;
+  padding: 6px;
 }
 
 textarea {
   resize: none;
-  min-height: 90%;
+  min-height: 80%;
 }
 
 .footer {
