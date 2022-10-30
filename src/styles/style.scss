@@ -1,0 +1,45 @@
+$Purple-Light-Blue-1: rgba(200, 121, 255, 1);
+$Purple-Light-Blue-2: rgba(149, 110, 232, 1);
+$Purple-Light-Blue-3: rgba(140, 135, 255, 1);
+$Purple-Light-Blue-4: rgba(110, 137, 232, 1);
+$Purple-Light-Blue-5: rgba(121, 186, 255, 1);
+
+body {
+  background: $Purple-Light-Blue-3;
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+}
+.app {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 50vh;
+  margin: 50px;
+  margin-top: 200px;
+}
+
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+
+input[type="text"] {
+  font-size: 35px;
+  width: 80%;
+}
+
+textarea {
+  font-size: 35px;
+  width: 80%;
+  height: 100%;
+  resize: none;
+  min-height: 100%;
+  background: $Purple-Light-Blue-4;
+}
