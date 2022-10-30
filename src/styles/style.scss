@@ -1,7 +1,8 @@
 @use "variables" as *;
+@import url("https://fonts.googleapis.com/css2?family=Heebo&family=Lato:ital@0;1&family=Poppins:wght@400;500&display=swap");
 
 * {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: poppins;
 
   &::selection {
     background: lighten($color: $color-theme_1-hex, $amount: 10);
@@ -18,12 +19,14 @@ body {
   align-items: center;
   justify-content: center;
   height: 50vh;
-  margin: 50px;
-  margin-top: 185px;
+  margin-top: 200px;
 }
 
 .createBtn {
   @include Btn($color-theme_4-hex);
+  &:hover > .footer {
+    background: red;
+  }
 }
 
 .clearBtn {
@@ -32,6 +35,8 @@ body {
 
 textarea,
 input[type="text"] {
+  font-size: 30px;
+  width: 80%;
   transition: 0.3s all;
   border: 5px solid $color-theme_5-hex;
   border-radius: 20px;
@@ -59,14 +64,52 @@ input[type="text"] {
 }
 
 textarea {
-  font-size: 35px;
-  width: 80%;
-  height: 100%;
   resize: none;
-  min-height: 100%;
+  min-height: 90%;
 }
 
-input[type="text"] {
-  font-size: 35px;
-  width: 80%;
+.footer {
+  border-radius: 20px 20px 0 0;
+  background: $color-theme_2-hex;
+  padding: 10px 0;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  color: white;
+  text-align: center;
+  font-size: 18px;
+}
+a:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+a {
+  cursor: pointer;
+  transition: 0.4s all;
+  color: $linkColor;
+  display: inline-block;
+  position: relative;
+  text-decoration: none;
+  &::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: $linkColor;
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+    border-radius: 100px;
+  }
+  &:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+  }
+  &:hover {
+    text-shadow: 0px 0px 20px $linkColor;
+  }
 }

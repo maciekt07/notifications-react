@@ -3,6 +3,7 @@ import "./styles/style.css";
 import logo from "./logo192.png";
 import Push from "push.js";
 import Length from "./components/Length";
+import Footer from "./components/Footer";
 const App = () => {
   const [Header, setHeader] = useState("");
   const [Text, setText] = useState("");
@@ -34,7 +35,7 @@ const App = () => {
       <Length input={Text} />
       <br />
       <button
-        disabled={Text.length === 0 && Header.length === 0}
+        // disabled={Text.length === 0 && Header.length === 0}
         onClick={createClick}
         className="createBtn"
       >
@@ -48,6 +49,7 @@ const App = () => {
       >
         Clear
       </button>
+      <Footer />
     </div>
   );
 };

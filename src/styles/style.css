@@ -1,5 +1,6 @@
+@import url("https://fonts.googleapis.com/css2?family=Heebo&family=Lato:ital@0;1&family=Poppins:wght@400;500&display=swap");
 * {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: poppins;
 }
 *::selection {
   background: #8f9be3;
@@ -16,8 +17,7 @@ body {
   align-items: center;
   justify-content: center;
   height: 50vh;
-  margin: 50px;
-  margin-top: 185px;
+  margin-top: 200px;
 }
 
 .createBtn {
@@ -43,6 +43,9 @@ body {
 .createBtn:disabled:hover {
   text-shadow: none;
   box-shadow: none;
+}
+.createBtn:hover > .footer {
+  background: red;
 }
 
 .clearBtn {
@@ -72,6 +75,8 @@ body {
 
 textarea,
 input[type=text] {
+  font-size: 30px;
+  width: 80%;
   transition: 0.3s all;
   border: 5px solid #f2ae2e;
   border-radius: 20px;
@@ -102,16 +107,55 @@ input[type=text] :focus-visible {
 }
 
 textarea {
-  font-size: 35px;
-  width: 80%;
-  height: 100%;
   resize: none;
-  min-height: 100%;
+  min-height: 90%;
 }
 
-input[type=text] {
-  font-size: 35px;
-  width: 80%;
+.footer {
+  border-radius: 20px 20px 0 0;
+  background: #364573;
+  padding: 10px 0;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  color: white;
+  text-align: center;
+  font-size: 18px;
+}
+
+a:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+a {
+  cursor: pointer;
+  transition: 0.4s all;
+  color: #3abdff;
+  display: inline-block;
+  position: relative;
+  text-decoration: none;
+}
+a::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #3abdff;
+  transform-origin: bottom right;
+  transition: transform 0.25s ease-out;
+  border-radius: 100px;
+}
+a:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+a:hover {
+  text-shadow: 0px 0px 20px #3abdff;
 }
 
 /*# sourceMappingURL=style.css.map */
