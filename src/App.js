@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./styles/style.css";
+import logo from "./logo192.png";
 import Push from "push.js";
 import Length from "./components/Length";
 const App = () => {
@@ -12,6 +13,7 @@ const App = () => {
   const createClick = () => {
     Push.create(Header, {
       body: Text,
+      icon: logo,
     });
   };
   return (
@@ -32,7 +34,7 @@ const App = () => {
       <Length input={Text} />
       <br />
       <button
-        disabled={Text.length == 0 && Header.length == 0}
+        disabled={Text.length === 0 && Header.length === 0}
         onClick={createClick}
         className="createBtn"
       >
@@ -40,9 +42,9 @@ const App = () => {
       </button>
       <br />
       <button
-        disabled={Text.length == 0 && Header.length == 0}
-        className="clearBtn"
+        disabled={Text.length === 0 && Header.length === 0}
         onClick={clearClick}
+        className="clearBtn"
       >
         Clear
       </button>
