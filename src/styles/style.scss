@@ -3,6 +3,32 @@ $color-theme_2-hex: #364573;
 $color-theme_3-hex: #292f40;
 $color-theme_4-hex: #03a688;
 $color-theme_5-hex: #f2ae2e;
+$color-theme_6-hex: #ff4640;
+
+@mixin Btn($clr) {
+  transition: 0.3s all;
+  border-radius: 20px;
+  color: white;
+  background: $clr;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1.5em;
+  font-weight: 500;
+  cursor: pointer;
+  transition: 0.3s all;
+  &:hover {
+    text-shadow: 0px 2px 9px rgba(0, 0, 0, 0.25);
+    box-shadow: 0px 0px 20px -1px lighten($color: $clr, $amount: 10);
+  }
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    &:hover {
+      text-shadow: none;
+      box-shadow: none;
+    }
+  }
+}
 
 * {
   font-family: Arial, Helvetica, sans-serif;
@@ -15,8 +41,6 @@ $color-theme_5-hex: #f2ae2e;
 body {
   background: $color-theme_3-hex;
   margin: 0;
-  min-width: 320px;
-  min-height: 100vh;
 }
 .app {
   display: flex;
@@ -25,34 +49,17 @@ body {
   justify-content: center;
   height: 50vh;
   margin: 50px;
-  margin-top: 200px;
+  margin-top: 185px;
 }
 
 .createBtn {
-  transition: 0.3s all;
-  border-radius: 20px;
-  color: white;
-  background: $color-theme_4-hex;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1.5em;
-  font-weight: 500;
-  cursor: pointer;
-  transition: 0.3s all;
-  &:hover {
-    text-shadow: 0px 2px 9px rgba(0, 0, 0, 0.25);
-    box-shadow: 0px 0px 20px -1px lighten($color: $color-theme_4-hex, $amount:
-          20);
-  }
-  &:disabled {
-    opacity: 0.6;
-    cursor: not-allowed;
-    &:hover {
-      text-shadow: none;
-      box-shadow: none;
-    }
-  }
+  @include Btn($color-theme_4-hex);
 }
+
+.clearBtn {
+  @include Btn($color-theme_6-hex);
+}
+
 textarea,
 input[type="text"] {
   transition: 0.3s all;
@@ -74,8 +81,11 @@ input[type="text"] {
   }
 }
 .TextLength {
-  margin-top: 4px;
+  border-radius: 5px;
+  margin-top: 5px;
   color: white;
+  background: $color-theme_1-hex;
+  padding: 5px;
 }
 
 textarea {
