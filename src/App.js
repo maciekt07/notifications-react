@@ -14,15 +14,35 @@ const App = () => {
       <input
         value={Header}
         onChange={(e) => setHeader(e.target.value)}
-        placeholder="Header"
+        placeholder="Header..."
         type="text"
       ></input>
+      <div
+        style={Header.length <= 0 ? { visibility: "hidden" } : {}}
+        className="TextLength"
+      >
+        {Header.length}
+      </div>
+      <br />
       <textarea
         value={Text}
         onChange={(e) => setText(e.target.value)}
-        placeholder="Text"
+        placeholder="Text..."
       ></textarea>
-      <button onClick={buttonClick}>Create</button>
+      <div
+        style={Text.length <= 0 ? { visibility: "hidden" } : {}}
+        className="TextLength"
+      >
+        {Text.length}
+      </div>
+      <br />
+      <button
+        disabled={Text.length == 0 && Header.length == 0}
+        onClick={buttonClick}
+        className="createBtn"
+      >
+        Create
+      </button>
     </div>
   );
 };

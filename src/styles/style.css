@@ -1,5 +1,12 @@
+* {
+  font-family: Arial, Helvetica, sans-serif;
+}
+*::selection {
+  background: #8f9be3;
+}
+
 body {
-  background: #8c87ff;
+  background: #292f40;
   margin: 0;
   min-width: 320px;
   min-height: 100vh;
@@ -15,19 +22,57 @@ body {
   margin-top: 200px;
 }
 
-button {
-  border-radius: 8px;
+.createBtn {
+  transition: 0.3s all;
+  border-radius: 20px;
+  color: white;
+  background: #03a688;
   border: 1px solid transparent;
   padding: 0.6em 1.2em;
-  font-size: 1em;
+  font-size: 1.5em;
   font-weight: 500;
   cursor: pointer;
-  transition: border-color 0.25s;
+  transition: 0.3s all;
+}
+.createBtn:hover {
+  text-shadow: 0px 2px 9px rgba(0, 0, 0, 0.25);
+  box-shadow: 0px 0px 20px -1px #14fbd0;
+}
+.createBtn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+.createBtn:disabled:hover {
+  text-shadow: none;
+  box-shadow: none;
 }
 
+textarea,
 input[type=text] {
-  font-size: 35px;
-  width: 80%;
+  transition: 0.3s all;
+  border: 5px solid #f2ae2e;
+  border-radius: 20px;
+  padding: 10px;
+  outline: none;
+  color: #364573;
+  font-weight: bold;
+  background: #ffffff;
+}
+textarea::placeholder,
+input[type=text]::placeholder {
+  color: #364573;
+  opacity: 0.7;
+}
+textarea:focus,
+textarea :focus-visible,
+input[type=text]:focus,
+input[type=text] :focus-visible {
+  box-shadow: 0px 0px 20px -1px #f8d38e;
+}
+
+.TextLength {
+  margin-top: 4px;
+  color: white;
 }
 
 textarea {
@@ -36,7 +81,11 @@ textarea {
   height: 100%;
   resize: none;
   min-height: 100%;
-  background: #6e89e8;
+}
+
+input[type=text] {
+  font-size: 35px;
+  width: 80%;
 }
 
 /*# sourceMappingURL=style.css.map */

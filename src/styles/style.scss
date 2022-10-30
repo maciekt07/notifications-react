@@ -1,11 +1,19 @@
-$Purple-Light-Blue-1: rgba(200, 121, 255, 1);
-$Purple-Light-Blue-2: rgba(149, 110, 232, 1);
-$Purple-Light-Blue-3: rgba(140, 135, 255, 1);
-$Purple-Light-Blue-4: rgba(110, 137, 232, 1);
-$Purple-Light-Blue-5: rgba(121, 186, 255, 1);
+$color-theme_1-hex: #6677d9;
+$color-theme_2-hex: #364573;
+$color-theme_3-hex: #292f40;
+$color-theme_4-hex: #03a688;
+$color-theme_5-hex: #f2ae2e;
+
+* {
+  font-family: Arial, Helvetica, sans-serif;
+
+  &::selection {
+    background: lighten($color: $color-theme_1-hex, $amount: 10);
+  }
+}
 
 body {
-  background: $Purple-Light-Blue-3;
+  background: $color-theme_3-hex;
   margin: 0;
   min-width: 320px;
   min-height: 100vh;
@@ -20,19 +28,54 @@ body {
   margin-top: 200px;
 }
 
-button {
-  border-radius: 8px;
+.createBtn {
+  transition: 0.3s all;
+  border-radius: 20px;
+  color: white;
+  background: $color-theme_4-hex;
   border: 1px solid transparent;
   padding: 0.6em 1.2em;
-  font-size: 1em;
+  font-size: 1.5em;
   font-weight: 500;
   cursor: pointer;
-  transition: border-color 0.25s;
+  transition: 0.3s all;
+  &:hover {
+    text-shadow: 0px 2px 9px rgba(0, 0, 0, 0.25);
+    box-shadow: 0px 0px 20px -1px lighten($color: $color-theme_4-hex, $amount:
+          20);
+  }
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    &:hover {
+      text-shadow: none;
+      box-shadow: none;
+    }
+  }
 }
-
+textarea,
 input[type="text"] {
-  font-size: 35px;
-  width: 80%;
+  transition: 0.3s all;
+  border: 5px solid $color-theme_5-hex;
+  border-radius: 20px;
+  padding: 10px;
+  outline: none;
+  color: $color-theme_2-hex;
+  font-weight: bold;
+  background: #ffffff;
+  &::placeholder {
+    color: $color-theme_2-hex;
+    opacity: 0.7;
+  }
+  &:focus,
+  :focus-visible {
+    box-shadow: 0px 0px 20px -1px lighten($color: $color-theme_5-hex, $amount:
+          20);
+  }
+}
+.TextLength {
+  margin-top: 4px;
+  color: white;
 }
 
 textarea {
@@ -41,5 +84,9 @@ textarea {
   height: 100%;
   resize: none;
   min-height: 100%;
-  background: $Purple-Light-Blue-4;
+}
+
+input[type="text"] {
+  font-size: 35px;
+  width: 80%;
 }
