@@ -18,8 +18,7 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 50vh;
-  margin-top: 120px;
+  margin-top: 40px;
 }
 
 .createBtn {
@@ -48,8 +47,8 @@ input[type="text"] {
   }
   &:focus,
   :focus-visible {
-    box-shadow: 0px 0px 20px -1px lighten($color: $color-theme_5-hex, $amount:
-          20);
+    box-shadow: 0px 0px 20px 1px
+      lighten($color: $color-theme_5-hex, $amount: 20);
   }
 }
 .TextLength {
@@ -62,7 +61,7 @@ input[type="text"] {
 
 textarea {
   resize: none;
-  min-height: 75%;
+  min-height: 32vh;
 }
 
 .footer {
