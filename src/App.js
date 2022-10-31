@@ -7,10 +7,16 @@ import Footer from "./components/Footer";
 const App = () => {
   const [Header, setHeader] = useState("");
   const [Text, setText] = useState("");
+
+  const [Focus, setFocus] = useState(true);
+  const onFocus = () => setFocus(false);
+  const onBlur = () => setFocus(true);
+
   const clearClick = () => {
     setText("");
     setHeader("");
   };
+
   const createClick = () => {
     Push.create(Header, {
       body: Text,
@@ -24,6 +30,8 @@ const App = () => {
         onChange={(e) => setHeader(e.target.value)}
         placeholder="Header..."
         type="text"
+        onFocus={onFocus}
+        onBlur={onBlur}
       ></input>
       <Length input={Header} />
       <br />
@@ -31,14 +39,12 @@ const App = () => {
         value={Text}
         onChange={(e) => setText(e.target.value)}
         placeholder="Text..."
+        onFocus={onFocus}
+        onBlur={onBlur}
       ></textarea>
       <Length input={Text} />
       <br />
-      <button
-        // disabled={Text.length === 0 && Header.length === 0}
-        onClick={createClick}
-        className="createBtn"
-      >
+      <button onClick={createClick} className="createBtn">
         Create
       </button>
       <br />
@@ -49,7 +55,7 @@ const App = () => {
       >
         Clear
       </button>
-      <Footer />
+      <Footer show={Focus} />
     </div>
   );
 };

@@ -1,7 +1,15 @@
 import "../styles/style.css";
-const Footer = () => {
+const Footer = (props) => {
+  const show = props.show;
   return (
-    <div className="footer">
+    <div
+      style={
+        show
+          ? { transition: ".5s", opacity: 1 }
+          : { transition: ".5s", opacity: 0 }
+      }
+      className="footer"
+    >
       Made with 💙 By&nbsp;
       <a target="_blank" rel="noreferrer" href="https://github.com/maciekt07">
         maciekt07
