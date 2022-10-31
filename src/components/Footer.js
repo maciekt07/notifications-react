@@ -5,8 +5,8 @@ const Footer = (props) => {
     <div
       style={
         show
-          ? { transition: ".5s", opacity: 1 }
-          : { transition: ".5s", opacity: 0 }
+          ? { transition: ".3s", opacity: 1 }
+          : { transition: ".3s", opacity: 0 }
       }
       className="footer"
     >

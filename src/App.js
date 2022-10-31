@@ -33,7 +33,7 @@ const App = () => {
         onFocus={onFocus}
         onBlur={onBlur}
       ></input>
-      <Length input={Header} />
+      {/* <Length input={Header} /> */}
       <br />
       <textarea
         value={Text}
@@ -44,6 +44,7 @@ const App = () => {
       ></textarea>
       <Length input={Text} />
       <br />
+
       <button onClick={createClick} className="createBtn">
         Create
       </button>

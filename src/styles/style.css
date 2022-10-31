@@ -30,6 +30,7 @@ body {
   font-weight: 500;
   cursor: pointer;
   transition: 0.3s all;
+  margin-top: 30px;
 }
 .createBtn:hover {
   text-shadow: 0px 2px 9px rgba(0, 0, 0, 0.25);
@@ -95,11 +96,15 @@ input[type=text] :focus-visible {
 }
 
 .TextLength {
-  border-radius: 5px;
-  margin-top: 5px;
+  pointer-events: none;
+  border-radius: 10px;
+  margin-top: -70px;
   color: white;
-  background: #6677d9;
-  padding: 6px;
+  background: rgba(102, 119, 217, 0.7);
+  backdrop-filter: blur(6px);
+  box-shadow: 0px 0px 20px -1px #8794e1;
+  text-shadow: 0px 2px 9px rgba(0, 0, 0, 0.25);
+  padding: 8px;
 }
 
 textarea {

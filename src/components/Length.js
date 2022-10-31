@@ -4,7 +4,11 @@ const Length = (props) => {
   const input = props.input;
   return (
     <div
-      style={input.length <= 0 ? { display: "none" } : {}}
+      style={
+        input.length <= 0
+          ? { transition: ".3s", opacity: 0 }
+          : { transition: ".3s", opacity: 1 }
+      }
       className="TextLength"
     >
       Length: {input.length}
