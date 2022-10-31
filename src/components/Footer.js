@@ -6,7 +6,7 @@ const Footer = (props) => {
       style={
         show
           ? { transition: ".3s", opacity: 1 }
-          : { transition: ".3s", opacity: 0 }
+          : { transition: ".3s", opacity: 0, pointerEvents: "none" }
       }
       className="footer"
     >
