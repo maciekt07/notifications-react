@@ -104,7 +104,7 @@ input[type=text] :focus-visible {
 
 textarea {
   resize: none;
-  min-height: 32vh;
+  min-height: 38vh;
 }
 
 .footer {
