@@ -18,7 +18,7 @@ $linkColor: #3abdff;
   transition: 0.3s all;
   &:hover {
     text-shadow: 0px 2px 9px rgba(0, 0, 0, 0.25);
-    box-shadow: 0px 0px 20px -1px lighten($color: $clr, $amount: 10);
+    box-shadow: 0px 0px 20px -1px lighten($color: $clr, $amount: 8);
   }
   &:disabled {
     opacity: 0.6;

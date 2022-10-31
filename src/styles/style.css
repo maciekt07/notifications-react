@@ -17,7 +17,7 @@ body {
   align-items: center;
   justify-content: center;
   height: 50vh;
-  margin-top: 160px;
+  margin-top: 120px;
 }
 
 .createBtn {
@@ -34,7 +34,7 @@ body {
 }
 .createBtn:hover {
   text-shadow: 0px 2px 9px rgba(0, 0, 0, 0.25);
-  box-shadow: 0px 0px 20px -1px #04d8b1;
+  box-shadow: 0px 0px 20px -1px #04cea9;
 }
 .createBtn:disabled {
   opacity: 0.6;
@@ -43,9 +43,6 @@ body {
 .createBtn:disabled:hover {
   text-shadow: none;
   box-shadow: none;
-}
-.createBtn:hover > .footer {
-  background: red;
 }
 
 .clearBtn {
@@ -62,7 +59,7 @@ body {
 }
 .clearBtn:hover {
   text-shadow: 0px 2px 9px rgba(0, 0, 0, 0.25);
-  box-shadow: 0px 0px 20px -1px #ff7773;
+  box-shadow: 0px 0px 20px -1px #ff6e69;
 }
 .clearBtn:disabled {
   opacity: 0.6;

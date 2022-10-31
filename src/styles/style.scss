@@ -19,14 +19,11 @@ body {
   align-items: center;
   justify-content: center;
   height: 50vh;
-  margin-top: 160px;
+  margin-top: 120px;
 }
 
 .createBtn {
   @include Btn($color-theme_4-hex);
-  &:hover > .footer {
-    background: red;
-  }
 }
 
 .clearBtn {
