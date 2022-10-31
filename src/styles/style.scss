@@ -55,18 +55,18 @@ input[type="text"] {
 .TextLength {
   pointer-events: none;
   border-radius: 10px;
-  margin-top: -70px;
+  margin-top: -62px;
   color: white;
   background: rgba($color: $color-theme_1-hex, $alpha: 0.7);
   backdrop-filter: blur(6px);
-  box-shadow: 0px 0px 20px -1px lighten($color: $color-theme_1-hex, $amount: 8);
+  box-shadow: 0px 0px 20px 2wpx lighten($color: $color-theme_1-hex, $amount: 8);
   text-shadow: 0px 2px 9px rgba(0, 0, 0, 0.25);
   padding: 8px;
 }
 
 textarea {
   resize: none;
-  min-height: 38vh;
+  min-height: 41vh;
 }
 
 .footer {

@@ -98,18 +98,18 @@ input[type=text] :focus-visible {
 .TextLength {
   pointer-events: none;
   border-radius: 10px;
-  margin-top: -70px;
+  margin-top: -62px;
   color: white;
   background: rgba(102, 119, 217, 0.7);
   backdrop-filter: blur(6px);
-  box-shadow: 0px 0px 20px -1px #8794e1;
+  box-shadow: 0px 0px 20px 2wpx #8794e1;
   text-shadow: 0px 2px 9px rgba(0, 0, 0, 0.25);
   padding: 8px;
 }
 
 textarea {
   resize: none;
-  min-height: 38vh;
+  min-height: 41vh;
 }
 
 .footer {
