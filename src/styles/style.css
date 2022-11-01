@@ -193,4 +193,11 @@ a:hover {
   color: white;
 }
 
+br {
+  content: "";
+  margin: 2em;
+  display: block;
+  font-size: 25%;
+}
+
 /*# sourceMappingURL=style.css.map */

@@ -5,6 +5,11 @@ import Push from "push.js";
 import Length from "./components/Length";
 import Footer from "./components/Footer";
 
+if (localStorage.getItem("Text") == null) {
+  localStorage.setItem("Text", "");
+  localStorage.setItem("Header", "");
+}
+
 const App = () => {
   const [Header, setHeader] = useState("");
   const [Text, setText] = useState("");
@@ -61,16 +66,7 @@ const App = () => {
         Create
       </button>
       <br />
-      <button
-        style={localStorage.getItem("Text") == Text ? { display: "none" } : {}}
-        className="loadBtn"
-        onClick={loadClick}
-      >
-        Load
-      </button>
-      <br
-        style={localStorage.getItem("Text") == Text ? { display: "none" } : {}}
-      />
+
       <button
         disabled={Text.length === 0 && Header.length === 0}
         onClick={clearClick}
@@ -78,7 +74,14 @@ const App = () => {
       >
         Clear
       </button>
-
+      <br />
+      <button
+        style={localStorage.getItem("Text") == Text ? { display: "none" } : {}}
+        className="loadBtn"
+        onClick={loadClick}
+      >
+        Load
+      </button>
       <Footer show={Focus} />
 
       <div
