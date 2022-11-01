@@ -4,13 +4,19 @@ import logo from "./logo192.png";
 import Push from "push.js";
 import Length from "./components/Length";
 import Footer from "./components/Footer";
+
 const App = () => {
   const [Header, setHeader] = useState("");
   const [Text, setText] = useState("");
-
   const [Focus, setFocus] = useState(true);
+
   const onFocus = () => setFocus(false);
   const onBlur = () => setFocus(true);
+
+  const loadClick = () => {
+    setText(localStorage.getItem("Text"));
+    setHeader(localStorage.getItem("Header"));
+  };
 
   const clearClick = () => {
     setText("");
@@ -27,7 +33,10 @@ const App = () => {
     <div className="app">
       <input
         value={Header}
-        onChange={(e) => setHeader(e.target.value)}
+        onChange={(e) => {
+          setHeader(e.target.value);
+          localStorage.setItem("Header", e.target.value);
+        }}
         placeholder="Header..."
         type="text"
         onFocus={onFocus}
@@ -37,7 +46,10 @@ const App = () => {
       <br />
       <textarea
         value={Text}
-        onChange={(e) => setText(e.target.value)}
+        onChange={(e) => {
+          setText(e.target.value);
+          localStorage.setItem("Text", e.target.value);
+        }}
         placeholder="Text..."
         onFocus={onFocus}
         onBlur={onBlur}
@@ -50,13 +62,35 @@ const App = () => {
       </button>
       <br />
       <button
+        style={localStorage.getItem("Text") == Text ? { display: "none" } : {}}
+        className="loadBtn"
+        onClick={loadClick}
+      >
+        Load
+      </button>
+      <br
+        style={localStorage.getItem("Text") == Text ? { display: "none" } : {}}
+      />
+      <button
         disabled={Text.length === 0 && Header.length === 0}
         onClick={clearClick}
         className="clearBtn"
       >
         Clear
       </button>
+
       <Footer show={Focus} />
+
+      <div
+        style={localStorage.getItem("Text") == Text ? { display: "none" } : {}}
+        className="info"
+      >
+        💡 You can <b>load</b> content :{" "}
+        <b>
+          {localStorage.getItem("Text").slice(0, 16)}
+          {localStorage.getItem("Text").length > 16 ? "..." : ""}
+        </b>
+      </div>
     </div>
   );
 };
