@@ -2,6 +2,7 @@
 
 notifications creator made for cheating at school 😎
 
-![](img/ss1.png)
-![](img/ss2.png)
-![](img/notification.png)
+<img style="width:350px" src="img/ss1.png" />
+<img style="width:350px" src="img/ss2.png" />
+<br/>
+<img style="width:350px" src="img/notification.png" />
