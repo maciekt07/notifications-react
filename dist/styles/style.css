@@ -2,6 +2,9 @@
 * {
   font-family: poppins;
 }
+*::-moz-selection {
+  background: #8f9be3;
+}
 *::selection {
   background: #8f9be3;
 }
@@ -83,6 +86,14 @@ input[type=text] {
   font-weight: bold;
   background: #ffffff;
 }
+textarea::-moz-placeholder, input[type=text]::-moz-placeholder {
+  color: #364573;
+  opacity: 0.7;
+}
+textarea:-ms-input-placeholder, input[type=text]:-ms-input-placeholder {
+  color: #364573;
+  opacity: 0.7;
+}
 textarea::placeholder,
 input[type=text]::placeholder {
   color: #364573;
@@ -101,7 +112,8 @@ input[type=text] :focus-visible {
   margin-top: -62px;
   color: white;
   background: rgba(102, 119, 217, 0.7);
-  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+          backdrop-filter: blur(8px);
   box-shadow: 0px 0px 20px 2px #8794e1;
   text-shadow: 0px 2px 9px rgba(0, 0, 0, 0.25);
   padding: 8px;
@@ -165,6 +177,4 @@ a:hover {
   color: white;
   margin-top: 200px;
   font-size: 30px;
-}
-
-/*# sourceMappingURL=style.css.map */
+}/*# sourceMappingURL=style.css.map */
