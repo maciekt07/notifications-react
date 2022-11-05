@@ -76,16 +76,14 @@ const App = () => {
       </button>
       <br />
       <button
-        style={localStorage.getItem("Text") == Text ? { display: "none" } : {}}
+        style={localStorage.getItem("Text") === Text ? { display: "none" } : {}}
         className="loadBtn"
         onClick={loadClick}
       >
         Load
       </button>
-      <Footer show={Focus} />
-
       <div
-        style={localStorage.getItem("Text") == Text ? { display: "none" } : {}}
+        style={localStorage.getItem("Text") === Text ? { display: "none" } : {}}
         className="info"
       >
         💡 You can <b>load</b> content :{" "}
@@ -94,6 +92,7 @@ const App = () => {
           {localStorage.getItem("Text").length > 16 ? "..." : ""}
         </b>
       </div>
+      <Footer show={Focus} />
     </div>
   );
 };

@@ -1,9 +1,14 @@
 @import url("https://fonts.googleapis.com/css2?family=Heebo&family=Lato:ital@0;1&family=Poppins:wght@400;500&display=swap");
 * {
   font-family: poppins;
+  transition: 0.3s all !important;
 }
 *::selection {
   background: #8f9be3;
+}
+*:focus, *:focus-visible {
+  outline: 4px solid #822eff;
+  box-shadow: 0px 0px 20px 2px #9a57ff;
 }
 
 body {
@@ -26,7 +31,8 @@ body {
   background: #03a688;
   border: none;
   padding: 0.6em 1.2em;
-  width: 150px;
+  min-width: 150px;
+  width: auto;
   font-size: 1.5em;
   font-weight: 500;
   cursor: pointer;
@@ -53,7 +59,8 @@ body {
   background: #ff4640;
   border: none;
   padding: 0.6em 1.2em;
-  width: 150px;
+  min-width: 150px;
+  width: auto;
   font-size: 1.5em;
   font-weight: 500;
   cursor: pointer;
@@ -79,7 +86,8 @@ body {
   background: #ff9d00;
   border: none;
   padding: 0.6em 1.2em;
-  width: 150px;
+  min-width: 150px;
+  width: auto;
   font-size: 1.5em;
   font-weight: 500;
   cursor: pointer;
@@ -102,7 +110,6 @@ textarea,
 input[type=text] {
   font-size: 30px;
   width: 80%;
-  transition: 0.3s all;
   border: 5px solid #f2ae2e;
   border-radius: 25px;
   padding: 16px;
@@ -110,16 +117,19 @@ input[type=text] {
   color: #364573;
   font-weight: bold;
   background: #ffffff;
+  caret-color: #ff9d00;
+  transition: 0.3s all;
 }
 textarea::placeholder,
 input[type=text]::placeholder {
   color: #364573;
-  opacity: 0.7;
+  opacity: 0.75;
 }
 textarea:focus,
 textarea :focus-visible,
 input[type=text]:focus,
 input[type=text] :focus-visible {
+  outline: none;
   box-shadow: 0px 0px 20px 1px #f8d38e;
 }
 
@@ -151,7 +161,6 @@ textarea {
   color: white;
   text-align: center;
   font-size: 18px;
-  transition: visibility 0.2s, opacity 0.2s linear;
 }
 
 a:hover::after {
@@ -161,7 +170,6 @@ a:hover::after {
 
 a {
   cursor: pointer;
-  transition: 0.4s all;
   color: #3abdff;
   display: inline-block;
   position: relative;
@@ -180,16 +188,20 @@ a::after {
   transition: transform 0.25s ease-out;
   border-radius: 100px;
 }
-a:hover::after {
+a:hover::after, a:focus-visible::after {
   transform: scaleX(1);
   transform-origin: bottom left;
 }
 a:hover {
   text-shadow: 0px 0px 20px #3abdff;
 }
+a:focus, a:focus-visible {
+  outline: none;
+  box-shadow: none;
+}
 
 .info {
-  margin-top: 10px;
+  margin-top: 12px;
   color: white;
   text-align: center;
 }

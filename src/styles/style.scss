@@ -3,9 +3,14 @@
 
 * {
   font-family: poppins;
-
+  transition: 0.3s all !important;
   &::selection {
     background: lighten($color: $color-theme_1-hex, $amount: 10);
+  }
+  &:focus,
+  &:focus-visible {
+    outline: 4px solid rgb(130, 46, 255);
+    box-shadow: 0px 0px 20px 2px lighten($color: rgb(130, 46, 255), $amount: 8);
   }
 }
 
@@ -38,7 +43,6 @@ textarea,
 input[type="text"] {
   font-size: 30px;
   width: 80%;
-  transition: 0.3s all;
   border: 5px solid $color-theme_5-hex;
   border-radius: 25px;
   padding: 16px;
@@ -46,12 +50,16 @@ input[type="text"] {
   color: $color-theme_2-hex;
   font-weight: bold;
   background: #ffffff;
+  caret-color: rgb(255, 157, 0);
+
+  transition: 0.3s all;
   &::placeholder {
     color: $color-theme_2-hex;
-    opacity: 0.7;
+    opacity: 0.75;
   }
   &:focus,
   :focus-visible {
+    outline: none;
     box-shadow: 0px 0px 20px 1px
       lighten($color: $color-theme_5-hex, $amount: 20);
   }
@@ -84,7 +92,6 @@ textarea {
   color: white;
   text-align: center;
   font-size: 18px;
-  transition: visibility 0.2s, opacity 0.2s linear;
 }
 
 a:hover::after {
@@ -94,7 +101,7 @@ a:hover::after {
 
 a {
   cursor: pointer;
-  transition: 0.4s all;
+
   color: $linkColor;
   display: inline-block;
   position: relative;
@@ -112,16 +119,23 @@ a {
     transition: transform 0.25s ease-out;
     border-radius: 100px;
   }
-  &:hover::after {
+  &:hover::after,
+  &:focus-visible::after {
     transform: scaleX(1);
     transform-origin: bottom left;
   }
   &:hover {
     text-shadow: 0px 0px 20px $linkColor;
   }
+
+  &:focus,
+  &:focus-visible {
+    outline: none;
+    box-shadow: none;
+  }
 }
 .info {
-  margin-top: 10px;
+  margin-top: 12px;
   color: white;
   text-align: center;
 }
