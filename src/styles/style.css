@@ -6,9 +6,9 @@
 *::selection {
   background: #8f9be3;
 }
-*:focus, *:focus-visible {
-  outline: 4px solid #822eff;
-  box-shadow: 0px 0px 20px 2px #9a57ff;
+*:focus-visible {
+  outline: 4px solid #3abdff;
+  box-shadow: 0px 0px 20px 2px #63cbff;
 }
 
 body {
@@ -28,7 +28,6 @@ body {
   transition: 0.3s all;
   border-radius: 20px;
   color: white;
-  background: #03a688;
   border: none;
   padding: 0.6em 1.2em;
   min-width: 150px;
@@ -37,6 +36,8 @@ body {
   font-weight: 500;
   cursor: pointer;
   transition: 0.3s all;
+  background: #03a688;
+  background: linear-gradient(261.62deg, #03a688 13.66%, #04c4a1 88.71%);
   margin-top: 30px;
 }
 .createBtn:hover {
@@ -56,7 +57,6 @@ body {
   transition: 0.3s all;
   border-radius: 20px;
   color: white;
-  background: #ff4640;
   border: none;
   padding: 0.6em 1.2em;
   min-width: 150px;
@@ -65,6 +65,8 @@ body {
   font-weight: 500;
   cursor: pointer;
   transition: 0.3s all;
+  background: #ff4640;
+  background: linear-gradient(261.62deg, #ff4640 13.66%, #ff645f 88.71%);
 }
 .clearBtn:hover {
   text-shadow: 0px 2px 9px rgba(0, 0, 0, 0.25);
@@ -83,7 +85,6 @@ body {
   transition: 0.3s all;
   border-radius: 20px;
   color: white;
-  background: #ff9d00;
   border: none;
   padding: 0.6em 1.2em;
   min-width: 150px;
@@ -92,6 +93,8 @@ body {
   font-weight: 500;
   cursor: pointer;
   transition: 0.3s all;
+  background: #ff9d00;
+  background: linear-gradient(261.62deg, #ff9d00 13.66%, #ffa91f 88.71%);
 }
 .loadBtn:hover {
   text-shadow: 0px 2px 9px rgba(0, 0, 0, 0.25);
@@ -117,13 +120,17 @@ input[type=text] {
   color: #364573;
   font-weight: bold;
   background: #ffffff;
-  caret-color: #ff9d00;
+  caret-color: #f2ae2e;
   transition: 0.3s all;
 }
 textarea::placeholder,
 input[type=text]::placeholder {
   color: #364573;
   opacity: 0.75;
+}
+textarea::selection,
+input[type=text]::selection {
+  background: #f2ae2e;
 }
 textarea:focus,
 textarea :focus-visible,
@@ -146,7 +153,7 @@ input[type=text] :focus-visible {
 }
 
 textarea {
-  resize: none;
+  resize: none !important;
   min-height: 41vh;
 }
 

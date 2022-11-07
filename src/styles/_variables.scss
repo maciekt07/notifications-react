@@ -9,7 +9,6 @@ $linkColor: #3abdff;
   transition: 0.3s all;
   border-radius: 20px;
   color: white;
-  background: $clr;
   border: none;
   padding: 0.6em 1.2em;
   min-width: 150px;
@@ -18,6 +17,12 @@ $linkColor: #3abdff;
   font-weight: 500;
   cursor: pointer;
   transition: 0.3s all;
+  background: $clr;
+  background: linear-gradient(
+    261.62deg,
+    $clr 13.66%,
+    lighten($color: $clr, $amount: 6) 88.71%
+  );
   &:hover {
     text-shadow: 0px 2px 9px rgba(0, 0, 0, 0.25);
     box-shadow: 0px 0px 20px -1px lighten($color: $clr, $amount: 8);

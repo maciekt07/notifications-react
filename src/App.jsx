@@ -22,7 +22,6 @@ const App = () => {
     setText(localStorage.getItem("Text"));
     setHeader(localStorage.getItem("Header"));
   };
-
   const clearClick = () => {
     setText("");
     setHeader("");

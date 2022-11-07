@@ -7,10 +7,10 @@
   &::selection {
     background: lighten($color: $color-theme_1-hex, $amount: 10);
   }
-  &:focus,
+
   &:focus-visible {
-    outline: 4px solid rgb(130, 46, 255);
-    box-shadow: 0px 0px 20px 2px lighten($color: rgb(130, 46, 255), $amount: 8);
+    outline: 4px solid $linkColor;
+    box-shadow: 0px 0px 20px 2px lighten($color: $linkColor, $amount: 8);
   }
 }
 
@@ -50,12 +50,14 @@ input[type="text"] {
   color: $color-theme_2-hex;
   font-weight: bold;
   background: #ffffff;
-  caret-color: rgb(255, 157, 0);
-
+  caret-color: $color-theme_5-hex;
   transition: 0.3s all;
   &::placeholder {
     color: $color-theme_2-hex;
     opacity: 0.75;
+  }
+  &::selection {
+    background: $color-theme_5-hex;
   }
   &:focus,
   :focus-visible {
@@ -77,7 +79,7 @@ input[type="text"] {
 }
 
 textarea {
-  resize: none;
+  resize: none !important;
   min-height: 41vh;
 }
 
