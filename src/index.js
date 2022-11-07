@@ -8,14 +8,12 @@ import AccessDenied from "./AccessDenied";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
-const password = process.env.REACT_APP_PASSWORD;
-
-if (localStorage.getItem("pass") !== password) {
+if (localStorage.getItem("pass") !== process.env.REACT_APP_PASSWORD) {
   const pass = prompt("podaj hasło");
   localStorage.setItem("pass", pass);
 }
 
-if (localStorage.getItem("pass") === password) {
+if (localStorage.getItem("pass") === process.env.REACT_APP_PASSWORD) {
   root.render(
     <React.StrictMode>
       <App />
