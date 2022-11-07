@@ -8,7 +8,7 @@ import AccessDenied from "./AccessDenied";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
-const password = "123";
+const password = process.env.REACT_APP_PASSWORD;
 
 if (localStorage.getItem("pass") !== password) {
   const pass = prompt("podaj hasło");
