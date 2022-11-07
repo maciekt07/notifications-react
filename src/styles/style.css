@@ -220,4 +220,14 @@ br {
   font-size: 25%;
 }
 
+.accessdenied {
+  color: white;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+.accessdenied img {
+  border-radius: 16px;
+}
+
 /*# sourceMappingURL=style.css.map */

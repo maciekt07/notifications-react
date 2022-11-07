@@ -147,3 +147,12 @@ br {
   display: block;
   font-size: 25%;
 }
+.accessdenied {
+  color: white;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  img {
+    border-radius: 16px;
+  }
+}
