@@ -44,7 +44,7 @@ const AccessDenied = () => {
           fontSize: "10px",
         }}
       >
-        <h2>{localStorage.getItem("pass").slice(0, 35)}</h2>
+        <h2>{localStorage.getItem("v").slice(0, 35)}</h2>
       </div>
     </div>
   );

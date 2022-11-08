@@ -15,6 +15,7 @@ $linkColor: #3abdff;
   width: auto;
   font-size: 1.5em;
   font-weight: 500;
+  letter-spacing: 0.02em;
   cursor: pointer;
   transition: 0.3s all;
   background: $clr;
@@ -26,6 +27,10 @@ $linkColor: #3abdff;
   &:hover {
     text-shadow: 0px 2px 9px rgba(0, 0, 0, 0.25);
     box-shadow: 0px 0px 20px -1px lighten($color: $clr, $amount: 8);
+  }
+  &:focus-visible {
+    outline: 5px solid darken($color: $clr, $amount: 10);
+    box-shadow: 0px 0px 20px 2px lighten($color: $linkColor, $amount: 8);
   }
   &:disabled {
     opacity: 0.6;
