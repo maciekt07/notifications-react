@@ -154,6 +154,27 @@ input[type=text] :focus-visible {
   outline: none;
   box-shadow: 0px 0px 20px 1px #f8d38e;
 }
+textarea::-webkit-scrollbar,
+input[type=text]::-webkit-scrollbar {
+  width: 8px;
+  border-radius: 20px;
+}
+textarea::-webkit-scrollbar-track,
+input[type=text]::-webkit-scrollbar-track {
+  background: rgba(102, 119, 217, 0.7);
+  margin-top: 15px;
+  margin-bottom: 15px;
+  border-radius: 20px;
+}
+textarea::-webkit-scrollbar-thumb,
+input[type=text]::-webkit-scrollbar-thumb {
+  background-color: #364573;
+  border-radius: 20px;
+}
+textarea::-webkit-scrollbar-thumb:hover,
+input[type=text]::-webkit-scrollbar-thumb:hover {
+  background-color: #263050;
+}
 
 .TextLength {
   pointer-events: none;

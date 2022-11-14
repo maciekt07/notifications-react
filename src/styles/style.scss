@@ -65,6 +65,26 @@ input[type="text"] {
     box-shadow: 0px 0px 20px 1px
       lighten($color: $color-theme_5-hex, $amount: 20);
   }
+  &::-webkit-scrollbar {
+    width: 8px;
+    border-radius: 20px;
+  }
+
+  &::-webkit-scrollbar-track {
+    // box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    background: rgba($color: $color-theme_1-hex, $alpha: 0.7);
+    margin-top: 15px;
+    margin-bottom: 15px;
+    border-radius: 20px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: $color-theme_2-hex;
+    border-radius: 20px;
+    &:hover {
+      background-color: darken($color: $color-theme_2-hex, $amount: 10);
+    }
+  }
 }
 .TextLength {
   pointer-events: none;
