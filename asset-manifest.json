@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/notifications-react/static/css/main.5004fed1.css",
-    "main.js": "/notifications-react/static/js/main.01841dc2.js",
+    "main.js": "/notifications-react/static/js/main.ee505c5d.js",
     "static/js/27.2af28eb9.chunk.js": "/notifications-react/static/js/27.2af28eb9.chunk.js",
     "service-worker.js": "/notifications-react/service-worker.js",
     "index.html": "/notifications-react/index.html"
   },
   "entrypoints": [
     "static/css/main.5004fed1.css",
-    "static/js/main.01841dc2.js"
+    "static/js/main.ee505c5d.js"
   ]
 }
