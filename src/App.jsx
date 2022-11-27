@@ -4,6 +4,8 @@ import logo from "./logo192.png";
 import Push from "push.js";
 import Length from "./components/Length";
 import Footer from "./components/Footer";
+import Button from "./components/Button";
+import Info from "./components/Info";
 
 if (localStorage.getItem("Text") == null) {
   localStorage.setItem("Text", "");
@@ -20,7 +22,7 @@ const App = () => {
 
   const loadClick = () => {
     setText(localStorage.getItem("Text"));
-    setHeader(localStorage.getItem("Header"));
+    // setHeader(localStorage.getItem("Header"));
   };
   const clearClick = () => {
     setText("");
@@ -58,40 +60,42 @@ const App = () => {
         onFocus={onFocus}
         onBlur={onBlur}
       ></textarea>
-      <Length input={Text} />
+      <Length length={Text.length} />
       <br />
-
-      <button onClick={createClick} className="createBtn">
+      <br />
+      <Button onClick={createClick} color="#03a688">
         Create
-      </button>
+      </Button>
       <br />
-
-      <button
+      <Button
         disabled={Text.length === 0 && Header.length === 0}
         onClick={clearClick}
-        className="clearBtn"
+        color="#ff4640"
       >
         Clear
-      </button>
+      </Button>
       <br />
-      <button
-        style={localStorage.getItem("Text") === Text ? { display: "none" } : {}}
-        className="loadBtn"
+      <Button
+        visible={localStorage.getItem("Text") !== Text}
         onClick={loadClick}
+        color="#FF9D00"
       >
         Load
-      </button>
-      <div
-        style={localStorage.getItem("Text") === Text ? { display: "none" } : {}}
-        className="info"
-      >
-        💡 You can <b>load</b> content :{" "}
+      </Button>
+
+      <Info emoji="💡" visible={localStorage.getItem("Text") !== Text}>
+        You can <b>load</b> content:{" "}
         <b>
           {localStorage.getItem("Text").slice(0, 16)}
           {localStorage.getItem("Text").length > 16 ? "..." : ""}
         </b>
-      </div>
-      <Footer show={Focus} />
+      </Info>
+      <Footer visible={Focus}>
+        Made with 💙 By&nbsp;
+        <a target="_blank" href="https://github.com/maciekt07">
+          maciekt07
+        </a>
+      </Footer>
     </div>
   );
 };

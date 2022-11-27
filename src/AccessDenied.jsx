@@ -1,52 +1,45 @@
+import styled from "styled-components";
+document.addEventListener("contextmenu", (event) => event.preventDefault());
+const Container = styled.div`
+  user-select: none;
+  color: white;
+`;
+
+const Center = styled.div`
+  display: flex;
+  justify-content: center;
+  text-align: center;
+`;
+
+const Password = styled.div`
+  position: absolute;
+  bottom: 1vh;
+  left: 1vh;
+  opacity: 0.6;
+  font-size: 10px;
+`;
+
 const AccessDenied = () => {
-  document.addEventListener("contextmenu", (event) => event.preventDefault());
   return (
-    <div style={{ userSelect: "none" }}>
-      <div
-        style={{
-          textAlign: "center",
-          display: "flex",
-          justifyContent: "center",
-          color: "white",
-          userSelect: "none",
-        }}
-      >
+    <Container>
+      <Center>
         <h1>
           Brak dostępu
           <br />
           :(((((
         </h1>
-      </div>
+      </Center>
       <br />
-      <div
-        style={{
-          textAlign: "center",
-          display: "flex",
-          justifyContent: "center",
-        }}
-      >
+      <Center>
         <img
-          style={{
-            borderRadius: "18px",
-            border: "5px solid white",
-          }}
           src="https://media1.giphy.com/media/OPU6wzx8JrHna/giphy.gif?cid=ecf05e47la0jbjeanrctnn8egz8jij7t3go01q0ca4pu11hz&rid=giphy.gif&ct=g"
           alt=""
         />
-      </div>
-      <div
-        style={{
-          position: "absolute",
-          bottom: "1vh",
-          left: "1vh",
-          color: "white",
-          opacity: ".6",
-          fontSize: "10px",
-        }}
-      >
+      </Center>
+      <Password>
         <h2>{localStorage.getItem("v").slice(0, 35)}</h2>
-      </div>
-    </div>
+      </Password>
+    </Container>
   );
 };
 

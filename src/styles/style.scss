@@ -4,6 +4,7 @@
 * {
   font-family: poppins;
   transition: 0.3s all !important;
+
   &::selection {
     background: lighten($color: $color-theme_1-hex, $amount: 10);
   }
@@ -17,26 +18,15 @@
 body {
   background: $color-theme_3-hex;
   margin: 0;
+  color-scheme: light;
 }
+
 .app {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   margin-top: 40px;
-}
-
-.createBtn {
-  @include Btn($color-theme_4-hex);
-  margin-top: 30px;
-}
-
-.clearBtn {
-  @include Btn($color-theme_6-hex);
-}
-
-.loadBtn {
-  @include Btn(rgb(255, 157, 0));
 }
 
 textarea,
@@ -52,19 +42,23 @@ input[type="text"] {
   background: #ffffff;
   caret-color: $color-theme_5-hex;
   transition: 0.3s all;
+
   &::placeholder {
     color: $color-theme_2-hex;
     opacity: 0.75;
   }
+
   &::selection {
     background: $color-theme_5-hex;
   }
+
   &:focus,
   :focus-visible {
     outline: none;
     box-shadow: 0px 0px 20px 1px
       lighten($color: $color-theme_5-hex, $amount: 20);
   }
+
   &::-webkit-scrollbar {
     width: 8px;
     border-radius: 20px;
@@ -81,39 +75,16 @@ input[type="text"] {
   &::-webkit-scrollbar-thumb {
     background-color: $color-theme_2-hex;
     border-radius: 20px;
+
     &:hover {
       background-color: darken($color: $color-theme_2-hex, $amount: 10);
     }
   }
 }
-.TextLength {
-  pointer-events: none;
-  border-radius: 10px;
-  margin-top: -62px;
-  color: white;
-  background: rgba($color: $color-theme_1-hex, $alpha: 0.7);
-  backdrop-filter: blur(8px);
-  box-shadow: 0px 0px 20px 2px lighten($color: $color-theme_1-hex, $amount: 8);
-  text-shadow: 0px 2px 9px rgba(0, 0, 0, 0.25);
-  padding: 8px;
-}
 
 textarea {
   resize: none !important;
   min-height: 41vh;
-}
-
-.footer {
-  border-radius: 20px 20px 0 0;
-  background: $color-theme_2-hex;
-  padding: 10px 0;
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  color: white;
-  text-align: center;
-  font-size: 18px;
 }
 
 a:hover::after {
@@ -128,6 +99,7 @@ a {
   display: inline-block;
   position: relative;
   text-decoration: none;
+
   &::after {
     content: "";
     position: absolute;
@@ -141,11 +113,13 @@ a {
     transition: transform 0.25s ease-out;
     border-radius: 100px;
   }
+
   &:hover::after,
   &:focus-visible::after {
     transform: scaleX(1);
     transform-origin: bottom left;
   }
+
   &:hover {
     text-shadow: 0px 0px 20px $linkColor;
   }
@@ -156,14 +130,14 @@ a {
     box-shadow: none;
   }
 }
-.info {
-  margin-top: 12px;
-  color: white;
-  text-align: center;
-}
+
 br {
   content: "";
   margin: 2em;
   display: block;
   font-size: 25%;
+  user-select: none;
+}
+img {
+  border-radius: 20px;
 }
