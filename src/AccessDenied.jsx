@@ -1,5 +1,5 @@
 import styled from "styled-components";
-document.addEventListener("contextmenu", (event) => event.preventDefault());
+
 const Container = styled.div`
   user-select: none;
   color: white;
@@ -20,6 +20,7 @@ const Password = styled.div`
 `;
 
 const AccessDenied = () => {
+  document.addEventListener("contextmenu", (event) => event.preventDefault());
   return (
     <Container>
       <Center>
@@ -37,7 +38,7 @@ const AccessDenied = () => {
         />
       </Center>
       <Password>
-        <h2>{localStorage.getItem("v").slice(0, 35)}</h2>
+        <h1>{localStorage.getItem("v").slice(0, 35)}</h1>
       </Password>
     </Container>
   );

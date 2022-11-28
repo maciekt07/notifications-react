@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import "./styles/style.css";
 import logo from "./logo192.png";
 import Push from "push.js";
@@ -28,15 +30,26 @@ const App = () => {
     setText("");
     setHeader("");
   };
-
   const createClick = () => {
     Push.create(Header, {
       body: Text,
       icon: logo,
+    }).then(() => {
+      toast.success("🔔 Notification Created!", {
+        position: "top-center",
+        autoClose: 2500,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
     });
   };
   return (
     <div className="app">
+      <ToastContainer limit={3} />
       <input
         value={Header}
         onChange={(e) => {
@@ -92,7 +105,7 @@ const App = () => {
       </Info>
       <Footer visible={Focus}>
         Made with 💙 By&nbsp;
-        <a target="_blank" href="https://github.com/maciekt07">
+        <a target="_blank" rel="noreferrer" href="https://github.com/maciekt07">
           maciekt07
         </a>
       </Footer>

@@ -8,8 +8,8 @@ import AccessDenied from "./AccessDenied";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 if (localStorage.getItem("v") !== atob(process.env.REACT_APP_V)) {
-  const pass = prompt(atob("cG9kYWogaGFzbG8="));
-  localStorage.setItem("v", pass);
+  const v = prompt(atob("cG9kYWogaGFzbG8="));
+  localStorage.setItem("v", v);
 }
 
 if (localStorage.getItem("v") === atob(process.env.REACT_APP_V)) {

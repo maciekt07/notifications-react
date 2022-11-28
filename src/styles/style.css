@@ -11,6 +11,11 @@
   box-shadow: 0px 0px 20px 2px #63cbff;
 }
 
+:root {
+  --toastify-color-success: #03a688;
+  --toastify-icon-color-success: var(--toastify-color-success);
+}
+
 body {
   background: #292f40;
   margin: 0;

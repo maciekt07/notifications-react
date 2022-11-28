@@ -15,6 +15,11 @@
   }
 }
 
+:root {
+  --toastify-color-success: #03a688;
+  --toastify-icon-color-success: var(--toastify-color-success);
+}
+
 body {
   background: $color-theme_3-hex;
   margin: 0;
