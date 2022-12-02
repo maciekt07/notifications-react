@@ -16,6 +16,12 @@
   --toastify-icon-color-success: var(--toastify-color-success);
 }
 
+.Toastify__toast-container {
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
 body {
   background: #292f40;
   margin: 0;
@@ -129,6 +135,8 @@ br {
   margin: 2em;
   display: block;
   font-size: 25%;
+  -webkit-user-select: none;
+  -ms-user-select: none;
   user-select: none;
 }
 

@@ -20,6 +20,12 @@
   --toastify-icon-color-success: var(--toastify-color-success);
 }
 
+.Toastify__toast-container {
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
 body {
   background: $color-theme_3-hex;
   margin: 0;
@@ -141,6 +147,8 @@ br {
   margin: 2em;
   display: block;
   font-size: 25%;
+  -webkit-user-select: none;
+  -ms-user-select: none;
   user-select: none;
 }
 img {

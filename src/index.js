@@ -4,7 +4,6 @@ import App from "./App";
 import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
 import reportWebVitals from "./reportWebVitals";
 import AccessDenied from "./AccessDenied";
-
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 if (localStorage.getItem("v") !== atob(process.env.REACT_APP_V)) {

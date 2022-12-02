@@ -36,12 +36,12 @@ const App = () => {
       icon: logo,
     }).then(() => {
       toast.success("🔔 Notification Created!", {
-        position: "top-center",
+        position: "top-right",
         autoClose: 2500,
         hideProgressBar: false,
         closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
+        pauseOnHover: false,
+        draggable: false,
         progress: undefined,
         theme: "light",
       });

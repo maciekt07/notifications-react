@@ -1,4 +1,6 @@
 import styled from "styled-components";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Container = styled.div`
   user-select: none;
@@ -21,8 +23,21 @@ const Password = styled.div`
 
 const AccessDenied = () => {
   document.addEventListener("contextmenu", (event) => event.preventDefault());
+  setInterval(() => {
+    toast.error("złe hasło zjebie", {
+      position: "bottom-center",
+      autoClose: 6000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: false,
+      draggable: false,
+      progress: undefined,
+      theme: "light",
+    });
+  }, 1000);
   return (
     <Container>
+      <ToastContainer limit={1} />
       <Center>
         <h1>
           Brak dostępu
