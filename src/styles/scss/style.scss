@@ -4,7 +4,6 @@
 * {
   font-family: poppins;
   transition: 0.3s all !important;
-
   &::selection {
     background: lighten($color: $color-theme_1-hex, $amount: 10);
   }
@@ -95,7 +94,7 @@ input[type="text"] {
 
 textarea {
   resize: none !important;
-  min-height: 41vh;
+  height: 40vh;
 }
 
 a:hover::after {

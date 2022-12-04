@@ -9,7 +9,9 @@ const LengthComponent = styled.div`
   box-shadow: 0px 0px 20px 2px rgba(102, 119, 217, 0.7);
   text-shadow: 0px 2px 9px rgba(0, 0, 0, 0.25);
   padding: 8px;
+  transform: scale(${(props) => (props.length <= 0.2 ? 0 : 1)});
   opacity: ${(props) => (props.length <= 0 ? 0 : 1)};
+  /* transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.35) !important; */
 `;
 
 const Length = (props) => {

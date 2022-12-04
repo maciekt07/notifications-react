@@ -16,14 +16,13 @@ const Emoji = styled.span`
 const Info = (props) => {
   return props.visible ? (
     <InfoComponent>
-      <Emoji>{props.emoji}</Emoji> {props.children}
+      {props.emoji ? <Emoji>{props.emoji}</Emoji> : null} {props.children}
     </InfoComponent>
   ) : null;
 };
 
 Info.defaultProps = {
   visible: true,
-  emoji: null,
 };
 
 export default Info;

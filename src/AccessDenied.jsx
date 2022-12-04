@@ -41,6 +41,7 @@ const AccessDenied = () => {
       <br />
       <Center>
         <img
+          draggable="false"
           src="https://media1.giphy.com/media/OPU6wzx8JrHna/giphy.gif?cid=ecf05e47la0jbjeanrctnn8egz8jij7t3go01q0ca4pu11hz&rid=giphy.gif&ct=g"
           alt=""
         />

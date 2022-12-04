@@ -1,14 +1,14 @@
 import { useState } from "react";
 import { toast, Toaster } from "react-hot-toast";
 import newShade from "./LightenDarkenColor";
-import "./styles/style.css";
+import "./styles/scss/style.scss";
 import logo from "./logo192.png";
 import Push from "push.js";
 import Length from "./components/Length";
 import Footer from "./components/Footer";
 import Button from "./components/Button";
 import Info from "./components/Info";
-import Link from "./components/Link";
+import { LinkComponent } from "./styles/Link.styled";
 
 const App = () => {
   const createBtnBackground = "#03a688";
@@ -41,12 +41,12 @@ const App = () => {
       icon: logo,
     }).then(() => {
       toast.success("Notification Created!", {
-        duration: 1800,
+        duration: 1300,
         position: "top-center",
         style: {
           padding: "16px",
           border: `2px solid ${createBtnBackground}`,
-          borderRadius: "20px",
+          borderRadius: "16px",
           color: "black",
         },
       });
@@ -124,9 +124,14 @@ const App = () => {
       </Info>
       <Footer visible={Focus}>
         Made with 💙 By&nbsp;
-        <Link clr="#3abdff" href="https://github.com/maciekt07">
+        <LinkComponent
+          clr="#3abdff"
+          rel="noreferrer"
+          target="_blank"
+          href="https://github.com/maciekt07"
+        >
           maciekt07
-        </Link>
+        </LinkComponent>
       </Footer>
     </div>
   );

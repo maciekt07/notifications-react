@@ -6,12 +6,12 @@ const FooterComponent = styled.footer`
   padding: 10px 0;
   position: fixed;
   left: 0;
-  bottom: 0;
+  bottom: ${(props) => (props.visible ? 0 : "-3em")};
   width: 100%;
   color: white;
   text-align: center;
   font-size: 18px;
-  opacity: ${(props) => (props.visible ? "1" : "0")};
+  opacity: ${(props) => (props.visible ? 1 : 0)};
   visibility: ${(props) => (props.visible ? "visible" : "hidden")};
 `;
 
