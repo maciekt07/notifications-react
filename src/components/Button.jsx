@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const ButtonComponent = styled.button`
-  background: ${(props) => props.color};
+  background: ${(props) => props.background};
   transition: 0.3s all;
   border-radius: 22px;
   color: white;
@@ -16,18 +16,18 @@ const ButtonComponent = styled.button`
   transition: 0.3s all;
   background: linear-gradient(
     261.62deg,
-    ${(props) => props.color} 13.66%,
-    ${(props) => props.lightenColor} 88.71%
+    ${(props) => props.background} 13.66%,
+    ${(props) => props.lightenBackground} 88.71%
   );
 
   &:hover {
     text-shadow: 0px 2px 9px rgba(0, 0, 0, 0.25);
-    box-shadow: 0px 0px 20px -1px ${(props) => props.color};
+    box-shadow: 0px 0px 20px -1px ${(props) => props.background};
   }
   &:focus-visible {
     outline: 3px solid white;
-    box-shadow: 0px 0px 20px 2px ${(props) => props.lightenColor};
-    border-color: ${(props) => props.lightenColor};
+    box-shadow: 0px 0px 20px 2px ${(props) => props.lightenBackground};
+    border-color: ${(props) => props.lightenBackground};
   }
   &:disabled {
     opacity: 0.6;
@@ -46,8 +46,8 @@ const Button = (props) => {
       visible={props.visible}
       disabled={props.disabled}
       onClick={props.onClick}
-      color={props.color}
-      lightenColor={props.lightenColor}
+      background={props.background}
+      lightenBackground={props.lightenBackground}
     >
       {props.children}
     </ButtonComponent>

@@ -8,11 +8,12 @@ import Length from "./components/Length";
 import Footer from "./components/Footer";
 import Button from "./components/Button";
 import Info from "./components/Info";
+import Link from "./components/Link";
 
 const App = () => {
-  const createBtnColor = "#03a688";
-  const clearBtnColor = "#ff4640";
-  const loadBtnColor = "#FF9D00";
+  const createBtnBackground = "#03a688";
+  const clearBtnBackground = "#ff4640";
+  const loadBtnBackground = "#FF9D00";
   const clrShade = 26;
 
   if (localStorage.getItem("Text") == null) {
@@ -44,7 +45,7 @@ const App = () => {
         position: "top-center",
         style: {
           padding: "16px",
-          border: `2px solid ${createBtnColor}`,
+          border: `2px solid ${createBtnBackground}`,
           borderRadius: "20px",
           color: "black",
         },
@@ -57,7 +58,7 @@ const App = () => {
         toastOptions={{
           success: {
             iconTheme: {
-              primary: createBtnColor,
+              primary: createBtnBackground,
               secondary: "white",
             },
           },
@@ -90,8 +91,8 @@ const App = () => {
       <br />
       <Button
         onClick={createClick}
-        color={createBtnColor}
-        lightenColor={newShade(createBtnColor, clrShade)}
+        background={createBtnBackground}
+        lightenBackground={newShade(createBtnBackground, clrShade)}
       >
         Create
       </Button>
@@ -99,8 +100,8 @@ const App = () => {
       <Button
         disabled={Text.length === 0 && Header.length === 0}
         onClick={clearClick}
-        color={clearBtnColor}
-        lightenColor={newShade(clearBtnColor, clrShade)}
+        background={clearBtnBackground}
+        lightenBackground={newShade(clearBtnBackground, clrShade)}
       >
         Clear
       </Button>
@@ -108,8 +109,8 @@ const App = () => {
       <Button
         visible={localStorage.getItem("Text") !== Text}
         onClick={loadClick}
-        color={loadBtnColor}
-        lightenColor={newShade(loadBtnColor, clrShade)}
+        background={loadBtnBackground}
+        lightenBackground={newShade(loadBtnBackground, clrShade)}
       >
         Load
       </Button>
@@ -123,9 +124,9 @@ const App = () => {
       </Info>
       <Footer visible={Focus}>
         Made with 💙 By&nbsp;
-        <a target="_blank" rel="noreferrer" href="https://github.com/maciekt07">
+        <Link clr="#3abdff" href="https://github.com/maciekt07">
           maciekt07
-        </a>
+        </Link>
       </Footer>
     </div>
   );
