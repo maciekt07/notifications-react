@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import { toast, Toaster } from "react-hot-toast";
+import newShade from "./LightenDarkenColor";
 import "./styles/style.css";
 import logo from "./logo192.png";
 import Push from "push.js";
@@ -9,12 +9,16 @@ import Footer from "./components/Footer";
 import Button from "./components/Button";
 import Info from "./components/Info";
 
-if (localStorage.getItem("Text") == null) {
-  localStorage.setItem("Text", "");
-  localStorage.setItem("Header", "");
-}
-
 const App = () => {
+  const createBtnColor = "#03a688";
+  const clearBtnColor = "#ff4640";
+  const loadBtnColor = "#FF9D00";
+  const clrShade = 26;
+
+  if (localStorage.getItem("Text") == null) {
+    localStorage.setItem("Text", "");
+    localStorage.setItem("Header", "");
+  }
   const [Header, setHeader] = useState("");
   const [Text, setText] = useState("");
   const [Focus, setFocus] = useState(true);
@@ -35,21 +39,30 @@ const App = () => {
       body: Text,
       icon: logo,
     }).then(() => {
-      toast.success("🔔 Notification Created!", {
-        position: "top-right",
-        autoClose: 2500,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: false,
-        draggable: false,
-        progress: undefined,
-        theme: "light",
+      toast.success("Notification Created!", {
+        duration: 1800,
+        position: "top-center",
+        style: {
+          padding: "16px",
+          border: `2px solid ${createBtnColor}`,
+          borderRadius: "20px",
+          color: "black",
+        },
       });
     });
   };
   return (
     <div className="app">
-      <ToastContainer limit={3} />
+      <Toaster
+        toastOptions={{
+          success: {
+            iconTheme: {
+              primary: createBtnColor,
+              secondary: "white",
+            },
+          },
+        }}
+      />
       <input
         value={Header}
         onChange={(e) => {
@@ -61,7 +74,6 @@ const App = () => {
         onFocus={onFocus}
         onBlur={onBlur}
       ></input>
-      {/* <Length input={Header} /> */}
       <br />
       <textarea
         value={Text}
@@ -76,14 +88,19 @@ const App = () => {
       <Length length={Text.length} />
       <br />
       <br />
-      <Button onClick={createClick} color="#03a688">
+      <Button
+        onClick={createClick}
+        color={createBtnColor}
+        lightenColor={newShade(createBtnColor, clrShade)}
+      >
         Create
       </Button>
       <br />
       <Button
         disabled={Text.length === 0 && Header.length === 0}
         onClick={clearClick}
-        color="#ff4640"
+        color={clearBtnColor}
+        lightenColor={newShade(clearBtnColor, clrShade)}
       >
         Clear
       </Button>
@@ -91,7 +108,8 @@ const App = () => {
       <Button
         visible={localStorage.getItem("Text") !== Text}
         onClick={loadClick}
-        color="#FF9D00"
+        color={loadBtnColor}
+        lightenColor={newShade(loadBtnColor, clrShade)}
       >
         Load
       </Button>
