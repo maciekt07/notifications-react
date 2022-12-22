@@ -1,6 +1,8 @@
 import styled from "styled-components";
 import { toast, Toaster } from "react-hot-toast";
-
+import GlobalStyle from "./styles/Global.styled";
+import { useEffect } from "react";
+import { btn } from "./styles/Variables.styled";
 const Container = styled.div`
   user-select: none;
   color: white;
@@ -20,16 +22,29 @@ const Password = styled.div`
   font-size: 10px;
 `;
 
+const Image = styled.img`
+  border-radius: 25px;
+`;
+
 const AccessDenied = () => {
-  document.addEventListener("contextmenu", (event) => event.preventDefault());
-  setTimeout(() => {
+  useEffect(() => {
     toast.error("złe hasło zjebie", {
-      duration: 2500,
+      duration: 2000,
       position: "bottom-center",
+      style: {
+        padding: "16px",
+        border: `2px solid ${btn.clear}`,
+        borderRadius: "16px",
+        color: "black",
+      },
     });
-  }, 1500);
+  }, []);
+
+  document.addEventListener("contextmenu", (event) => event.preventDefault());
+
   return (
     <Container>
+      <GlobalStyle />
       <Toaster />
       <Center>
         <h1>
@@ -40,7 +55,7 @@ const AccessDenied = () => {
       </Center>
       <br />
       <Center>
-        <img
+        <Image
           draggable="false"
           src="https://media1.giphy.com/media/OPU6wzx8JrHna/giphy.gif?cid=ecf05e47la0jbjeanrctnn8egz8jij7t3go01q0ca4pu11hz&rid=giphy.gif&ct=g"
           alt=""

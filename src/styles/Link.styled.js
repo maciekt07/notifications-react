@@ -1,6 +1,6 @@
 import styled from "styled-components";
 const defaultLinkColor = "#b6a0e4";
-export const LinkComponent = styled.a`
+const LinkComponent = styled.a`
   cursor: pointer;
   color: ${(props) => (props.clr ? props.clr : defaultLinkColor)};
   display: inline-block;
@@ -28,8 +28,7 @@ export const LinkComponent = styled.a`
   }
 
   &:hover {
-    text-shadow: 0px 0px 20px
-      ${(props) => (props.clr ? props.clr : defaultLinkColor)};
+    text-shadow: 0px 0px 20px ${(props) => (props.clr ? props.clr : defaultLinkColor)};
   }
 
   &:focus,
@@ -38,3 +37,4 @@ export const LinkComponent = styled.a`
     box-shadow: none;
   }
 `;
+export default LinkComponent;

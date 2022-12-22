@@ -1,0 +1,61 @@
+import { css } from "styled-components";
+import styled from "styled-components";
+import { themeColors } from "./Variables.styled";
+const Inputs = css`
+  font-size: 30px;
+  width: 70%;
+  border: 5px solid ${themeColors.$colorHex5};
+  border-radius: 25px;
+  padding: 16px;
+  outline: none;
+  color: ${themeColors.$colorHex2};
+  font-weight: bold;
+  background: #ffffff;
+  caret-color: ${themeColors.$colorHex5};
+  transition: 0.3s all;
+
+  &::placeholder {
+    color: ${themeColors.$colorHex2};
+    opacity: 0.75;
+  }
+
+  &::selection {
+    background: ${themeColors.$colorHex5};
+  }
+
+  &:focus,
+  :focus-visible {
+    outline: none;
+    box-shadow: 0px 0px 20px 1px ${themeColors.$colorHex5};
+  }
+
+  &::-webkit-scrollbar {
+    width: 8px;
+    border-radius: 20px;
+  }
+
+  &::-webkit-scrollbar-track {
+    // box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    background: ${themeColors.$colorHex1};
+    margin-top: 15px;
+    margin-bottom: 15px;
+    border-radius: 20px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: ${themeColors.$colorHex2};
+    border-radius: 20px;
+
+    &:hover {
+      background-color: ${themeColors.$colorHex2};
+    }
+  }
+`;
+export const HeaderInput = styled.input`
+  ${Inputs}
+`;
+export const TextInput = styled.textarea`
+  ${Inputs}
+  resize: none !important;
+  height: 40vh;
+`;

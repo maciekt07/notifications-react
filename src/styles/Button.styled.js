@@ -1,9 +1,9 @@
 import styled from "styled-components";
 
-export const ButtonComponent = styled.button`
+const ButtonComponent = styled.button`
   background: ${(props) => props.background};
   transition: 0.3s all;
-  border-radius: 22px;
+  border-radius: 20px;
   color: white;
   border: none;
   padding: 0.6em 1.2em;
@@ -14,6 +14,7 @@ export const ButtonComponent = styled.button`
   letter-spacing: 0.02em;
   cursor: pointer;
   transition: 0.3s all;
+  display: ${(props) => (props.visible ? "block" : "none")};
   background: linear-gradient(
     261.62deg,
     ${(props) => props.background} 13.66%,
@@ -37,3 +38,9 @@ export const ButtonComponent = styled.button`
     }
   }
 `;
+
+ButtonComponent.defaultProps = {
+  visible: true,
+};
+
+export default ButtonComponent;

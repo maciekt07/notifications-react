@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
+import "./styles/scss/index.scss";
 import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
 import reportWebVitals from "./reportWebVitals";
 import AccessDenied from "./AccessDenied";
@@ -18,11 +19,7 @@ if (localStorage.getItem("v") === atob(process.env.REACT_APP_V)) {
     </React.StrictMode>
   );
 } else {
-  root.render(
-    <React.StrictMode>
-      <AccessDenied />
-    </React.StrictMode>
-  );
+  root.render(<AccessDenied />);
 }
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

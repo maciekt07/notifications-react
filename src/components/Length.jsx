@@ -15,11 +15,7 @@ const LengthComponent = styled.div`
 `;
 
 const Length = (props) => {
-  return (
-    <LengthComponent length={props.length}>
-      Length: {props.length}
-    </LengthComponent>
-  );
+  return <LengthComponent length={props.length}>Length: {props.length}</LengthComponent>;
 };
 
 export default Length;
