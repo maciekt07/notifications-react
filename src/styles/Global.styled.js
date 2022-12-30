@@ -1,5 +1,5 @@
 import { createGlobalStyle } from "styled-components";
-import { themeColors } from "./Variables.styled";
+import { themeColors, btn } from "./Variables.styled";
 const GlobalStyle = createGlobalStyle`
 * {
   font-family: poppins;
@@ -10,8 +10,10 @@ const GlobalStyle = createGlobalStyle`
 }
 
 :root {
-  --toastify-color-success: #03a688;
+  --toastify-color-success: ${btn.create};
+  --toastify-color-error: ${btn.clear};
   --toastify-icon-color-success: var(--toastify-color-success);
+  color-scheme: light;
 }
 
 .Toastify__toast-container {
@@ -23,7 +25,8 @@ const GlobalStyle = createGlobalStyle`
 body {
   background: ${themeColors.$colorHex3};
   margin: 0;
-  color-scheme: light;
+
+  font-family: poppins;
 }
 
 .app {

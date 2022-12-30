@@ -7,9 +7,9 @@ import Length from "./components/Length";
 import Info from "./components/Info";
 import LinkComponent from "./styles/Link.styled";
 import ButtonComponent from "./styles/Button.styled";
-import FooterComponent from "./styles/Footer.styled";
+import { FooterComponent, FooterEmoji } from "./styles/Footer.styled";
 import { HeaderInput, TextInput } from "./styles/Inputs.styled";
-import { btn } from "./styles/Variables.styled";
+import { btn, themeColors } from "./styles/Variables.styled";
 import GlobalStyle from "./styles/Global.styled";
 
 const App = () => {
@@ -20,9 +20,6 @@ const App = () => {
   const [Header, setHeader] = useState("");
   const [Text, setText] = useState("");
   const [Focus, setFocus] = useState(true);
-  const onFocus = () => setFocus(false);
-  const onBlur = () => setFocus(true);
-
   const loadClick = () => {
     setText(localStorage.getItem("Text"));
     // setHeader(localStorage.getItem("Header"));
@@ -69,8 +66,8 @@ const App = () => {
         }}
         placeholder="Header..."
         type="text"
-        onFocus={onFocus}
-        onBlur={onBlur}
+        onFocus={() => setFocus(false)}
+        onBlur={() => setFocus(true)}
       ></HeaderInput>
       <br />
       <TextInput
@@ -80,10 +77,10 @@ const App = () => {
           localStorage.setItem("Text", e.target.value);
         }}
         placeholder="Text..."
-        onFocus={onFocus}
-        onBlur={onBlur}
+        onFocus={() => setFocus(false)}
+        onBlur={() => setFocus(true)}
       ></TextInput>
-      <Length length={Text.length} />
+      <Length length={Text.length} focus={Focus} />
       <br />
       <br />
       <ButtonComponent
@@ -102,36 +99,28 @@ const App = () => {
       >
         Clear
       </ButtonComponent>
-      <br />
-      <ButtonComponent
-        visible={localStorage.getItem("Text") !== Text}
-        onClick={loadClick}
-        background={btn.load}
-        lightenBackground={newShade(btn.load, btn.lightenShade)}
-      >
-        Load
-      </ButtonComponent>
 
-      <Info emoji="💡" visible={localStorage.getItem("Text") !== Text}>
-        You can <b>load</b> content:{" "}
-        <b>
-          {localStorage.getItem("Text").slice(0, 16)}
-          {localStorage.getItem("Text").length > 16 ? "..." : ""}
-        </b>
-      </Info>
-      {/* <Footer visible={Focus}>
-        Made with 💙 By&nbsp;
-        <LinkComponent
-          clr="#3abdff"
-          rel="noreferrer"
-          target="_blank"
-          href="https://github.com/maciekt07"
-        >
-          maciekt07
-        </LinkComponent>
-      </Footer> */}
+      {localStorage.getItem("Text") !== Text ? (
+        <>
+          <br />
+          <ButtonComponent
+            onClick={loadClick}
+            background={btn.load}
+            lightenBackground={newShade(btn.load, btn.lightenShade)}
+          >
+            Load
+          </ButtonComponent>{" "}
+          <Info emoji="💡">
+            You can <b>load</b> content:{" "}
+            <b>
+              {localStorage.getItem("Text").slice(0, 16)}
+              {localStorage.getItem("Text").length > 16 ? "..." : ""}
+            </b>
+          </Info>
+        </>
+      ) : null}
       <FooterComponent visible={Focus}>
-        Made with 💙 By&nbsp;
+        Made with <FooterEmoji color={themeColors.$linkColor}>💙</FooterEmoji> By&nbsp;
         <LinkComponent
           clr="#3abdff"
           rel="noreferrer"

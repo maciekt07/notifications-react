@@ -1,7 +1,9 @@
 import styled from "styled-components";
+import { themeColors, btn } from "./Variables.styled";
+import newShade from "../LightenDarkenColor";
 
 const ButtonComponent = styled.button`
-  background: ${(props) => props.background};
+  background: ${((props) => props.background, -40)};
   transition: 0.3s all;
   border-radius: 20px;
   color: white;
@@ -14,7 +16,7 @@ const ButtonComponent = styled.button`
   letter-spacing: 0.02em;
   cursor: pointer;
   transition: 0.3s all;
-  display: ${(props) => (props.visible ? "block" : "none")};
+  /* display: ${(props) => (props.visible ? "block" : "none")}; */
   background: linear-gradient(
     261.62deg,
     ${(props) => props.background} 13.66%,
@@ -40,7 +42,9 @@ const ButtonComponent = styled.button`
 `;
 
 ButtonComponent.defaultProps = {
-  visible: true,
+  background: themeColors.$colorHex1,
+  lightenBackground: newShade(themeColors.$colorHex1, btn.lightenShade),
+  // visible: true,
 };
 
 export default ButtonComponent;

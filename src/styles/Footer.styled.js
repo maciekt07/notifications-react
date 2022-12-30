@@ -1,5 +1,6 @@
 import styled from "styled-components";
-const FooterComponent = styled.footer`
+import { keyframes } from "styled-components";
+export const FooterComponent = styled.footer`
   border-radius: 20px 20px 0 0;
   background: #364573;
   padding: 10px 0;
@@ -17,4 +18,7 @@ const FooterComponent = styled.footer`
 FooterComponent.defaultProps = {
   visible: true,
 };
-export default FooterComponent;
+
+export const FooterEmoji = styled.span`
+  text-shadow: 0px 0px 4px ${(props) => props.color};
+`;
