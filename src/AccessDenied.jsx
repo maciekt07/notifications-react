@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import { toast, Toaster } from "react-hot-toast";
-import GlobalStyle from "./styles/Global.styled";
-import { btn } from "./styles/Variables.styled";
+import { GlobalStyle, btn } from "./styles";
 import { useEffect, useState } from "react";
 
 const Container = styled.div`
@@ -22,6 +21,7 @@ const FunnyBtn = styled.button`
   outline: none;
   padding: 10px;
   border-radius: 10px;
+  user-select: none !important;
   &:hover {
     box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.1) 0px 8px 24px,
       rgba(17, 17, 26, 0.1) 0px 16px 56px;
@@ -34,20 +34,24 @@ const JokeContainer = styled.div`
   border-radius: 25px;
   padding: 20px;
   margin-top: 3em;
+  user-select: all !important;
+  -webkit-user-select: all !important;
+  -ms-user-select: all !important;
 `;
 
 const Image = styled.img`
   border-radius: 25px;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   max-width: 400px;
-  height: 280px;
+  height: 200px;
+
   &:hover {
     transform: scale(1.1);
   }
 `;
 
 const AccessDenied = () => {
-  document.addEventListener("contextmenu", (event) => event.preventDefault());
+  document.addEventListener("contextmenu", (e) => e.preventDefault());
   useEffect(() => {
     setTimeout(() => {
       toast.error(
@@ -70,7 +74,8 @@ const AccessDenied = () => {
   const randomD = () => {
     let d = "d";
     for (let j = 0; j < Math.floor(Math.random() * 25); j++) {
-      d += "d";
+      const r = Math.floor(Math.random() * 2);
+      d += r === 0 ? "d" : "D";
     }
     return d;
   };
@@ -89,23 +94,33 @@ const AccessDenied = () => {
     return data;
   };
   const handleClick = async () => {
-    // setJoke("Loading...");
+    setJoke("Ładowanko...");
+    toast.promise(
+      fetchJoke(),
+      {
+        loading: "Ładowanko...",
+        success: `x${randomD()}`,
+        error: (err) => `This just happened: ${err.toString()}`,
+      },
 
+      {
+        position: "bottom-center",
+        style: {
+          padding: "16px",
+          border: `2px solid #823aff`,
+          borderRadius: "16px",
+          color: "black",
+        },
+        success: {
+          duration: 1500,
+          icon: "😂",
+        },
+      }
+    );
     setBtnText("następny śmieszny żart 🤣");
     setGif("https://media.tenor.com/a0WoZ6DIH84AAAAC/off-work-funny.gif");
     const { joke } = await fetchJoke();
     setJoke(joke);
-    toast(`x${randomD()}`, {
-      icon: "😂",
-      duration: 1500,
-      position: "bottom-center",
-      style: {
-        padding: "16px",
-        border: `2px solid #823aff`,
-        borderRadius: "16px",
-        color: "black",
-      },
-    });
   };
 
   return (

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 const defaultLinkColor = "#b6a0e4";
-const LinkComponent = styled.a`
+export const LinkComponent = styled.a`
   cursor: pointer;
   color: ${(props) => (props.clr ? props.clr : defaultLinkColor)};
   display: inline-block;
@@ -37,4 +37,3 @@ const LinkComponent = styled.a`
     box-shadow: none;
   }
 `;
-export default LinkComponent;

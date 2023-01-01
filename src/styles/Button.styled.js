@@ -1,8 +1,8 @@
 import styled from "styled-components";
 import { themeColors, btn } from "./Variables.styled";
-import newShade from "../LightenDarkenColor";
+import { newShade } from "../utils";
 
-const ButtonComponent = styled.button`
+export const ButtonComponent = styled.button`
   background: ${((props) => props.background, -40)};
   transition: 0.3s all;
   border-radius: 20px;
@@ -25,7 +25,7 @@ const ButtonComponent = styled.button`
 
   &:hover {
     text-shadow: 0px 2px 9px rgba(0, 0, 0, 0.25);
-    box-shadow: 0px 0px 20px -1px ${(props) => props.background};
+    box-shadow: 0px 0px 20px 2px ${(props) => props.background};
   }
   &:focus-visible {
     outline: 3px solid ${(props) => props.background};
@@ -46,5 +46,3 @@ ButtonComponent.defaultProps = {
   lightenBackground: newShade(themeColors.$colorHex1, btn.lightenShade),
   // visible: true,
 };
-
-export default ButtonComponent;

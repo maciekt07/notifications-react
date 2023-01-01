@@ -14,12 +14,10 @@ const LengthComponent = styled.div`
   /* transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.35) !important; */
 `;
 
-const Length = (props) => {
+export const Length = (props) => {
   return (
     <LengthComponent f={props.focus} length={props.length}>
       Length: {props.length}
     </LengthComponent>
   );
 };
-
-export default Length;

@@ -1,4 +1,4 @@
-const newShade = (hexColor, magnitude) => {
+export const newShade = (hexColor, magnitude) => {
   hexColor = hexColor.replace(`#`, ``);
   if (hexColor.length === 6) {
     const decimalColor = parseInt(hexColor, 16);
@@ -16,4 +16,3 @@ const newShade = (hexColor, magnitude) => {
     return hexColor;
   }
 };
-export default newShade;

@@ -13,7 +13,7 @@ const Emoji = styled.span`
   font-size: 20px;
 `;
 
-const Info = (props) => {
+export const Info = (props) => {
   return props.visible ? (
     <InfoComponent>
       {props.emoji ? <Emoji>{props.emoji}</Emoji> : null} {props.children}
@@ -24,5 +24,3 @@ const Info = (props) => {
 Info.defaultProps = {
   visible: true,
 };
-
-export default Info;

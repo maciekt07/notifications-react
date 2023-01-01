@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { themeColors } from "./Variables.styled";
 const Inputs = css`
   font-size: 30px;
-  width: 70%;
+  width: 80%;
   border: 5px solid ${themeColors.$colorHex5};
   border-radius: 25px;
   padding: 16px;
@@ -26,7 +26,7 @@ const Inputs = css`
   &:focus,
   :focus-visible {
     outline: none;
-    box-shadow: 0px 0px 20px 1px ${themeColors.$colorHex5};
+    box-shadow: 0px 0px 20px 2px ${themeColors.$colorHex5};
   }
 
   &::-webkit-scrollbar {

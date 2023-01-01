@@ -1,6 +1,6 @@
 import { createGlobalStyle } from "styled-components";
 import { themeColors, btn } from "./Variables.styled";
-const GlobalStyle = createGlobalStyle`
+export const GlobalStyle = createGlobalStyle`
 * {
   font-family: poppins;
   transition: 0.3s all !important;
@@ -25,7 +25,6 @@ const GlobalStyle = createGlobalStyle`
 body {
   background: ${themeColors.$colorHex3};
   margin: 0;
-
   font-family: poppins;
 }
 
@@ -50,4 +49,3 @@ img {
   border-radius: 20px;
 }
 `;
-export default GlobalStyle;

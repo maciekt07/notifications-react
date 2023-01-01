@@ -1,25 +1,22 @@
 import { useState } from "react";
 import { toast, Toaster } from "react-hot-toast";
-import newShade from "./LightenDarkenColor";
-import logo from "./logo192.png";
+import logo from "./assets/logo192.png";
 import Push from "push.js";
-import Length from "./components/Length";
-import Info from "./components/Info";
-import LinkComponent from "./styles/Link.styled";
-import ButtonComponent from "./styles/Button.styled";
-import { FooterComponent, FooterEmoji } from "./styles/Footer.styled";
-import { HeaderInput, TextInput } from "./styles/Inputs.styled";
-import { btn, themeColors } from "./styles/Variables.styled";
-import GlobalStyle from "./styles/Global.styled";
+import useStickyState from "./hooks/useStickyState";
+import { getDate, newShade } from "./utils";
+import { Footer, Info, Length } from "./components";
+import { ButtonComponent, HeaderInput, TextInput, LastUseLabel, btn, GlobalStyle } from "./styles";
 
 const App = () => {
   if (localStorage.getItem("Text") == null) {
     localStorage.setItem("Text", "");
     localStorage.setItem("Header", "");
   }
+
   const [Header, setHeader] = useState("");
   const [Text, setText] = useState("");
   const [Focus, setFocus] = useState(true);
+  const [LastUse, SetLastUse] = useStickyState(null, "LastUse");
   const loadClick = () => {
     setText(localStorage.getItem("Text"));
     // setHeader(localStorage.getItem("Header"));
@@ -29,6 +26,7 @@ const App = () => {
     setHeader("");
   };
   const createClick = () => {
+    SetLastUse(getDate());
     Push.create(Header, {
       body: Text,
       icon: logo,
@@ -45,6 +43,7 @@ const App = () => {
       });
     });
   };
+
   return (
     <div className="app">
       <GlobalStyle />
@@ -119,17 +118,8 @@ const App = () => {
           </Info>
         </>
       ) : null}
-      <FooterComponent visible={Focus}>
-        Made with <FooterEmoji color={themeColors.$linkColor}>💙</FooterEmoji> By&nbsp;
-        <LinkComponent
-          clr="#3abdff"
-          rel="noreferrer"
-          target="_blank"
-          href="https://github.com/maciekt07"
-        >
-          maciekt07
-        </LinkComponent>
-      </FooterComponent>
+      {LastUse !== null ? <LastUseLabel visible={Focus}>Last use: {LastUse}</LastUseLabel> : null}
+      <Footer visible={Focus} />
     </div>
   );
 };

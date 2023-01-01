@@ -12,5 +12,5 @@ export const btn = {
   create: "#03a688",
   clear: "#ff4640",
   load: "#FF9D00",
-  lightenShade: 30,
+  lightenShade: 32,
 };
