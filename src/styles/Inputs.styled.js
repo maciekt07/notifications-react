@@ -57,5 +57,8 @@ export const HeaderInput = styled.input`
 export const TextInput = styled.textarea`
   ${Inputs}
   resize: none !important;
-  height: 40vh;
+  height: 35vh;
+  &:focus {
+    height: 42vh;
+  }
 `;

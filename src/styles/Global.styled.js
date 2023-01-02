@@ -2,7 +2,7 @@ import { createGlobalStyle } from "styled-components";
 import { themeColors, btn } from "./Variables.styled";
 export const GlobalStyle = createGlobalStyle`
 * {
-  font-family: poppins;
+  font-family: 'Poppins', sans-serif;
   transition: 0.3s all !important;
   &::selection {
     background: ${themeColors.$selectionColor};
@@ -25,7 +25,6 @@ export const GlobalStyle = createGlobalStyle`
 body {
   background: ${themeColors.$colorHex3};
   margin: 0;
-  font-family: poppins;
 }
 
 .app {

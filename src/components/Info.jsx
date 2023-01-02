@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const InfoComponent = styled.div`
-  margin-top: 12px;
+  padding: 12px 0 15% 0;
   color: white;
   text-align: center;
 

@@ -100,7 +100,7 @@ const AccessDenied = () => {
       {
         loading: "Ładowanko...",
         success: `x${randomD()}`,
-        error: (err) => `This just happened: ${err.toString()}`,
+        error: (err) => err.toString(),
       },
 
       {

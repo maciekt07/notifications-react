@@ -5,17 +5,26 @@ import Push from "push.js";
 import useStickyState from "./hooks/useStickyState";
 import { getDate, newShade } from "./utils";
 import { Footer, Info, Length } from "./components";
-import { ButtonComponent, HeaderInput, TextInput, LastUseLabel, btn, GlobalStyle } from "./styles";
+import {
+  ButtonComponent,
+  HeaderInput,
+  TextInput,
+  BottomLabel,
+  btn,
+  GlobalStyle,
+  Online,
+  Offline,
+} from "./styles";
 
 const App = () => {
   if (localStorage.getItem("Text") == null) {
     localStorage.setItem("Text", "");
     localStorage.setItem("Header", "");
   }
-
   const [Header, setHeader] = useState("");
   const [Text, setText] = useState("");
   const [Focus, setFocus] = useState(true);
+
   const [LastUse, SetLastUse] = useStickyState(null, "LastUse");
   const loadClick = () => {
     setText(localStorage.getItem("Text"));
@@ -99,7 +108,7 @@ const App = () => {
         Clear
       </ButtonComponent>
 
-      {localStorage.getItem("Text") !== Text ? (
+      {localStorage.getItem("Text") !== Text && (
         <>
           <br />
           <ButtonComponent
@@ -117,8 +126,13 @@ const App = () => {
             </b>
           </Info>
         </>
-      ) : null}
-      {LastUse !== null ? <LastUseLabel visible={Focus}>Last use: {LastUse}</LastUseLabel> : null}
+      )}
+      <BottomLabel visible={Focus}>
+        {navigator.onLine ? <Online>Online</Online> : <Offline>Offline</Offline>}{" "}
+        {LastUse !== null &&
+          `· Last use:
+        ${LastUse}`}
+      </BottomLabel>
       <Footer visible={Focus} />
     </div>
   );
