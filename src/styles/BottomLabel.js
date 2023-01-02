@@ -8,9 +8,8 @@ export const BottomLabel = styled.div`
   font-weight: lighter;
   color: white;
   z-index: 100;
-  opacity: ${(props) => (props.visible ? 0.75 : 0)};
+  opacity: ${(props) => (props.visible ? 0.7 : 0)};
   border-radius: 4px;
-
   visibility: ${(props) => (props.visible ? "visible" : "hidden")};
   background: #292f40;
 `;

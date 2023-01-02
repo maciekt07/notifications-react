@@ -14,6 +14,9 @@ import {
   GlobalStyle,
   Online,
   Offline,
+  Checkbox,
+  CheckboxContainer,
+  CheckboxText,
 } from "./styles";
 
 const App = () => {
@@ -26,6 +29,7 @@ const App = () => {
   const [Focus, setFocus] = useState(true);
 
   const [LastUse, SetLastUse] = useStickyState(null, "LastUse");
+  const [Checked, setChecked] = useStickyState(false, "Checked");
   const loadClick = () => {
     setText(localStorage.getItem("Text"));
     // setHeader(localStorage.getItem("Header"));
@@ -34,10 +38,13 @@ const App = () => {
     setText("");
     setHeader("");
   };
+  const handleChangeCheck = () => {
+    setChecked(!Checked);
+  };
   const createClick = () => {
     SetLastUse(getDate());
     Push.create(Header, {
-      body: Text,
+      body: Checked ? Text.replace(/(?:\r\n|\r|\n)/g, " ") : Text,
       icon: logo,
     }).then(() => {
       toast.success("Notification Created!", {
@@ -90,6 +97,13 @@ const App = () => {
       ></TextInput>
       <Length length={Text.length} focus={Focus} />
       <br />
+      <CheckboxContainer visible={Focus}>
+        <Checkbox type="checkbox" checked={Checked} onChange={handleChangeCheck}></Checkbox>
+        &nbsp;
+        <CheckboxText onClick={handleChangeCheck} checked={Checked}>
+          Compress
+        </CheckboxText>
+      </CheckboxContainer>
       <br />
       <ButtonComponent
         onClick={createClick}
@@ -107,7 +121,6 @@ const App = () => {
       >
         Clear
       </ButtonComponent>
-
       {localStorage.getItem("Text") !== Text && (
         <>
           <br />
