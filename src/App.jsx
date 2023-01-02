@@ -97,6 +97,7 @@ const App = () => {
       ></TextInput>
       <Length length={Text.length} focus={Focus} />
       <br />
+
       <CheckboxContainer visible={Focus}>
         <Checkbox type="checkbox" checked={Checked} onChange={handleChangeCheck}></Checkbox>
         &nbsp;
