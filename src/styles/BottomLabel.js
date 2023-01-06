@@ -4,7 +4,7 @@ export const BottomLabel = styled.div`
   position: fixed;
   bottom: 50px;
   right: 16px;
-  font-size: 14px;
+  font-size: 12px;
   font-weight: lighter;
   color: white;
   z-index: 100;
@@ -21,3 +21,6 @@ export const Offline = styled.span`
   color: #f74545;
   text-shadow: 0px 0px 5px #f74545;
 `;
+BottomLabel.defaultProps = {
+  visible: true,
+};

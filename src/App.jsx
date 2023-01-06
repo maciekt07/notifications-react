@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { toast, Toaster } from "react-hot-toast";
 import logo from "./assets/logo192.png";
 import Push from "push.js";
@@ -17,6 +17,7 @@ import {
   Checkbox,
   CheckboxContainer,
   CheckboxText,
+  CheckboxClick,
 } from "./styles";
 
 const App = () => {
@@ -27,9 +28,23 @@ const App = () => {
   const [Header, setHeader] = useState("");
   const [Text, setText] = useState("");
   const [Focus, setFocus] = useState(true);
-
   const [LastUse, SetLastUse] = useStickyState(null, "LastUse");
   const [Checked, setChecked] = useStickyState(false, "Checked");
+
+  const [isOnline, setIsOnline] = useState(navigator.onLine);
+  useEffect(() => {
+    // Update network status
+    const handleStatusChange = () => {
+      setIsOnline(navigator.onLine);
+    };
+    window.addEventListener("online", handleStatusChange);
+    window.addEventListener("offline", handleStatusChange);
+    return () => {
+      window.removeEventListener("online", handleStatusChange);
+      window.removeEventListener("offline", handleStatusChange);
+    };
+  }, [isOnline]);
+
   const loadClick = () => {
     setText(localStorage.getItem("Text"));
     // setHeader(localStorage.getItem("Header"));
@@ -99,11 +114,11 @@ const App = () => {
       <br />
 
       <CheckboxContainer visible={Focus}>
-        <Checkbox type="checkbox" checked={Checked} onChange={handleChangeCheck}></Checkbox>
-        &nbsp;
-        <CheckboxText onClick={handleChangeCheck} checked={Checked}>
-          Compress
-        </CheckboxText>
+        <CheckboxClick onClick={handleChangeCheck}>
+          <Checkbox type="checkbox" checked={Checked} onChange={handleChangeCheck}></Checkbox>
+          &nbsp;
+          <CheckboxText checked={Checked}>Compress</CheckboxText>
+        </CheckboxClick>
       </CheckboxContainer>
       <br />
       <ButtonComponent
@@ -142,7 +157,7 @@ const App = () => {
         </>
       )}
       <BottomLabel visible={Focus}>
-        {navigator.onLine ? <Online>Online</Online> : <Offline>Offline</Offline>}{" "}
+        {isOnline ? <Online>Online</Online> : <Offline>Offline</Offline>}{" "}
         {LastUse !== null &&
           `· Last use:
         ${LastUse}`}

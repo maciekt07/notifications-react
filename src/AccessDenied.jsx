@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import { toast, Toaster } from "react-hot-toast";
 import { GlobalStyle, btn } from "./styles";
 import { useEffect, useState } from "react";
@@ -49,6 +49,25 @@ const Image = styled.img`
     transform: scale(1.1);
   }
 `;
+const rotation = keyframes`
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+     
+`;
+const Loader = styled.span`
+  width: 24px;
+  height: 24px;
+  border: 3px solid #fff;
+  border-bottom-color: transparent;
+  border-radius: 50%;
+  display: inline-block;
+  box-sizing: border-box;
+  animation: ${rotation} 0.5s linear infinite;
+`;
 
 const AccessDenied = () => {
   document.addEventListener("contextmenu", (e) => e.preventDefault());
@@ -94,7 +113,7 @@ const AccessDenied = () => {
     return data;
   };
   const handleClick = async () => {
-    setJoke("Ładowanko...");
+    setJoke(false);
     toast.promise(
       fetchJoke(),
       {
@@ -136,7 +155,7 @@ const AccessDenied = () => {
       <JokeContainer joke={joke}>
         <FunnyBtn onClick={handleClick}>{btnText}</FunnyBtn>
         <br />
-        <div>{joke}</div>
+        <div>{joke === false ? <Loader /> : joke}</div>
       </JokeContainer>
     </Container>
   );
