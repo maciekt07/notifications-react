@@ -10,7 +10,7 @@ const Inputs = css`
   outline: none;
   color: ${themeColors.$colorHex2};
   font-weight: bold;
-  background: #ffffff;
+  background: #f5fffb;
   caret-color: ${themeColors.$colorHex5};
   transition: 0.3s all;
 
@@ -51,10 +51,15 @@ const Inputs = css`
     }
   }
 `;
-export const HeaderInput = styled.input`
+export const HeaderInput = styled.input.attrs({
+  type: "text",
+  placeholder: "Header...",
+})`
   ${Inputs}
 `;
-export const TextInput = styled.textarea`
+export const TextInput = styled.textarea.attrs({
+  placeholder: "Text...",
+})`
   ${Inputs}
   resize: none !important;
   height: 34vh;

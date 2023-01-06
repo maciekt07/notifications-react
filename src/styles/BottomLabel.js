@@ -14,12 +14,12 @@ export const BottomLabel = styled.div`
   background: #292f40;
 `;
 export const Online = styled.span`
-  color: #14c217;
-  text-shadow: 0px 0px 5px #14c217;
+  color: #14ff18;
+  text-shadow: 0px 0px 6px #14ff18;
 `;
 export const Offline = styled.span`
   color: #f74545;
-  text-shadow: 0px 0px 5px #f74545;
+  text-shadow: 0px 0px 6px #f74545;
 `;
 BottomLabel.defaultProps = {
   visible: true,

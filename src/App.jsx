@@ -3,7 +3,7 @@ import { toast, Toaster } from "react-hot-toast";
 import logo from "./assets/logo192.png";
 import Push from "push.js";
 import useStickyState from "./hooks/useStickyState";
-import { getDate, newShade } from "./utils";
+import { getDate } from "./utils";
 import { Footer, Info, Length } from "./components";
 import {
   ButtonComponent,
@@ -17,7 +17,7 @@ import {
   Checkbox,
   CheckboxContainer,
   CheckboxText,
-  CheckboxClick,
+  CheckBoxClick,
 } from "./styles";
 
 const App = () => {
@@ -29,7 +29,8 @@ const App = () => {
   const [Text, setText] = useState("");
   const [Focus, setFocus] = useState(true);
   const [LastUse, SetLastUse] = useStickyState(null, "LastUse");
-  const [Checked, setChecked] = useStickyState(false, "Checked");
+  const [Compress, setCompress] = useStickyState(false, "Compress");
+  const [Uppercase, setUppercase] = useStickyState(false, "Uppercase");
 
   const [isOnline, setIsOnline] = useState(navigator.onLine);
   useEffect(() => {
@@ -53,13 +54,26 @@ const App = () => {
     setText("");
     setHeader("");
   };
-  const handleChangeCheck = () => {
-    setChecked(!Checked);
+  const handleChangeCompress = () => {
+    setCompress(!Compress);
+  };
+  const handleChangeUppercase = () => {
+    setUppercase(!Uppercase);
+  };
+  const NotificationText = () => {
+    let txt = Text;
+    if (Uppercase) {
+      txt = txt.toUpperCase();
+    }
+    if (Compress) {
+      txt = txt.replace(/(?:\r\n|\r|\n)/g, " ").replace(/\s+/g, " ");
+    }
+    return txt;
   };
   const createClick = () => {
     SetLastUse(getDate());
     Push.create(Header, {
-      body: Checked ? Text.replace(/(?:\r\n|\r|\n)/g, " ") : Text,
+      body: NotificationText(),
       icon: logo,
     }).then(() => {
       toast.success("Notification Created!", {
@@ -94,8 +108,6 @@ const App = () => {
           setHeader(e.target.value);
           localStorage.setItem("Header", e.target.value);
         }}
-        placeholder="Header..."
-        type="text"
         onFocus={() => setFocus(false)}
         onBlur={() => setFocus(true)}
       ></HeaderInput>
@@ -106,26 +118,13 @@ const App = () => {
           setText(e.target.value);
           localStorage.setItem("Text", e.target.value);
         }}
-        placeholder="Text..."
         onFocus={() => setFocus(false)}
         onBlur={() => setFocus(true)}
       ></TextInput>
       <Length length={Text.length} focus={Focus} />
       <br />
-
-      <CheckboxContainer visible={Focus}>
-        <CheckboxClick onClick={handleChangeCheck}>
-          <Checkbox type="checkbox" checked={Checked} onChange={handleChangeCheck}></Checkbox>
-          &nbsp;
-          <CheckboxText checked={Checked}>Compress</CheckboxText>
-        </CheckboxClick>
-      </CheckboxContainer>
       <br />
-      <ButtonComponent
-        onClick={createClick}
-        background={btn.create}
-        lightenBackground={newShade(btn.create, btn.lightenShade)}
-      >
+      <ButtonComponent onClick={createClick} background={btn.create}>
         Create
       </ButtonComponent>
       <br />
@@ -133,18 +132,13 @@ const App = () => {
         disabled={Text.length === 0 && Header.length === 0}
         onClick={clearClick}
         background={btn.clear}
-        lightenBackground={newShade(btn.clear, btn.lightenShade)}
       >
         Clear
       </ButtonComponent>
       {localStorage.getItem("Text") !== Text && (
         <>
           <br />
-          <ButtonComponent
-            onClick={loadClick}
-            background={btn.load}
-            lightenBackground={newShade(btn.load, btn.lightenShade)}
-          >
+          <ButtonComponent onClick={loadClick} background={btn.load}>
             Load
           </ButtonComponent>{" "}
           <Info emoji="💡">
@@ -156,6 +150,19 @@ const App = () => {
           </Info>
         </>
       )}
+      <CheckboxContainer visible={Focus}>
+        <CheckBoxClick onClick={handleChangeUppercase}>
+          <Checkbox checked={Uppercase} onChange={handleChangeUppercase} />
+          &nbsp;
+          <CheckboxText checked={Uppercase}>Uppercase</CheckboxText>
+        </CheckBoxClick>
+        <br />
+        <CheckBoxClick onClick={handleChangeCompress}>
+          <Checkbox checked={Compress} onChange={handleChangeCompress} />
+          &nbsp;
+          <CheckboxText checked={Compress}>Compress</CheckboxText>
+        </CheckBoxClick>
+      </CheckboxContainer>
       <BottomLabel visible={Focus}>
         {isOnline ? <Online>Online</Online> : <Offline>Offline</Offline>}{" "}
         {LastUse !== null &&

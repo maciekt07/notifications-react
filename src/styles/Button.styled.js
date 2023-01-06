@@ -20,7 +20,7 @@ export const ButtonComponent = styled.button`
   background: linear-gradient(
     261.62deg,
     ${(props) => props.background} 13.66%,
-    ${(props) => props.lightenBackground} 88.71%
+    ${(props) => newShade(props.background, btn.lightenShade)} 88.71%
   );
 
   &:hover {
@@ -29,7 +29,7 @@ export const ButtonComponent = styled.button`
   }
   &:focus-visible {
     outline: 3px solid ${(props) => props.background};
-    box-shadow: 0px 0px 20px 2px ${(props) => props.lightenBackground};
+    box-shadow: 0px 0px 20px 2px ${(props) => newShade(props.background, btn.lightenShade)};
   }
   &:disabled {
     opacity: 0.6;
