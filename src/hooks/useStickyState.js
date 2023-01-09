@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-export default function useStickyState(defaultValue, key) {
+export function useStickyState(defaultValue, key) {
   const [value, setValue] = useState(() => {
     const stickyValue = window.localStorage.getItem(key);
     return stickyValue !== null ? JSON.parse(stickyValue) : defaultValue;

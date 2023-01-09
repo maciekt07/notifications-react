@@ -28,7 +28,8 @@ export const LinkComponent = styled.a`
   }
 
   &:hover {
-    text-shadow: 0px 0px 20px ${(props) => (props.clr ? props.clr : defaultLinkColor)};
+    text-shadow: 0px 0px 20px
+      ${(props) => (props.clr ? props.clr : defaultLinkColor)};
   }
 
   &:focus,

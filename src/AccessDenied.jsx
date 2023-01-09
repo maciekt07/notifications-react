@@ -23,8 +23,8 @@ const FunnyBtn = styled.button`
   border-radius: 10px;
   user-select: none !important;
   &:hover {
-    box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.1) 0px 8px 24px,
-      rgba(17, 17, 26, 0.1) 0px 16px 56px;
+    box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px,
+      rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px;
   }
 `;
 
@@ -74,9 +74,11 @@ const AccessDenied = () => {
   useEffect(() => {
     setTimeout(() => {
       toast.error(
-        `Złe hasło debilu${localStorage.getItem("v") !== "" ? ":" : ""} ${localStorage
-          .getItem("v")
-          .slice(0, 16)}${localStorage.getItem("v").length > 16 ? "..." : ""}`,
+        `Złe hasło debilu${
+          localStorage.getItem("v") !== "" ? ":" : ""
+        } ${localStorage.getItem("v").slice(0, 16)}${
+          localStorage.getItem("v").length > 16 ? "..." : ""
+        }`,
         {
           duration: 3000,
           position: "bottom-center",

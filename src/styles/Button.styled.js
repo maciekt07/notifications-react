@@ -29,7 +29,8 @@ export const ButtonComponent = styled.button`
   }
   &:focus-visible {
     outline: 3px solid ${(props) => props.background};
-    box-shadow: 0px 0px 20px 2px ${(props) => newShade(props.background, btn.lightenShade)};
+    box-shadow: 0px 0px 20px 2px
+      ${(props) => newShade(props.background, btn.lightenShade)};
   }
   &:disabled {
     opacity: 0.6;

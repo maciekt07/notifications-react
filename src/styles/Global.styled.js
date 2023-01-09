@@ -44,7 +44,4 @@ br {
   -ms-user-select: none;
   user-select: none;
 }
-img {
-  border-radius: 20px;
-}
 `;

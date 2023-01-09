@@ -1,10 +1,10 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { toast, Toaster } from "react-hot-toast";
 import logo from "./assets/logo192.png";
 import Push from "push.js";
-import useStickyState from "./hooks/useStickyState";
+import { useStickyState, useOnlineStatus } from "./hooks";
 import { getDate } from "./utils";
-import { Footer, Info, Length } from "./components";
+import { Checkbox, Footer, Info, Length } from "./components";
 import {
   ButtonComponent,
   HeaderInput,
@@ -14,10 +14,7 @@ import {
   GlobalStyle,
   Online,
   Offline,
-  Checkbox,
   CheckboxContainer,
-  CheckboxText,
-  CheckBoxClick,
 } from "./styles";
 
 const App = () => {
@@ -31,20 +28,6 @@ const App = () => {
   const [LastUse, SetLastUse] = useStickyState(null, "LastUse");
   const [Compress, setCompress] = useStickyState(false, "Compress");
   const [Uppercase, setUppercase] = useStickyState(false, "Uppercase");
-
-  const [isOnline, setIsOnline] = useState(navigator.onLine);
-  useEffect(() => {
-    // Update network status
-    const handleStatusChange = () => {
-      setIsOnline(navigator.onLine);
-    };
-    window.addEventListener("online", handleStatusChange);
-    window.addEventListener("offline", handleStatusChange);
-    return () => {
-      window.removeEventListener("online", handleStatusChange);
-      window.removeEventListener("offline", handleStatusChange);
-    };
-  }, [isOnline]);
 
   const loadClick = () => {
     setText(localStorage.getItem("Text"));
@@ -151,20 +134,16 @@ const App = () => {
         </>
       )}
       <CheckboxContainer visible={Focus}>
-        <CheckBoxClick onClick={handleChangeUppercase}>
-          <Checkbox checked={Uppercase} onChange={handleChangeUppercase} />
-          &nbsp;
-          <CheckboxText checked={Uppercase}>Uppercase</CheckboxText>
-        </CheckBoxClick>
+        <Checkbox check={Uppercase} click={handleChangeUppercase}>
+          Uppercase
+        </Checkbox>
         <br />
-        <CheckBoxClick onClick={handleChangeCompress}>
-          <Checkbox checked={Compress} onChange={handleChangeCompress} />
-          &nbsp;
-          <CheckboxText checked={Compress}>Compress</CheckboxText>
-        </CheckBoxClick>
+        <Checkbox check={Compress} click={handleChangeCompress}>
+          Compress
+        </Checkbox>
       </CheckboxContainer>
       <BottomLabel visible={Focus}>
-        {isOnline ? <Online>Online</Online> : <Offline>Offline</Offline>}{" "}
+        {useOnlineStatus() ? <Online /> : <Offline />}{" "}
         {LastUse !== null &&
           `· Last use:
         ${LastUse}`}

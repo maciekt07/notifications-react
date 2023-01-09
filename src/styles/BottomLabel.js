@@ -21,6 +21,12 @@ export const Offline = styled.span`
   color: #f74545;
   text-shadow: 0px 0px 6px #f74545;
 `;
+Online.defaultProps = {
+  children: "Online",
+};
+Offline.defaultProps = {
+  children: "Offline",
+};
 BottomLabel.defaultProps = {
   visible: true,
 };
