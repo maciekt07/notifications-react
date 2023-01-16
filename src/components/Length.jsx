@@ -15,9 +15,11 @@ const LengthComponent = styled.div`
 `;
 
 export const Length = (props) => {
+  const numberFormatter = Intl.NumberFormat(navigator.language);
+  const format = (n) => numberFormatter.format(n);
   return (
     <LengthComponent f={props.focus} length={props.length}>
-      Length: {props.length}
+      Length: {format(props.length)}
     </LengthComponent>
   );
 };

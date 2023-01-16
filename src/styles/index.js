@@ -1,4 +1,4 @@
-export { ButtonComponent } from "./Button.styled";
+export { ButtonComponent, SettingsButton } from "./Button.styled";
 export { FooterComponent, FooterEmoji } from "./Footer.styled";
 export { GlobalStyle } from "./Global.styled";
 export { HeaderInput, TextInput } from "./Inputs.styled";

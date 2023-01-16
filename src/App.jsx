@@ -4,7 +4,7 @@ import logo from "./assets/logo192.png";
 import Push from "push.js";
 import { useStickyState, useOnlineStatus } from "./hooks";
 import { getDate } from "./utils";
-import { Checkbox, Footer, Info, Length } from "./components";
+import { Checkbox, Footer, Info, Length, Modal } from "./components";
 import {
   ButtonComponent,
   HeaderInput,
@@ -15,6 +15,7 @@ import {
   Online,
   Offline,
   CheckboxContainer,
+  SettingsButton,
 } from "./styles";
 
 const App = () => {
@@ -28,6 +29,10 @@ const App = () => {
   const [LastUse, SetLastUse] = useStickyState(null, "LastUse");
   const [Compress, setCompress] = useStickyState(false, "Compress");
   const [Uppercase, setUppercase] = useStickyState(false, "Uppercase");
+  const [Paste, setPaste] = useState(null);
+  const [HidePasteBtn, SetHidePasteBtn] = useStickyState(true, "HidePasteBtn");
+  const [HideFooter, SetHideFooter] = useStickyState(false, "HideFooter");
+  const [modal, setModal] = useState(false);
 
   const loadClick = () => {
     setText(localStorage.getItem("Text"));
@@ -43,6 +48,7 @@ const App = () => {
   const handleChangeUppercase = () => {
     setUppercase(!Uppercase);
   };
+
   const NotificationText = () => {
     let txt = Text;
     if (Uppercase) {
@@ -107,6 +113,7 @@ const App = () => {
       <Length length={Text.length} focus={Focus} />
       <br />
       <br />
+
       <ButtonComponent onClick={createClick} background={btn.create}>
         Create
       </ButtonComponent>
@@ -118,6 +125,24 @@ const App = () => {
       >
         Clear
       </ButtonComponent>
+
+      {!HidePasteBtn && (
+        <>
+          <br />
+          <ButtonComponent
+            onClick={async () => {
+              const read = await navigator.clipboard.readText();
+              setText(read);
+              setPaste(read);
+            }}
+            background="#8981fe"
+            disabled={Paste === Text}
+          >
+            Paste
+          </ButtonComponent>
+        </>
+      )}
+
       {localStorage.getItem("Text") !== Text && (
         <>
           <br />
@@ -133,22 +158,58 @@ const App = () => {
           </Info>
         </>
       )}
-      <CheckboxContainer visible={Focus}>
-        <Checkbox check={Uppercase} click={handleChangeUppercase}>
-          Uppercase
-        </Checkbox>
-        <br />
-        <Checkbox check={Compress} click={handleChangeCompress}>
-          Compress
-        </Checkbox>
-      </CheckboxContainer>
-      <BottomLabel visible={Focus}>
+
+      <BottomLabel visible={Focus && !HideFooter}>
         {useOnlineStatus() ? <Online /> : <Offline />}{" "}
         {LastUse !== null &&
           `· Last use:
         ${LastUse}`}
       </BottomLabel>
-      <Footer visible={Focus} />
+      <SettingsButton
+        onClick={() => setModal(true)}
+        footer={HideFooter}
+        visible={Focus}
+      >
+        ⚙️ Settings
+      </SettingsButton>
+      <Modal
+        show={modal}
+        content={{
+          title: "⚙️ Settings",
+          text: (
+            <>
+              <h3>Text Settings</h3>
+              <CheckboxContainer>
+                <Checkbox check={Uppercase} click={handleChangeUppercase}>
+                  Uppercase
+                </Checkbox>
+                <br />
+                <Checkbox check={Compress} click={handleChangeCompress}>
+                  Compress
+                </Checkbox>
+              </CheckboxContainer>
+              <h3>Layout Settings</h3>
+              <CheckboxContainer>
+                <Checkbox
+                  check={HidePasteBtn}
+                  click={() => SetHidePasteBtn(!HidePasteBtn)}
+                >
+                  Hide Paste Button
+                </Checkbox>
+                <br />
+                <Checkbox
+                  check={HideFooter}
+                  click={() => SetHideFooter(!HideFooter)}
+                >
+                  Hide Footer
+                </Checkbox>
+              </CheckboxContainer>
+            </>
+          ),
+        }}
+        close={() => setModal(false)}
+      ></Modal>
+      <Footer visible={Focus && !HideFooter} />
     </div>
   );
 };

@@ -25,14 +25,18 @@ export const GlobalStyle = createGlobalStyle`
 body {
   background: ${themeColors.$colorHex3};
   margin: 0;
+  &.active-modal {
+    overflow-y: hidden;
+  }
 }
+
 
 .app {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-top: 40px;
+  margin-top: 16px;
 }
 
 br {

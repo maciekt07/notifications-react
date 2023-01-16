@@ -62,8 +62,8 @@ export const TextInput = styled.textarea.attrs({
 })`
   ${Inputs}
   resize: none !important;
-  height: 33vh;
+  height: 28vh;
   &:focus {
-    height: 41vh;
+    height: 40.5vh;
   }
 `;
