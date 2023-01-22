@@ -2,8 +2,8 @@ import { createGlobalStyle } from "styled-components";
 import { themeColors, btn } from "./Variables.styled";
 export const GlobalStyle = createGlobalStyle`
 * {
-  font-family: 'Poppins', sans-serif;
-  transition: 0.3s all !important;
+  font-family: 'Poppins', sans-serif !important;
+
   &::selection {
     background: ${themeColors.$selectionColor};
   }
@@ -13,8 +13,10 @@ export const GlobalStyle = createGlobalStyle`
   --toastify-color-success: ${btn.create};
   --toastify-color-error: ${btn.clear};
   --toastify-icon-color-success: var(--toastify-color-success);
+  
   color-scheme: light;
 }
+
 
 .Toastify__toast-container {
   -webkit-user-select: none;
@@ -24,6 +26,8 @@ export const GlobalStyle = createGlobalStyle`
 
 body {
   background: ${themeColors.$colorHex3};
+  transition: 0s all;
+
   margin: 0;
   &.active-modal {
     overflow-y: hidden;

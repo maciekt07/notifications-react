@@ -49,13 +49,14 @@ ButtonComponent.defaultProps = {
 };
 
 export const SettingsButton = styled.button`
+  transition: 0.3s all;
   position: absolute;
   bottom: ${(props) => (props.footer ? "16px" : "60px")};
   left: 16px;
   outline: none;
-  padding: 8px 16px;
+  padding: 8px 12px;
   border-radius: 100px;
-  background-color: #36446d;
+  background-color: #4f6691;
   cursor: pointer;
   color: white;
   border: 2px solid transparent;
@@ -63,7 +64,5 @@ export const SettingsButton = styled.button`
   visibility: ${(props) => (props.visible ? "visible" : "hidden")};
   &:hover {
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    box-shadow: 0px 0px 8px #8445d4;
-    border: 2px solid #8445d4;
   }
 `;

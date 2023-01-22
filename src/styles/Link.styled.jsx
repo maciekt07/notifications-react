@@ -6,7 +6,7 @@ export const LinkComponent = styled.a`
   display: inline-block;
   position: relative;
   text-decoration: none;
-
+  font-weight: 500;
   &::after {
     content: "";
     position: absolute;

@@ -13,6 +13,7 @@ const Inputs = css`
   background: #f5fffb;
   caret-color: ${themeColors.$colorHex5};
   transition: 0.3s all;
+  max-width: 850px;
 
   &::placeholder {
     color: ${themeColors.$colorHex2};
@@ -62,8 +63,8 @@ export const TextInput = styled.textarea.attrs({
 })`
   ${Inputs}
   resize: none !important;
-  height: 28vh;
+  height: ${(props) => props.size + "vh"};
   &:focus {
-    height: 40.5vh;
+    height: ${(props) => `calc(${props.size}vh + 12vh)`};
   }
 `;

@@ -7,10 +7,12 @@ export const FooterComponent = styled.footer`
   left: 0;
   /* bottom: ${(props) => (props.visible ? 0 : "-3em")}; */
   bottom: 0;
+  z-index: 5;
   width: 100%;
   color: white;
   text-align: center;
   font-size: 18px;
+  transition: 0.3s all;
   opacity: ${(props) => (props.visible ? 1 : 0)};
   visibility: ${(props) => (props.visible ? "visible" : "hidden")};
 `;
