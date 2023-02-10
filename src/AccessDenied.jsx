@@ -44,10 +44,6 @@ const Image = styled.img`
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   max-width: 400px;
   height: 200px;
-
-  &:hover {
-    transform: scale(1.1);
-  }
 `;
 const rotation = keyframes`
     0% {
@@ -66,7 +62,7 @@ const Loader = styled.span`
   border-radius: 50%;
   display: inline-block;
   box-sizing: border-box;
-  animation: ${rotation} 0.5s linear infinite;
+  animation: ${rotation} 0.4s linear infinite;
 `;
 
 const AccessDenied = () => {

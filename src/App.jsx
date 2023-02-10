@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, Suspense } from "react";
 import { toast, Toaster } from "react-hot-toast";
 import logo from "./assets/logo192.png";
 import Push from "push.js";
@@ -8,6 +8,7 @@ import { Footer, Info, Length, Modal } from "./components";
 import FormGroup from "@mui/material/FormGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Switch from "@mui/material/Switch";
+
 import {
   ButtonComponent,
   HeaderInput,
@@ -20,9 +21,25 @@ import {
   SettingsButton,
 } from "./styles";
 import FormLabel from "@mui/material/FormLabel";
-import { Slider, ThemeProvider } from "@mui/material";
+import { MenuItem, Select, Slider, ThemeProvider } from "@mui/material";
 import { theme } from "./styles";
+import { translationsEn } from "./locales/en";
+import { translationsPl } from "./locales/pl";
+import i18n from "i18next";
+import { useTranslation, initReactI18next, Trans } from "react-i18next";
+import { useEffect } from "react";
 
+i18n
+  .use(initReactI18next) // passes i18n down to react-i18next
+  .init({
+    resources: {
+      en: { translation: translationsEn },
+      pl: { translation: translationsPl },
+    },
+    lng: "en",
+    fallbackLng: "en",
+    interpolation: { escapeValue: false },
+  });
 const App = () => {
   if (localStorage.getItem("Text") == null) {
     localStorage.setItem("Text", "");
@@ -39,10 +56,13 @@ const App = () => {
   const [HideFooter, SetHideFooter] = useStickyState(false, "HideFooter");
   const [modal, setModal] = useState(false);
   const [TextSize, setTextSize] = useStickyState(28, "TextSize");
-
+  const [lang, setLang] = useStickyState("en", "language");
+  const { t } = useTranslation();
+  useEffect(() => {
+    i18n.changeLanguage(lang);
+  }, [lang]);
   const loadClick = () => {
     setText(localStorage.getItem("Text"));
-    // setHeader(localStorage.getItem("Header"));
   };
   const clearClick = () => {
     setText("");
@@ -65,7 +85,7 @@ const App = () => {
       body: NotificationText(),
       icon: logo,
     }).then(() => {
-      toast.success("Notification Created!", {
+      toast.success(t("notification"), {
         duration: 1300,
         position: "top-center",
         style: {
@@ -79,173 +99,193 @@ const App = () => {
   };
 
   return (
-    <ThemeProvider theme={theme}>
-      <div className="app">
-        <GlobalStyle />
-        <Toaster
-          toastOptions={{
-            success: {
-              iconTheme: {
-                primary: btn.create,
-                secondary: "white",
+    <Suspense fallback="Loading...">
+      <ThemeProvider theme={theme}>
+        <div className="app">
+          <GlobalStyle />
+          <Toaster
+            toastOptions={{
+              success: {
+                iconTheme: {
+                  primary: btn.create,
+                  secondary: "white",
+                },
               },
-            },
-          }}
-        />
-        <HeaderInput
-          value={Header}
-          onChange={(e) => {
-            setHeader(e.target.value);
-            localStorage.setItem("Header", e.target.value);
-          }}
-          onFocus={() => setFocus(false)}
-          onBlur={() => setFocus(true)}
-        ></HeaderInput>
-        <br />
-        <TextInput
-          value={Text}
-          onChange={(e) => {
-            setText(e.target.value);
-            localStorage.setItem("Text", e.target.value);
-          }}
-          size={TextSize}
-          onFocus={() => setFocus(false)}
-          onBlur={() => setFocus(true)}
-        ></TextInput>
-        <Length length={Text.length} focus={Focus} />
-        <br />
-        <br />
-        <ButtonComponent onClick={createClick} background={btn.create}>
-          Create
-        </ButtonComponent>
-        <br />
-        <ButtonComponent
-          disabled={Text.length === 0 && Header.length === 0}
-          onClick={clearClick}
-          background={btn.clear}
-        >
-          Clear
-        </ButtonComponent>
-        {!HidePasteBtn && (
-          <>
-            <br />
-            <ButtonComponent
-              onClick={async () => {
-                const read = await navigator.clipboard.readText();
-                setText(read);
-                setPaste(read);
-              }}
-              background="#8981fe"
-              disabled={Paste === Text}
-            >
-              Paste
-            </ButtonComponent>
-          </>
-        )}
-        {localStorage.getItem("Text") !== Text && (
-          <>
-            <br />
-            <ButtonComponent onClick={loadClick} background={btn.load}>
-              Load
-            </ButtonComponent>{" "}
-            <Info emoji="💡">
-              You can <b>load</b> content:{" "}
-              <b>
-                {localStorage.getItem("Text").slice(0, 16)}
-                {localStorage.getItem("Text").length > 16 ? "..." : ""}
-              </b>
-            </Info>
-          </>
-        )}
-        <BottomLabel visible={Focus && !HideFooter}>
-          {useOnlineStatus() ? <Online /> : <Offline />}{" "}
-          {LastUse !== null &&
-            `· Last use:
+            }}
+          />
+          <HeaderInput
+            placeholder={t("header")}
+            value={Header}
+            onChange={(e) => {
+              setHeader(e.target.value);
+              localStorage.setItem("Header", e.target.value);
+            }}
+            onFocus={() => setFocus(false)}
+            onBlur={() => setFocus(true)}
+          ></HeaderInput>
+          <br />
+          <TextInput
+            placeholder={t("text")}
+            value={Text}
+            onChange={(e) => {
+              setText(e.target.value);
+              localStorage.setItem("Text", e.target.value);
+            }}
+            size={TextSize}
+            onFocus={() => setFocus(false)}
+            onBlur={() => setFocus(true)}
+          ></TextInput>
+          <Length length={Text.length} focus={Focus} />
+          <br />
+          <br />
+          <ButtonComponent onClick={createClick} background={btn.create}>
+            {t("create")}
+          </ButtonComponent>
+          <br />
+          <ButtonComponent
+            disabled={Text.length === 0 && Header.length === 0}
+            onClick={clearClick}
+            background={btn.clear}
+          >
+            {t("clear")}
+          </ButtonComponent>
+          {!HidePasteBtn && (
+            <>
+              <br />
+              <ButtonComponent
+                onClick={async () => {
+                  const read = await navigator.clipboard.readText();
+                  setText(read);
+                  setPaste(read);
+                }}
+                background="#8981fe"
+                disabled={Paste === Text}
+              >
+                {t("paste")}
+              </ButtonComponent>
+            </>
+          )}
+          {localStorage.getItem("Text") !== Text && (
+            <>
+              <br />
+              <ButtonComponent onClick={loadClick} background={btn.load}>
+                {t("load")}
+              </ButtonComponent>{" "}
+              <Info emoji="💡">
+                <Trans components={{ bold: <strong /> }}>{t("loadInfo")}</Trans>{" "}
+                <b>
+                  {localStorage.getItem("Text").slice(0, 16)}
+                  {localStorage.getItem("Text").length > 16 ? "..." : ""}
+                </b>
+              </Info>
+            </>
+          )}
+          <BottomLabel visible={Focus && !HideFooter}>
+            {useOnlineStatus() ? <Online /> : <Offline />}{" "}
+            {LastUse !== null &&
+              `· ${t("lastUse")}
         ${LastUse}`}
-        </BottomLabel>
-        <SettingsButton
-          onClick={() => setModal(true)}
-          footer={HideFooter}
-          visible={Focus}
-        >
-          ⚙️ Settings
-        </SettingsButton>
-        <Modal
-          show={modal}
-          content={{
-            title: "⚙️ Settings",
-            text: (
-              <>
-                <FormGroup>
-                  <FormLabel component="legend">Text Settings</FormLabel>
-                  <FormControlLabel
-                    sx={Uppercase ? { opacity: 0.9 } : { opacity: 0.6 }}
-                    control={
-                      <Switch
-                        checked={Uppercase}
-                        onClick={() => setUppercase(!Uppercase)}
-                      />
-                    }
-                    label="Uppercase"
-                  />
-                  <FormControlLabel
-                    sx={Compress ? { opacity: 0.9 } : { opacity: 0.6 }}
-                    control={
-                      <Switch
-                        checked={Compress}
-                        onChange={() => setCompress(!Compress)}
-                      />
-                    }
-                    label="Compress"
-                  />
-                </FormGroup>
-                <br />
-                <FormGroup>
-                  <FormLabel component="legend">Layout Settings</FormLabel>
-                  <FormControlLabel
-                    sx={HidePasteBtn ? { opacity: 0.9 } : { opacity: 0.6 }}
-                    control={
-                      <Switch
-                        checked={HidePasteBtn}
-                        onClick={() => SetHidePasteBtn(!HidePasteBtn)}
-                      />
-                    }
-                    label="Hide Paste Button"
-                  />
-                  <FormControlLabel
-                    sx={HideFooter ? { opacity: 0.9 } : { opacity: 0.6 }}
-                    control={
-                      <Switch
-                        checked={HideFooter}
-                        onChange={() => SetHideFooter(!HideFooter)}
-                      />
-                    }
-                    label="Hide Footer"
-                  />
-                </FormGroup>
-                <br />
-                <FormLabel component="legend">Text Area Size</FormLabel>
-                <br />
-                <FormGroup>
-                  <Slider
-                    sx={{ width: "150px" }}
-                    min={20}
-                    step={1}
-                    max={35}
-                    value={TextSize}
-                    valueLabelDisplay="auto"
-                    valueLabelFormat={TextSize + "vh"}
-                    onChange={(e) => setTextSize(e.target.value)}
-                  />
-                </FormGroup>
-              </>
-            ),
-          }}
-          close={() => setModal(false)}
-        ></Modal>
-        <Footer visible={Focus && !HideFooter} />
-      </div>
-    </ThemeProvider>
+          </BottomLabel>
+          <SettingsButton
+            onClick={() => setModal(true)}
+            footer={HideFooter}
+            visible={Focus}
+          >
+            {t("settingsHeader")}
+          </SettingsButton>
+          <Modal
+            show={modal}
+            content={{
+              title: t("settingsHeader"),
+              text: (
+                <>
+                  <FormGroup>
+                    <FormLabel component="legend">{t("lang")}</FormLabel>
+                    <br />
+                    <Select
+                      defaultValue="en"
+                      value={lang}
+                      onChange={(e) => {
+                        setLang(e.target.value);
+                      }}
+                    >
+                      <MenuItem value="pl">Polski</MenuItem>
+                      <MenuItem value="en">English</MenuItem>
+                    </Select>
+                  </FormGroup>
+                  <br />
+                  <FormGroup>
+                    <FormLabel component="legend">{t("textSettings")}</FormLabel>
+                    <FormControlLabel
+                      sx={Uppercase ? { opacity: 0.9 } : { opacity: 0.6 }}
+                      control={
+                        <Switch
+                          checked={Uppercase}
+                          onClick={() => setUppercase(!Uppercase)}
+                        />
+                      }
+                      label={t("uppercase")}
+                    />
+                    <FormControlLabel
+                      sx={Compress ? { opacity: 0.9 } : { opacity: 0.6 }}
+                      control={
+                        <Switch
+                          checked={Compress}
+                          onChange={() => setCompress(!Compress)}
+                        />
+                      }
+                      label={t("compress")}
+                    />
+                  </FormGroup>
+                  <br />
+                  <FormGroup>
+                    <FormLabel component="legend">{t("layoutSettings")}</FormLabel>
+                    <FormControlLabel
+                      sx={HidePasteBtn ? { opacity: 0.9 } : { opacity: 0.6 }}
+                      control={
+                        <Switch
+                          checked={HidePasteBtn}
+                          onClick={() => SetHidePasteBtn(!HidePasteBtn)}
+                        />
+                      }
+                      label={t("pasteBtn")}
+                    />
+                    <FormControlLabel
+                      sx={HideFooter ? { opacity: 0.9 } : { opacity: 0.6 }}
+                      control={
+                        <Switch
+                          checked={HideFooter}
+                          onChange={() => SetHideFooter(!HideFooter)}
+                        />
+                      }
+                      label={t("footer")}
+                    />
+                  </FormGroup>
+                  <br />
+                  <FormLabel component="legend">{t("txtArea")}</FormLabel>
+                  <br />
+                  <FormGroup>
+                    <Slider
+                      sx={{ width: "150px" }}
+                      min={20}
+                      step={1}
+                      max={35}
+                      value={TextSize}
+                      valueLabelDisplay="auto"
+                      valueLabelFormat={TextSize + "vh"}
+                      onChange={(e) => setTextSize(e.target.value)}
+                    />
+                  </FormGroup>
+                  <br />
+                </>
+              ),
+            }}
+            close={() => setModal(false)}
+          ></Modal>
+          <Footer visible={Focus && !HideFooter} />
+        </div>
+      </ThemeProvider>
+    </Suspense>
   );
 };
 

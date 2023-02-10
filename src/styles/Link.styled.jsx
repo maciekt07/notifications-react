@@ -7,6 +7,7 @@ export const LinkComponent = styled.a`
   position: relative;
   text-decoration: none;
   font-weight: 500;
+  transition: 0.3s all;
   &::after {
     content: "";
     position: absolute;

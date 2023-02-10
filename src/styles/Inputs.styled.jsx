@@ -54,12 +54,12 @@ const Inputs = css`
 `;
 export const HeaderInput = styled.input.attrs({
   type: "text",
-  placeholder: "Header...",
+  // placeholder: "Header...",
 })`
   ${Inputs}
 `;
 export const TextInput = styled.textarea.attrs({
-  placeholder: "Text...",
+  // placeholder: "Text...",
 })`
   ${Inputs}
   resize: none !important;
