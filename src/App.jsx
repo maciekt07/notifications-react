@@ -1,4 +1,4 @@
-import { useState, Suspense } from "react";
+import { useState, useEffect, Suspense } from "react";
 import { toast, Toaster } from "react-hot-toast";
 import logo from "./assets/logo192.png";
 import Push from "push.js";
@@ -27,8 +27,8 @@ import { translationsEn } from "./locales/en";
 import { translationsPl } from "./locales/pl";
 import i18n from "i18next";
 import { useTranslation, initReactI18next, Trans } from "react-i18next";
-import { useEffect } from "react";
-
+import gb from "./assets/gb.svg";
+import pl from "./assets/pl.svg";
 i18n
   .use(initReactI18next) // passes i18n down to react-i18next
   .init({
@@ -200,7 +200,7 @@ const App = () => {
               text: (
                 <>
                   <FormGroup>
-                    <FormLabel component="legend">{t("lang")}</FormLabel>
+                    <FormLabel>{t("lang")}</FormLabel>
                     <br />
                     <Select
                       defaultValue="en"
@@ -209,15 +209,32 @@ const App = () => {
                         setLang(e.target.value);
                       }}
                     >
-                      <MenuItem value="pl">Polski</MenuItem>
-                      <MenuItem value="en">English</MenuItem>
+                      <MenuItem value="pl">
+                        <img
+                          src={pl}
+                          alt="pl"
+                          style={{
+                            height: "12px",
+                            borderRadius: "2px",
+                          }}
+                        />{" "}
+                        &nbsp; Polski
+                      </MenuItem>
+                      <MenuItem value="en">
+                        <img
+                          src={gb}
+                          alt="gb"
+                          style={{ height: "12px", borderRadius: "2px" }}
+                        />
+                        &nbsp; English
+                      </MenuItem>
                     </Select>
                   </FormGroup>
                   <br />
                   <FormGroup>
-                    <FormLabel component="legend">{t("textSettings")}</FormLabel>
+                    <FormLabel>{t("textSettings")}</FormLabel>
                     <FormControlLabel
-                      sx={Uppercase ? { opacity: 0.9 } : { opacity: 0.6 }}
+                      sx={Uppercase ? { opacity: 0.9 } : { opacity: 0.5 }}
                       control={
                         <Switch
                           checked={Uppercase}
@@ -227,7 +244,7 @@ const App = () => {
                       label={t("uppercase")}
                     />
                     <FormControlLabel
-                      sx={Compress ? { opacity: 0.9 } : { opacity: 0.6 }}
+                      sx={Compress ? { opacity: 0.9 } : { opacity: 0.5 }}
                       control={
                         <Switch
                           checked={Compress}
@@ -239,7 +256,7 @@ const App = () => {
                   </FormGroup>
                   <br />
                   <FormGroup>
-                    <FormLabel component="legend">{t("layoutSettings")}</FormLabel>
+                    <FormLabel>{t("layoutSettings")}</FormLabel>
                     <FormControlLabel
                       sx={HidePasteBtn ? { opacity: 0.9 } : { opacity: 0.6 }}
                       control={
