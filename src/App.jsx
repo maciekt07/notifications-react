@@ -40,6 +40,20 @@ i18n
     fallbackLng: "en",
     interpolation: { escapeValue: false },
   });
+
+const langs = [
+  {
+    value: "en",
+    name: "English",
+    icon: gb,
+  },
+  {
+    value: "pl",
+    name: "Polski",
+    icon: pl,
+  },
+];
+
 const App = () => {
   if (localStorage.getItem("Text") == null) {
     localStorage.setItem("Text", "");
@@ -61,13 +75,6 @@ const App = () => {
   useEffect(() => {
     i18n.changeLanguage(lang);
   }, [lang]);
-  const loadClick = () => {
-    setText(localStorage.getItem("Text"));
-  };
-  const clearClick = () => {
-    setText("");
-    setHeader("");
-  };
 
   const NotificationText = () => {
     let txt = Text;
@@ -80,11 +87,11 @@ const App = () => {
     return txt;
   };
   const createClick = () => {
-    SetLastUse(getDate());
     Push.create(Header, {
       body: NotificationText(),
       icon: logo,
     }).then(() => {
+      SetLastUse(getDate());
       toast.success(t("notification"), {
         duration: 1300,
         position: "top-center",
@@ -144,7 +151,10 @@ const App = () => {
           <br />
           <ButtonComponent
             disabled={Text.length === 0 && Header.length === 0}
-            onClick={clearClick}
+            onClick={() => {
+              setText("");
+              setHeader("");
+            }}
             background={btn.clear}
           >
             {t("clear")}
@@ -168,7 +178,10 @@ const App = () => {
           {localStorage.getItem("Text") !== Text && (
             <>
               <br />
-              <ButtonComponent onClick={loadClick} background={btn.load}>
+              <ButtonComponent
+                onClick={() => setText(localStorage.getItem("Text"))}
+                background={btn.load}
+              >
                 {t("load")}
               </ButtonComponent>{" "}
               <Info emoji="💡">
@@ -209,25 +222,21 @@ const App = () => {
                         setLang(e.target.value);
                       }}
                     >
-                      <MenuItem value="pl">
-                        <img
-                          src={pl}
-                          alt="pl"
-                          style={{
-                            height: "12px",
-                            borderRadius: "2px",
-                          }}
-                        />{" "}
-                        &nbsp; Polski
-                      </MenuItem>
-                      <MenuItem value="en">
-                        <img
-                          src={gb}
-                          alt="gb"
-                          style={{ height: "12px", borderRadius: "2px" }}
-                        />
-                        &nbsp; English
-                      </MenuItem>
+                      {langs.map((lang, index) => {
+                        return (
+                          <MenuItem key={index} value={lang.value}>
+                            <img
+                              src={lang.icon}
+                              alt={lang.value}
+                              style={{
+                                height: "12px",
+                                borderRadius: "2px",
+                              }}
+                            />{" "}
+                            &nbsp; {lang.name}
+                          </MenuItem>
+                        );
+                      })}
                     </Select>
                   </FormGroup>
                   <br />
