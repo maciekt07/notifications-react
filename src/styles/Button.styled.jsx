@@ -54,7 +54,7 @@ export const SettingsButton = styled.button`
   bottom: ${(props) => (props.footer ? "16px" : "60px")};
   left: 16px;
   outline: none;
-  padding: 8px 12px;
+  padding: 10px 14px;
   border-radius: 100px;
   background-color: #4f6691;
   cursor: pointer;
@@ -62,7 +62,7 @@ export const SettingsButton = styled.button`
   border: 2px solid transparent;
   opacity: ${(props) => (props.visible ? 1 : 0)};
   visibility: ${(props) => (props.visible ? "visible" : "hidden")};
-  &:hover {
+  /* &:hover {
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  }
+  } */
 `;

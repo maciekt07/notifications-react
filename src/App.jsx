@@ -19,10 +19,11 @@ import {
   Online,
   Offline,
   SettingsButton,
+  theme,
 } from "./styles";
 import FormLabel from "@mui/material/FormLabel";
 import { MenuItem, Select, Slider, ThemeProvider } from "@mui/material";
-import { theme } from "./styles";
+
 import { translationsEn } from "./locales/en";
 import { translationsPl } from "./locales/pl";
 import i18n from "i18next";
@@ -70,7 +71,10 @@ const App = () => {
   const [HideFooter, SetHideFooter] = useStickyState(false, "HideFooter");
   const [modal, setModal] = useState(false);
   const [TextSize, setTextSize] = useStickyState(28, "TextSize");
-  const [lang, setLang] = useStickyState("en", "language");
+  const [lang, setLang] = useStickyState(
+    navigator.language.split("-")[0] === "pl" ? "pl" : "en",
+    "language"
+  );
   const { t } = useTranslation();
   useEffect(() => {
     i18n.changeLanguage(lang);
@@ -175,6 +179,7 @@ const App = () => {
               </ButtonComponent>
             </>
           )}
+
           {localStorage.getItem("Text") !== Text && (
             <>
               <br />

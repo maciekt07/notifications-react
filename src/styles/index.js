@@ -12,3 +12,11 @@ export {
   CheckBoxClick,
 } from "./Checkbox.styled";
 export { RangeComponent } from "./Range.styled";
+export {
+  LoginContainer,
+  LoginGlobal,
+  PasswordInput,
+  LoginButton,
+  HeaderText,
+  Container,
+} from "./Login.styled";

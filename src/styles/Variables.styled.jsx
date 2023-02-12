@@ -20,10 +20,10 @@ export const btn = {
 export const theme = createTheme({
   palette: {
     primary: {
-      main: btn.create,
+      main: "#03a688",
     },
     secondary: {
-      main: "#59fe9e",
+      main: "#672fff",
     },
   },
 });

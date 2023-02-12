@@ -29,7 +29,7 @@ const ModalContent = styled.div`
   left: 50%;
   transform: translate(-50%, -50%);
   line-height: 1.4;
-  background: #ffffff97;
+  background: #ffffffa2;
   backdrop-filter: blur(20px);
   padding: 20px 30px;
   max-width: 600px;
@@ -51,14 +51,19 @@ const Close = styled.span`
     height: 1.4em;
     width: 1.4em;
     cursor: pointer;
-    transition: 0.3s color;
+    transition: 0.3s;
     &:hover {
       color: #ff4646;
+      filter: drop-shadow(0px 0px 12px rgb(255, 0, 0));
+    }
+    &:active {
+      color: #ff4646cb;
+      filter: drop-shadow(0px 0px 16px rgb(255, 0, 0));
     }
   }
 `;
 
-export function Modal(props) {
+export const Modal = (props) => {
   if (props.show) {
     document.body.classList.add("active-modal");
   } else {
@@ -82,4 +87,4 @@ export function Modal(props) {
       )}
     </>
   );
-}
+};

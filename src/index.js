@@ -3,14 +3,9 @@ import ReactDOM from "react-dom/client";
 import App from "./App";
 import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
 import reportWebVitals from "./reportWebVitals";
-import AccessDenied from "./AccessDenied";
+import { Login } from "./Login";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
-
-if (localStorage.getItem("v") !== atob(process.env.REACT_APP_V)) {
-  const v = prompt(atob("cG9kYWogaGFzbG8="));
-  localStorage.setItem("v", v);
-}
 
 if (localStorage.getItem("v") === atob(process.env.REACT_APP_V)) {
   root.render(
@@ -19,8 +14,9 @@ if (localStorage.getItem("v") === atob(process.env.REACT_APP_V)) {
     </React.StrictMode>
   );
 } else {
-  root.render(<AccessDenied />);
+  root.render(<Login />);
 }
+
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: https://cra.link/PWA
