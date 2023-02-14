@@ -17,4 +17,5 @@ export const translationsEn = {
   footer: "Hide Footer",
   txtArea: "Text Area Size",
   lang: "Language",
+  logout: "Logout",
 };

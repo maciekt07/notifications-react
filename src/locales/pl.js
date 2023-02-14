@@ -17,4 +17,5 @@ export const translationsPl = {
   footer: "Ukryj Footer",
   txtArea: "Rozmiar Pola Tekstowego",
   lang: "Język",
+  logout: "Wyloguj",
 };
