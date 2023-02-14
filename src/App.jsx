@@ -54,12 +54,17 @@ const langs = [
     icon: pl,
   },
 ];
-
+/**
+ * Main application component
+ * @returns {JSX.Element} JSX Element
+ */
 const App = () => {
+  // Check if Text and Header values exist in local storage, if not set the initial state
   if (localStorage.getItem("Text") == null) {
     localStorage.setItem("Text", "");
     localStorage.setItem("Header", "");
   }
+
   const [Header, setHeader] = useState("");
   const [Text, setText] = useState("");
   const [Focus, setFocus] = useState(true);
@@ -76,6 +81,7 @@ const App = () => {
     "language"
   );
   const { t } = useTranslation();
+  // Update language using i18n on component mount and when the lang state changes
   useEffect(() => {
     i18n.changeLanguage(lang);
   }, [lang]);

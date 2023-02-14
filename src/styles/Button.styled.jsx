@@ -1,7 +1,12 @@
 import styled from "styled-components";
 import { themeColors, btn } from "./Variables.styled";
 import { newShade } from "../utils";
-
+/**
+ * A styled button component.
+ * @param {string} background - The background color of the button.
+ * @param {string} lightenBackground - The background color of the button when it is hovered or focused.
+ * @returns {JSX.Element} - A styled button component.
+ */
 export const ButtonComponent = styled.button`
   background: ${((props) => props.background, -40)};
   transition: 0.3s all;
@@ -47,6 +52,13 @@ ButtonComponent.defaultProps = {
   lightenBackground: newShade(themeColors.$colorHex1, btn.lightenShade),
   // visible: true,
 };
+
+/**
+ * A styled settings button component.
+ * @param {boolean} visible - Indicates whether the settings button is visible or not.
+ * @param {boolean} footer - Indicates whether the settings button is placed in the footer.
+ * @returns {JSX.Element} - A styled settings button component.
+ */
 
 export const SettingsButton = styled.button`
   transition: 0.3s all;

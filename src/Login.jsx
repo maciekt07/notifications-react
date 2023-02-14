@@ -1,4 +1,4 @@
-import { TextField } from "@mui/material";
+import { FormControlLabel, FormGroup, TextField, Checkbox } from "@mui/material";
 import { ThemeProvider } from "@mui/system";
 import { useState } from "react";
 import { toast, Toaster } from "react-hot-toast";
@@ -14,6 +14,8 @@ import {
 
 export const Login = () => {
   const [pass, setPass] = useState("");
+  const [showPass, setShowPass] = useState(false);
+  const [error, setError] = useState(false);
   return (
     <>
       <ThemeProvider theme={theme}>
@@ -26,6 +28,12 @@ export const Login = () => {
                 secondary: "white",
               },
             },
+            error: {
+              iconTheme: {
+                primary: "#ff443a",
+                secondary: "white",
+              },
+            },
           }}
         />
         <Container>
@@ -33,17 +41,22 @@ export const Login = () => {
             <HeaderText>Enter Password</HeaderText>
             <br />
             <TextField
+              error={error && pass.length > 0}
+              helperText={error && pass.length !== 0 && "Wrong Password."}
               sx={{ width: "250px" }}
               color="secondary"
               label="Password"
-              type="password"
+              type={showPass ? "text" : "password"}
               value={pass}
               onChange={(e) => {
+                e.target.value.length === 0 && setError(false);
                 setPass(e.target.value);
               }}
             />
             <br />
+
             <LoginButton
+              disabled={pass.length === 0}
               variant="contained"
               disableElevation
               onClick={() => {
@@ -63,12 +76,27 @@ export const Login = () => {
                       color: "black",
                     },
                   });
-                  setPass("");
+                  setError(true);
                 }
               }}
             >
               Login
             </LoginButton>
+
+            <FormGroup
+              sx={{ width: "250px", userSelect: "none", marginTop: "16px" }}
+            >
+              <FormControlLabel
+                control={
+                  <Checkbox
+                    color="secondary"
+                    checked={showPass}
+                    onChange={() => setShowPass(!showPass)}
+                  />
+                }
+                label="Show Password"
+              />
+            </FormGroup>
           </LoginContainer>
         </Container>
       </ThemeProvider>

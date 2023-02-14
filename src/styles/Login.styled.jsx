@@ -1,5 +1,4 @@
 import styled, { createGlobalStyle } from "styled-components";
-import { themeColors } from "./Variables.styled";
 
 export const LoginGlobal = createGlobalStyle`
 body {
@@ -23,6 +22,7 @@ export const LoginContainer = styled.div`
   flex-direction: column;
   background: hsl(213deg 85% 97%);
   border-radius: 30px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 `;
 
 export const PasswordInput = styled.input.attrs({
@@ -49,5 +49,12 @@ export const LoginButton = styled.button`
   transition: 0.3s all;
   &:hover {
     background: #8153ff;
+  }
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    &:hover {
+      background: #672fff;
+    }
   }
 `;
