@@ -3,6 +3,7 @@ Creates a new shade of a given hex color by changing its brightness by a given m
 @param {string} hexColor - A hexadecimal color code.
 @param {number} magnitude - A value to adjust the brightness of the color.
 @returns {string} - A new hex color code with adjusted brightness.
+@example newShade("#03a688", 30)
 */
 export const newShade = (hexColor, magnitude) => {
   hexColor = hexColor.replace(`#`, ``);

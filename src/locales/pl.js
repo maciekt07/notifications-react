@@ -1,3 +1,7 @@
+/**
+Polish translations object.
+@type {Object}
+ */
 export const translationsPl = {
   notification: "Powiadomienie Stworzone!",
   header: "Nagłówek...",

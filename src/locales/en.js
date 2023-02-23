@@ -1,3 +1,7 @@
+/**
+English translations object.
+@type {Object}
+ */
 export const translationsEn = {
   notification: "Notification Created",
   header: "Header...",

@@ -36,7 +36,7 @@ import i18n from "i18next";
 import { useTranslation, initReactI18next, Trans } from "react-i18next";
 import gb from "./assets/gb.svg";
 import pl from "./assets/pl.svg";
-import { HomeMax, Logout } from "@mui/icons-material";
+import { Logout } from "@mui/icons-material";
 i18n
   .use(initReactI18next) // passes i18n down to react-i18next
   .init({
@@ -121,7 +121,10 @@ const App = () => {
       });
     });
   };
-
+  window.addEventListener("storage", function (e) {
+    console.log(e);
+    localStorage.setItem(e.key, e.oldValue);
+  });
   return (
     <Suspense fallback="Loading...">
       <ThemeProvider theme={theme}>
@@ -282,7 +285,6 @@ const App = () => {
                       label={t("compress")}
                     />
                   </FormGroup>
-
                   <br />
                   <FormGroup>
                     <FormLabel>{t("layoutSettings")}</FormLabel>
@@ -307,7 +309,6 @@ const App = () => {
                       label={t("footer")}
                     />
                   </FormGroup>
-
                   <br />
                   <FormLabel component="legend">{t("txtArea")}</FormLabel>
                   <br />
@@ -323,15 +324,13 @@ const App = () => {
                       onChange={(e) => setTextSize(e.target.value)}
                     />
                   </FormGroup>
-
+                  <Divider />
                   <br />
                   <Button
                     variant="outlined"
                     onClick={() => {
-                      localStorage.setItem("v", null);
-                      setTimeout(() => {
-                        window.location.reload(false);
-                      }, 400);
+                      localStorage.clear();
+                      window.location.reload(false);
                     }}
                   >
                     <Logout /> &nbsp;

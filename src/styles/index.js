@@ -6,13 +6,6 @@ export { BottomLabel, Online, Offline } from "./BottomLabel";
 export { LinkComponent } from "./Link.styled";
 export { themeColors, btn, theme } from "./Variables.styled";
 export {
-  CheckboxComponent,
-  CheckboxContainer,
-  CheckboxText,
-  CheckBoxClick,
-} from "./Checkbox.styled";
-export { RangeComponent } from "./Range.styled";
-export {
   LoginContainer,
   LoginGlobal,
   PasswordInput,

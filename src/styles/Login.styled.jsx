@@ -1,9 +1,16 @@
 import styled, { createGlobalStyle } from "styled-components";
 
 export const LoginGlobal = createGlobalStyle`
+&{
+  &::selection {
+    background: #5ba8ff;
+    color: white;
+  }
+}
 body {
   background: hsl(218deg 50% 91%);
   font-family: poppins;
+  
 }
 `;
 
@@ -33,6 +40,7 @@ export const PasswordInput = styled.input.attrs({
 `;
 
 export const HeaderText = styled.h1`
+  font-weight: bolder;
   opacity: 0.8;
 `;
 
@@ -48,10 +56,9 @@ export const LoginButton = styled.button`
   cursor: pointer;
   transition: 0.3s all;
   &:hover {
-    background: #8153ff;
+    background: #8060ff;
   }
   &:disabled {
-    opacity: 0.6;
     cursor: not-allowed;
     &:hover {
       background: #672fff;

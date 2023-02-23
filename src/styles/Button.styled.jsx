@@ -4,7 +4,6 @@ import { newShade } from "../utils";
 /**
  * A styled button component.
  * @param {string} background - The background color of the button.
- * @param {string} lightenBackground - The background color of the button when it is hovered or focused.
  * @returns {JSX.Element} - A styled button component.
  */
 export const ButtonComponent = styled.button`
@@ -49,8 +48,6 @@ export const ButtonComponent = styled.button`
 
 ButtonComponent.defaultProps = {
   background: themeColors.$colorHex1,
-  lightenBackground: newShade(themeColors.$colorHex1, btn.lightenShade),
-  // visible: true,
 };
 
 /**
@@ -62,7 +59,7 @@ ButtonComponent.defaultProps = {
 
 export const SettingsButton = styled.button`
   transition: 0.3s all;
-  position: absolute;
+  position: fixed;
   bottom: ${(props) => (props.footer ? "16px" : "60px")};
   left: 16px;
   outline: none;

@@ -1,7 +1,42 @@
 import React from "react";
 import styled, { css } from "styled-components";
 import { IoClose } from "react-icons/io5";
+/**
+ * A React modal component with a styled design
+ * @param {Object} props - The props object containing the modal content and settings
+ * @param {Boolean} props.show - A boolean value indicating whether or not the modal should be displayed
+ * @param {Function} props.close - A function to close the modal when clicked
+ * @param {Object} props.content - An object containing the title and text to display within the modal
+ * @param {String} props.content.title - The title to display within the modal
+ * @param {String} props.content.text - The text to display within the modal
+ * @param {ReactNode} [props.children] - Optional child components to display within the modal
+ * @returns {ReactNode} - The modal component
+ */
+export const Modal = (props) => {
+  if (props.show) {
+    document.body.classList.add("active-modal");
+  } else {
+    document.body.classList.remove("active-modal");
+  }
 
+  return (
+    <>
+      {props.show && (
+        <ModalComponent>
+          <ModalOverlay onClick={props.close} />
+          <ModalContent>
+            <h2>{props.content.title}</h2>
+            <div>{props.content.text}</div>
+            <Close onClick={props.close}>
+              <IoClose />
+            </Close>
+            {props.children}
+          </ModalContent>
+        </ModalComponent>
+      )}
+    </>
+  );
+};
 const Layout = css`
   width: 100vw;
   height: 100vh;
@@ -62,29 +97,3 @@ const Close = styled.span`
     }
   }
 `;
-
-export const Modal = (props) => {
-  if (props.show) {
-    document.body.classList.add("active-modal");
-  } else {
-    document.body.classList.remove("active-modal");
-  }
-
-  return (
-    <>
-      {props.show && (
-        <ModalComponent>
-          <ModalOverlay onClick={props.close} />
-          <ModalContent>
-            <h2>{props.content.title}</h2>
-            <div>{props.content.text}</div>
-            <Close onClick={props.close}>
-              <IoClose />
-            </Close>
-            {props.children}
-          </ModalContent>
-        </ModalComponent>
-      )}
-    </>
-  );
-};
