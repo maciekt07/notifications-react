@@ -3,6 +3,7 @@ const defaultLinkColor = "#b6a0e4";
 /**
  * A styled link component with hover and focus states and transition effects.
  * @param {string} clr - The color of the link. Defaults to #b6a0e4.
+ * @example <LinkComponent color="#672fff" href="https://example.com/">This is link</LinkComponent>
  */
 export const LinkComponent = styled.a`
   cursor: pointer;

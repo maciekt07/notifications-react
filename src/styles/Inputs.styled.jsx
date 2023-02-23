@@ -53,16 +53,23 @@ const Inputs = css`
   }
 `;
 
+/**
+Styled input element for the header.
+@returns {JSX.Element} - The JSX Element for the styled input component.
+@example <HeaderInput placeholder="This is header input"/>
+*/
 export const HeaderInput = styled.input.attrs({
   type: "text",
-  // placeholder: "Header...",
 })`
   ${Inputs}
 `;
-
-export const TextInput = styled.textarea.attrs({
-  // placeholder: "Text...",
-})`
+/**
+Styled text area element for text input.
+@param {number} size - The height of the text area in viewport height (vh) units.
+@returns {JSX.Element} - The JSX Element for the styled text area component.
+@example <TextInput size={18} placeholder="This is text input" />
+*/
+export const TextInput = styled.textarea`
   ${Inputs}
   resize: none !important;
   height: ${(props) => props.size + "vh"};

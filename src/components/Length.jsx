@@ -7,6 +7,7 @@ import styled from "styled-components";
  * @param {boolean} props.focus - Whether the input is currently focused.
  * @param {number} props.length - The length of the input value.
  * @returns {JSX.Element} The JSX element that displays the length of the input.
+ * @example <Length length={Text.length} focus={Focus} />
  */
 
 export const Length = (props) => {

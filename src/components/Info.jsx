@@ -6,6 +6,7 @@ A component that displays information with an optional emoji and visibility cont
 @param {string} props.emoji - The emoji to display next to the information.
 @param {React.ReactNode} props.children - The content to display inside the component.
 @returns {JSX.Element|null} The rendered component or null if visible is false.
+@example <Info visible={true} emoji="😊">This is info</Info>
 */
 export const Info = ({ visible, emoji, children }) => {
   return visible ? (

@@ -229,118 +229,115 @@ const App = () => {
           </SettingsButton>
           <Modal
             show={modal}
-            content={{
-              title: t("settingsHeader"),
-              text: (
-                <>
-                  <FormGroup>
-                    <FormLabel>{t("lang")}</FormLabel>
-                    <br />
-
-                    <Select
-                      defaultValue="en"
-                      value={lang}
-                      onChange={(e) => {
-                        setLang(e.target.value);
-                      }}
-                    >
-                      {langs.map((lang, index) => {
-                        return (
-                          <MenuItem key={index} value={lang.value}>
-                            <img
-                              src={lang.icon}
-                              alt={lang.value}
-                              style={{
-                                height: "12px",
-                                borderRadius: "2px",
-                              }}
-                            />{" "}
-                            &nbsp; {lang.name}
-                          </MenuItem>
-                        );
-                      })}
-                    </Select>
-                  </FormGroup>
-                  <br />
-                  <FormGroup>
-                    <FormLabel>{t("textSettings")}</FormLabel>
-                    <FormControlLabel
-                      sx={Uppercase ? { opacity: 0.9 } : { opacity: 0.5 }}
-                      control={
-                        <Switch
-                          checked={Uppercase}
-                          onClick={() => setUppercase(!Uppercase)}
-                        />
-                      }
-                      label={t("uppercase")}
-                    />
-                    <FormControlLabel
-                      sx={Compress ? { opacity: 0.9 } : { opacity: 0.5 }}
-                      control={
-                        <Switch
-                          checked={Compress}
-                          onChange={() => setCompress(!Compress)}
-                        />
-                      }
-                      label={t("compress")}
-                    />
-                  </FormGroup>
-                  <br />
-                  <FormGroup>
-                    <FormLabel>{t("layoutSettings")}</FormLabel>
-                    <FormControlLabel
-                      sx={HidePasteBtn ? { opacity: 0.9 } : { opacity: 0.6 }}
-                      control={
-                        <Switch
-                          checked={HidePasteBtn}
-                          onClick={() => SetHidePasteBtn(!HidePasteBtn)}
-                        />
-                      }
-                      label={t("pasteBtn")}
-                    />
-                    <FormControlLabel
-                      sx={HideFooter ? { opacity: 0.9 } : { opacity: 0.6 }}
-                      control={
-                        <Switch
-                          checked={HideFooter}
-                          onChange={() => SetHideFooter(!HideFooter)}
-                        />
-                      }
-                      label={t("footer")}
-                    />
-                  </FormGroup>
-                  <br />
-                  <FormLabel component="legend">{t("txtArea")}</FormLabel>
-                  <br />
-                  <FormGroup>
-                    <Slider
-                      sx={{ width: "150px" }}
-                      min={20}
-                      step={1}
-                      max={35}
-                      value={TextSize}
-                      valueLabelDisplay="auto"
-                      valueLabelFormat={TextSize + "vh"}
-                      onChange={(e) => setTextSize(e.target.value)}
-                    />
-                  </FormGroup>
-                  <Divider />
-                  <br />
-                  <Button
-                    variant="outlined"
-                    onClick={() => {
-                      localStorage.clear();
-                      window.location.reload(false);
-                    }}
-                  >
-                    <Logout /> &nbsp;
-                    {t("logout")}
-                  </Button>
-                </>
-              ),
-            }}
+            title={t("settingsHeader")}
             close={() => setModal(false)}
-          ></Modal>
+          >
+            <>
+              <FormGroup>
+                <FormLabel>{t("lang")}</FormLabel>
+                <br />
+
+                <Select
+                  defaultValue="en"
+                  value={lang}
+                  onChange={(e) => {
+                    setLang(e.target.value);
+                  }}
+                >
+                  {langs.map((lang, index) => {
+                    return (
+                      <MenuItem key={index} value={lang.value}>
+                        <img
+                          src={lang.icon}
+                          alt={lang.value}
+                          style={{
+                            height: "12px",
+                            borderRadius: "2px",
+                          }}
+                        />{" "}
+                        &nbsp; {lang.name}
+                      </MenuItem>
+                    );
+                  })}
+                </Select>
+              </FormGroup>
+              <br />
+              <FormGroup>
+                <FormLabel>{t("textSettings")}</FormLabel>
+                <FormControlLabel
+                  sx={Uppercase ? { opacity: 0.9 } : { opacity: 0.5 }}
+                  control={
+                    <Switch
+                      checked={Uppercase}
+                      onClick={() => setUppercase(!Uppercase)}
+                    />
+                  }
+                  label={t("uppercase")}
+                />
+                <FormControlLabel
+                  sx={Compress ? { opacity: 0.9 } : { opacity: 0.5 }}
+                  control={
+                    <Switch
+                      checked={Compress}
+                      onChange={() => setCompress(!Compress)}
+                    />
+                  }
+                  label={t("compress")}
+                />
+              </FormGroup>
+              <br />
+              <FormGroup>
+                <FormLabel>{t("layoutSettings")}</FormLabel>
+                <FormControlLabel
+                  sx={HidePasteBtn ? { opacity: 0.9 } : { opacity: 0.6 }}
+                  control={
+                    <Switch
+                      checked={HidePasteBtn}
+                      onClick={() => SetHidePasteBtn(!HidePasteBtn)}
+                    />
+                  }
+                  label={t("pasteBtn")}
+                />
+                <FormControlLabel
+                  sx={HideFooter ? { opacity: 0.9 } : { opacity: 0.6 }}
+                  control={
+                    <Switch
+                      checked={HideFooter}
+                      onChange={() => SetHideFooter(!HideFooter)}
+                    />
+                  }
+                  label={t("footer")}
+                />
+              </FormGroup>
+              <br />
+              <FormLabel component="legend">{t("txtArea")}</FormLabel>
+              <br />
+              <FormGroup>
+                <Slider
+                  sx={{ width: "150px" }}
+                  min={20}
+                  step={1}
+                  max={35}
+                  value={TextSize}
+                  valueLabelDisplay="auto"
+                  valueLabelFormat={TextSize + "vh"}
+                  onChange={(e) => setTextSize(e.target.value)}
+                />
+              </FormGroup>
+              <Divider />
+              <br />
+              <Button
+                variant="outlined"
+                onClick={() => {
+                  localStorage.clear();
+                  window.location.reload(false);
+                }}
+              >
+                <Logout /> &nbsp;
+                {t("logout")}
+              </Button>
+            </>
+          </Modal>
           <Footer visible={Focus && !HideFooter} />
         </div>
       </ThemeProvider>

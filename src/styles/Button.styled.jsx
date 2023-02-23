@@ -5,6 +5,7 @@ import { newShade } from "../utils";
  * A styled button component.
  * @param {string} background - The background color of the button.
  * @returns {JSX.Element} - A styled button component.
+ * @example <ButtonComponent background="#03a688">This is button</ButtonComponent>
  */
 export const ButtonComponent = styled.button`
   background: ${((props) => props.background, -40)};
@@ -55,6 +56,7 @@ ButtonComponent.defaultProps = {
  * @param {boolean} visible - Indicates whether the settings button is visible or not.
  * @param {boolean} footer - Indicates whether the settings button is placed in the footer.
  * @returns {JSX.Element} - A styled settings button component.
+ * @example <SettingsButton visible={true} footer={false} >This is settings button</SettingsButton>
  */
 
 export const SettingsButton = styled.button`

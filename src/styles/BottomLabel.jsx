@@ -2,6 +2,7 @@ import styled from "styled-components";
 /**
  * Styled component for a bottom label.
  * @param {boolean} visible - Determines the visibility of the label.
+ * @example <BottomLabel visible={true}>This is bottom label</BottomLabel>
  */
 export const BottomLabel = styled.div`
   transition: 0.3s all;

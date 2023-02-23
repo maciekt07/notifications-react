@@ -6,11 +6,13 @@ import { IoClose } from "react-icons/io5";
  * @param {Object} props - The props object containing the modal content and settings
  * @param {Boolean} props.show - A boolean value indicating whether or not the modal should be displayed
  * @param {Function} props.close - A function to close the modal when clicked
- * @param {Object} props.content - An object containing the title and text to display within the modal
- * @param {String} props.content.title - The title to display within the modal
- * @param {String} props.content.text - The text to display within the modal
+ * @param {String} props.title - The title to display within the modal
  * @param {ReactNode} [props.children] - Optional child components to display within the modal
  * @returns {ReactNode} - The modal component
+ * @example
+ *  <Modal show={showModal} title="This is title" close={() => setModal(false)}>
+    <h1>This is content</h1>
+  </Modal>;
  */
 export const Modal = (props) => {
   if (props.show) {
@@ -25,8 +27,7 @@ export const Modal = (props) => {
         <ModalComponent>
           <ModalOverlay onClick={props.close} />
           <ModalContent>
-            <h2>{props.content.title}</h2>
-            <div>{props.content.text}</div>
+            <h2>{props.title}</h2>
             <Close onClick={props.close}>
               <IoClose />
             </Close>

@@ -5,6 +5,7 @@ Renders a footer component that displays information about the creator.
 @param {boolean} props.visible - Whether the footer component is visible or not.
 @param {string} props.color - The color of the footer component.
 @returns {JSX.Element} - The JSX Element for the footer component.
+@example <Footer visible={true} color="#364573" />
 */
 export const Footer = (props) => {
   return (
