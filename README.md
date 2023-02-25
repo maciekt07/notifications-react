@@ -1,7 +1,7 @@
 # created using create-react-app
 
-notifications creator made for cheating at school 😎 <br />
-made using React.js, styled-components
+notifications creator for cheating at school 😎 <br />
+made using React.js, LocalStorage, Styled Components and Material UI
 
 <img style="width:350px" src="img/img1.png" /><br />
 <img style="width:350px" src="img/img2.png" /><br />
