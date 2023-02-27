@@ -11,6 +11,7 @@ export const BottomLabel = styled.div`
   right: 16px;
   font-size: 12px;
   font-weight: lighter;
+
   color: white;
   z-index: 1;
   opacity: ${(props) => (props.visible ? 0.7 : 0)};

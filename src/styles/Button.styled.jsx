@@ -8,7 +8,6 @@ import { newShade } from "../utils";
  * @example <ButtonComponent background="#03a688">This is button</ButtonComponent>
  */
 export const ButtonComponent = styled.button`
-  background: ${((props) => props.background, -40)};
   transition: 0.3s all;
   border-radius: 22px;
   color: white;
@@ -18,7 +17,7 @@ export const ButtonComponent = styled.button`
   width: auto;
   font-size: 1.5em;
   font-weight: 500;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.04em;
   cursor: pointer;
   transition: 0.3s all;
   /* display: ${(props) => (props.visible ? "block" : "none")}; */
@@ -54,7 +53,7 @@ ButtonComponent.defaultProps = {
 /**
  * A styled settings button component.
  * @param {boolean} visible - Indicates whether the settings button is visible or not.
- * @param {boolean} footer - Indicates whether the settings button is placed in the footer.
+ * @param {boolean} footer - Indicates whether the footer is visible.
  * @returns {JSX.Element} - A styled settings button component.
  * @example <SettingsButton visible={true} footer={false} >This is settings button</SettingsButton>
  */
@@ -73,6 +72,7 @@ export const SettingsButton = styled.button`
   border: 2px solid transparent;
   opacity: ${(props) => (props.visible ? 1 : 0)};
   visibility: ${(props) => (props.visible ? "visible" : "hidden")};
+  z-index: 3;
   /* &:hover {
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   } */

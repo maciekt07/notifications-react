@@ -32,22 +32,7 @@ export const Login = () => {
     <>
       <ThemeProvider theme={theme}>
         <LoginGlobal />
-        <Toaster
-          toastOptions={{
-            success: {
-              iconTheme: {
-                primary: "#672fff",
-                secondary: "white",
-              },
-            },
-            error: {
-              iconTheme: {
-                primary: "#ff443a",
-                secondary: "white",
-              },
-            },
-          }}
-        />
+        <Toaster />
         <Container>
           <LoginContainer>
             <HeaderText>Enter Password</HeaderText>

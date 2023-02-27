@@ -37,6 +37,7 @@ import { useTranslation, initReactI18next, Trans } from "react-i18next";
 import gb from "./assets/gb.svg";
 import pl from "./assets/pl.svg";
 import { Logout } from "@mui/icons-material";
+
 i18n
   .use(initReactI18next) // passes i18n down to react-i18next
   .init({
@@ -108,11 +109,14 @@ const App = () => {
       body: NotificationText(),
       icon: logo,
     }).then(() => {
-      SetLastUse(getDate());
+      SetLastUse(getDate(lang));
       toast.success(t("notification"), {
         duration: 1300,
         position: "top-center",
         style: {
+          marginTop: "10px",
+          background: "#ffffffb3",
+          backdropFilter: "blur(6px)",
           padding: "16px",
           border: `2px solid ${btn.create}`,
           borderRadius: "16px",
@@ -121,10 +125,10 @@ const App = () => {
       });
     });
   };
-  window.addEventListener("storage", function (e) {
-    console.log(e);
-    localStorage.setItem(e.key, e.oldValue);
-  });
+  // window.addEventListener("storage", (e) => {
+  //   console.log(e);
+  //   localStorage.setItem(e.key, e.oldValue);
+  // });
   return (
     <Suspense fallback="Loading...">
       <ThemeProvider theme={theme}>
@@ -206,7 +210,7 @@ const App = () => {
                 {t("load")}
               </ButtonComponent>{" "}
               <Info emoji="💡">
-                <Trans components={{ bold: <strong /> }}>{t("loadInfo")}</Trans>{" "}
+                <Trans components={{ bold: <b /> }}>{t("loadInfo")}</Trans>{" "}
                 <b>
                   {localStorage.getItem("Text").slice(0, 16)}
                   {localStorage.getItem("Text").length > 16 ? "..." : ""}
@@ -221,7 +225,7 @@ const App = () => {
         ${LastUse}`}
           </BottomLabel>
           <SettingsButton
-            onClick={() => setModal(true)}
+            onClick={() => setModal((m) => !m)}
             footer={HideFooter}
             visible={Focus}
           >
@@ -269,7 +273,7 @@ const App = () => {
                   control={
                     <Switch
                       checked={Uppercase}
-                      onClick={() => setUppercase(!Uppercase)}
+                      onClick={() => setUppercase((u) => !u)}
                     />
                   }
                   label={t("uppercase")}
@@ -279,7 +283,7 @@ const App = () => {
                   control={
                     <Switch
                       checked={Compress}
-                      onChange={() => setCompress(!Compress)}
+                      onChange={() => setCompress((c) => !c)}
                     />
                   }
                   label={t("compress")}
@@ -293,7 +297,7 @@ const App = () => {
                   control={
                     <Switch
                       checked={HidePasteBtn}
-                      onClick={() => SetHidePasteBtn(!HidePasteBtn)}
+                      onClick={() => SetHidePasteBtn((h) => !h)}
                     />
                   }
                   label={t("pasteBtn")}
@@ -303,7 +307,7 @@ const App = () => {
                   control={
                     <Switch
                       checked={HideFooter}
-                      onChange={() => SetHideFooter(!HideFooter)}
+                      onChange={() => SetHideFooter((h) => !h)}
                     />
                   }
                   label={t("footer")}
@@ -314,7 +318,7 @@ const App = () => {
               <br />
               <FormGroup>
                 <Slider
-                  sx={{ width: "150px" }}
+                  sx={{ width: "200px" }}
                   min={20}
                   step={1}
                   max={35}

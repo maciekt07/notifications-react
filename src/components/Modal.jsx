@@ -1,21 +1,22 @@
 import React from "react";
 import styled, { css } from "styled-components";
 import { IoClose } from "react-icons/io5";
+
 /**
- * A React modal component with a styled design
- * @param {Object} props - The props object containing the modal content and settings
- * @param {Boolean} props.show - A boolean value indicating whether or not the modal should be displayed
- * @param {Function} props.close - A function to close the modal when clicked
- * @param {String} props.title - The title to display within the modal
- * @param {ReactNode} [props.children] - Optional child components to display within the modal
- * @returns {ReactNode} - The modal component
+ * Renders a modal dialog box.
+ * @param {boolean} show - Whether or not to show the modal dialog box.
+ * @param {() => void} close - A function to close the modal dialog box.
+ * @param {string} title - The title of the modal dialog box.
+ * @param {React.ReactNode} children - The content of the modal dialog box.
+ * @returns {JSX.Element | null} The rendered modal dialog box or null if not shown.
  * @example
  *  <Modal show={showModal} title="This is title" close={() => setModal(false)}>
     <h1>This is content</h1>
   </Modal>;
  */
-export const Modal = (props) => {
-  if (props.show) {
+
+export const Modal = ({ show, close, title, children }) => {
+  if (show) {
     document.body.classList.add("active-modal");
   } else {
     document.body.classList.remove("active-modal");
@@ -23,15 +24,15 @@ export const Modal = (props) => {
 
   return (
     <>
-      {props.show && (
+      {show && (
         <ModalComponent>
-          <ModalOverlay onClick={props.close} />
+          <ModalOverlay onClick={close} />
           <ModalContent>
-            <h2>{props.title}</h2>
-            <Close onClick={props.close}>
+            <h2>{title}</h2>
+            <Close onClick={close}>
               <IoClose />
             </Close>
-            {props.children}
+            {children}
           </ModalContent>
         </ModalComponent>
       )}

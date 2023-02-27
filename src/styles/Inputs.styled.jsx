@@ -74,6 +74,6 @@ export const TextInput = styled.textarea`
   resize: none !important;
   height: ${(props) => props.size + "vh"};
   &:focus {
-    height: ${(props) => `calc(${props.size}vh + 12vh)`};
+    height: ${(props) => `calc(${props.size}vh + 10vh)`};
   }
 `;

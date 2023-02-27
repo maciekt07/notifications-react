@@ -1,15 +1,16 @@
 import { LinkComponent, FooterComponent, FooterEmoji, themeColors } from "../styles";
+
 /**
-Renders a footer component that displays information about the creator.
-@param {Object} props - The props object that contains visible and color properties.
-@param {boolean} props.visible - Whether the footer component is visible or not.
-@param {string} props.color - The color of the footer component.
-@returns {JSX.Element} - The JSX Element for the footer component.
-@example <Footer visible={true} color="#364573" />
-*/
-export const Footer = (props) => {
+ * Renders a footer component that displays information about the creator.
+ * @param {boolean} visible - Whether or not the footer is visible.
+ * @param {string} color - The color of the footer.
+ * @returns {JSX.Element} The JSX Element for the footer component.
+ * @example <Footer visible={true} color="#364573" />
+ */
+
+export const Footer = ({ visible, color }) => {
   return (
-    <FooterComponent visible={props.visible} color={props.color}>
+    <FooterComponent visible={visible} color={color}>
       Made with <FooterEmoji color={themeColors.$linkColor}>💙</FooterEmoji> By&nbsp;
       <LinkComponent
         clr="#3abdff"

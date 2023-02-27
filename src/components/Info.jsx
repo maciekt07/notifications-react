@@ -8,6 +8,16 @@ A component that displays information with an optional emoji and visibility cont
 @returns {JSX.Element|null} The rendered component or null if visible is false.
 @example <Info visible={true} emoji="😊">This is info</Info>
 */
+
+/**
+ * A component that displays information with an optional emoji and visibility control.
+ * @param {boolean} visible - Whether or not the message is visible.
+ * @param {string} emoji - The emoji to display before the message.
+ * @param {React.ReactNode} children - The message to display.
+ * @returns {JSX.Element | null} The rendered message component or null if not visible.
+ * @example <Info visible={true} emoji="😊">This is info</Info>
+ */
+
 export const Info = ({ visible, emoji, children }) => {
   return visible ? (
     <InfoComponent>

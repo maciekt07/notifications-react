@@ -1,25 +1,23 @@
 import styled from "styled-components";
 
 /**
- * A component that displays the length of a text input.
- *
- * @param {Object} props - The props that are passed to the component.
- * @param {boolean} props.focus - Whether the input is currently focused.
- * @param {number} props.length - The length of the input value.
+ * Renders a component displaying the length of input.
+ * @param {boolean} focus - Whether the input is currently focused.
+ * @param {number} length - The length of the input value.
  * @returns {JSX.Element} The JSX element that displays the length of the input.
- * @example <Length length={Text.length} focus={Focus} />
+ * @example <Length focus={Focus}  length={Text.length} />
  */
 
-export const Length = (props) => {
+export const Length = ({ focus, length }) => {
   const numberFormatter = Intl.NumberFormat(navigator.language);
   const format = (n) => numberFormatter.format(n);
   return (
-    <LengthComponent f={props.focus} length={props.length}>
-      Length:{" "}
-      <LengthNumber red={props.length >= 997}>{format(props.length)}</LengthNumber>
+    <LengthComponent f={focus} length={length}>
+      Length: <LengthNumber red={length >= 997}>{format(length)}</LengthNumber>
     </LengthComponent>
   );
 };
+
 const LengthComponent = styled.div`
   pointer-events: none;
   border-radius: 10px;
@@ -43,6 +41,5 @@ const LengthComponent = styled.div`
 
 const LengthNumber = styled.span`
   transition: 0.3s color;
-
   text-shadow: ${(props) => props.red && "0px 0px 12px #ff8383"};
 `;
