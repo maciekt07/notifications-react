@@ -1,13 +1,14 @@
 {
   "files": {
-    "main.js": "/notifications-react/static/js/main.1d3cd4f1.js",
+    "main.js": "/notifications-react/static/js/main.3e9347ff.js",
     "static/js/27.2af28eb9.chunk.js": "/notifications-react/static/js/27.2af28eb9.chunk.js",
     "service-worker.js": "/notifications-react/service-worker.js",
+    "static/media/padlock.png": "/notifications-react/static/media/padlock.f0db8e7e8910f6887141.png",
     "index.html": "/notifications-react/index.html",
     "static/media/gb.svg": "/notifications-react/static/media/gb.1c2fbca1edb607a1d32974348798e6a3.svg",
     "static/media/pl.svg": "/notifications-react/static/media/pl.7bb91391bef36e2f5b11c5487deaf246.svg"
   },
   "entrypoints": [
-    "static/js/main.1d3cd4f1.js"
+    "static/js/main.3e9347ff.js"
   ]
 }
