@@ -1,13 +1,12 @@
 import styled from "styled-components";
-const defaultLinkColor = "#b6a0e4";
 /**
  * A styled link component with hover and focus states and transition effects.
- * @param {string} clr - The color of the link. Defaults to #b6a0e4.
+ * @param {string} clr - The color of the link. Defaults to #3abdff.
  * @example <LinkComponent color="#672fff" href="https://example.com/">This is link</LinkComponent>
  */
 export const LinkComponent = styled.a`
   cursor: pointer;
-  color: ${(props) => (props.clr ? props.clr : defaultLinkColor)};
+  color: ${(props) => props.clr};
   display: inline-block;
   position: relative;
   text-decoration: none;
@@ -21,7 +20,7 @@ export const LinkComponent = styled.a`
     height: 2px;
     bottom: 0;
     left: 0;
-    background-color: ${(props) => (props.clr ? props.clr : defaultLinkColor)};
+    background-color: ${(props) => props.clr};
     transform-origin: bottom right;
     transition: transform 0.25s ease-out;
     border-radius: 100px;
@@ -34,8 +33,7 @@ export const LinkComponent = styled.a`
   }
 
   &:hover {
-    text-shadow: 0px 0px 20px
-      ${(props) => (props.clr ? props.clr : defaultLinkColor)};
+    text-shadow: 0px 0px 20px ${(props) => props.clr};
   }
 
   &:focus,
@@ -44,3 +42,6 @@ export const LinkComponent = styled.a`
     box-shadow: none;
   }
 `;
+LinkComponent.defaultProps = {
+  clr: "#3abdff",
+};

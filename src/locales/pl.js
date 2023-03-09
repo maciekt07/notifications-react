@@ -22,4 +22,7 @@ export const translationsPl = {
   txtArea: "Rozmiar Pola Tekstowego",
   lang: "Język",
   logout: "Wyloguj",
+  LogoutDialogTitle: "Czy na pewno chcesz się wylogować?",
+  yes: "Tak",
+  no: "Nie",
 };

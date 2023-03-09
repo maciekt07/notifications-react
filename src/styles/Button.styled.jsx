@@ -8,6 +8,7 @@ import { newShade } from "../utils";
  * @example <ButtonComponent background="#03a688">This is button</ButtonComponent>
  */
 export const ButtonComponent = styled.button`
+  user-select: none;
   transition: 0.3s all;
   border-radius: 22px;
   color: white;
@@ -27,15 +28,17 @@ export const ButtonComponent = styled.button`
     ${(props) => newShade(props.background, btn.lightenShade)} 88.71%
   );
 
-  &:hover {
+  &:hover,
+  &:focus-visible {
+    outline: none;
     text-shadow: 0px 2px 9px rgba(0, 0, 0, 0.25);
     box-shadow: 0px 0px 20px 2px ${(props) => props.background};
   }
-  &:focus-visible {
+  /* &:focus-visible {
     outline: 3px solid ${(props) => props.background};
     box-shadow: 0px 0px 20px 2px
       ${(props) => newShade(props.background, btn.lightenShade)};
-  }
+  } */
   &:disabled {
     opacity: 0.6;
     cursor: not-allowed;
@@ -59,6 +62,7 @@ ButtonComponent.defaultProps = {
  */
 
 export const SettingsButton = styled.button`
+  user-select: none;
   transition: 0.3s all;
   position: fixed;
   bottom: ${(props) => (props.footer ? "16px" : "60px")};
@@ -73,6 +77,12 @@ export const SettingsButton = styled.button`
   opacity: ${(props) => (props.visible ? 1 : 0)};
   visibility: ${(props) => (props.visible ? "visible" : "hidden")};
   z-index: 3;
+  &:hover,
+  &:focus-visible {
+    outline: none;
+    box-shadow: 0px 0px 15px 0px #4f6691;
+    text-shadow: 0px 0px 6px rgba(0, 0, 0, 0.25);
+  }
   /* &:hover {
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   } */

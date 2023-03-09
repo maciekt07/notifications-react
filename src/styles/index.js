@@ -12,4 +12,5 @@ export {
   LoginButton,
   HeaderText,
   Container,
+  LoginTextField,
 } from "./Login.styled";

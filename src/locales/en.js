@@ -22,4 +22,7 @@ export const translationsEn = {
   txtArea: "Text Area Size",
   lang: "Language",
   logout: "Logout",
+  LogoutDialogTitle: "Are you sure you want to log out?",
+  yes: "Yes",
+  no: "No",
 };

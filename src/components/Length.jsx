@@ -41,5 +41,5 @@ const LengthComponent = styled.div`
 
 const LengthNumber = styled.span`
   transition: 0.3s color;
-  text-shadow: ${(props) => props.red && "0px 0px 12px #ff8383"};
+  text-shadow: ${(props) => props.red && "0px 0px 6px #ff5d5d"};
 `;

@@ -28,7 +28,7 @@ body {
   background: ${themeColors.$colorHex3};
   transition: 0s all;
 
-  margin: 0;
+  margin-top: 25px;
   &.active-modal {
     overflow-y: hidden;
   }

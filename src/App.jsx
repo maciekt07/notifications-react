@@ -24,6 +24,9 @@ import {
 import FormLabel from "@mui/material/FormLabel";
 import {
   Button,
+  Dialog,
+  DialogActions,
+  DialogTitle,
   Divider,
   MenuItem,
   Select,
@@ -84,6 +87,7 @@ const App = () => {
   const [HideFooter, SetHideFooter] = useStickyState(false, "HideFooter");
   const [modal, setModal] = useState(false);
   const [TextSize, setTextSize] = useStickyState(28, "TextSize");
+  const [LogoutDialog, setLogoutDialog] = useState(false);
   const [lang, setLang] = useStickyState(
     navigator.language.split("-")[0] === "pl" ? "pl" : "en",
     "language"
@@ -115,7 +119,7 @@ const App = () => {
         position: "top-center",
         style: {
           marginTop: "10px",
-          background: "#ffffffb3",
+          background: "#ffffff91",
           backdropFilter: "blur(6px)",
           padding: "16px",
           border: `2px solid ${btn.create}`,
@@ -208,7 +212,8 @@ const App = () => {
                 background={btn.load}
               >
                 {t("load")}
-              </ButtonComponent>{" "}
+              </ButtonComponent>
+              <br />
               <Info emoji="💡">
                 <Trans components={{ bold: <b /> }}>{t("loadInfo")}</Trans>{" "}
                 <b>
@@ -218,6 +223,7 @@ const App = () => {
               </Info>
             </>
           )}
+          <span style={{ padding: "0 0 10vh 0" }}></span>
           <BottomLabel visible={Focus && !HideFooter}>
             {useOnlineStatus() ? <Online /> : <Offline />}{" "}
             {LastUse !== null &&
@@ -248,21 +254,19 @@ const App = () => {
                     setLang(e.target.value);
                   }}
                 >
-                  {langs.map((lang, index) => {
-                    return (
-                      <MenuItem key={index} value={lang.value}>
-                        <img
-                          src={lang.icon}
-                          alt={lang.value}
-                          style={{
-                            height: "12px",
-                            borderRadius: "2px",
-                          }}
-                        />{" "}
-                        &nbsp; {lang.name}
-                      </MenuItem>
-                    );
-                  })}
+                  {langs.map((lang, index) => (
+                    <MenuItem key={index} value={lang.value}>
+                      <img
+                        src={lang.icon}
+                        alt={lang.value}
+                        style={{
+                          height: "12px",
+                          borderRadius: "2px",
+                        }}
+                      />{" "}
+                      &nbsp; {lang.name}
+                    </MenuItem>
+                  ))}
                 </Select>
               </FormGroup>
               <br />
@@ -314,7 +318,7 @@ const App = () => {
                 />
               </FormGroup>
               <br />
-              <FormLabel component="legend">{t("txtArea")}</FormLabel>
+              <FormLabel>{t("txtArea")}</FormLabel>
               <br />
               <FormGroup>
                 <Slider
@@ -327,21 +331,31 @@ const App = () => {
                   valueLabelFormat={TextSize + "vh"}
                   onChange={(e) => setTextSize(e.target.value)}
                 />
+
+                <br />
               </FormGroup>
               <Divider />
               <br />
-              <Button
-                variant="outlined"
-                onClick={() => {
-                  localStorage.clear();
-                  window.location.reload(false);
-                }}
-              >
+              <Button variant="outlined" onClick={() => setLogoutDialog(true)}>
                 <Logout /> &nbsp;
                 {t("logout")}
               </Button>
             </>
           </Modal>
+          <Dialog open={LogoutDialog} onClose={() => setLogoutDialog(false)}>
+            <DialogTitle>{t("LogoutDialogTitle")}</DialogTitle>
+            <DialogActions>
+              <Button onClick={() => setLogoutDialog(false)}>{t("no")}</Button>
+              <Button
+                onClick={() => {
+                  localStorage.setItem("v", null);
+                  window.location.reload(false);
+                }}
+              >
+                {t("yes")}
+              </Button>
+            </DialogActions>
+          </Dialog>
           <Footer visible={Focus && !HideFooter} />
         </div>
       </ThemeProvider>

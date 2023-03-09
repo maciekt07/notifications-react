@@ -7,7 +7,7 @@
  * @returns {string} The generated random string.
  * @example rndChar("d", 16)
  */
-export function rndChar(c, max) {
+export const rndChar = (c, max) => {
   let repeatCount = Math.floor(Math.random() * max + 1);
   if (repeatCount === 0) {
     repeatCount = 1;
@@ -24,4 +24,4 @@ export function rndChar(c, max) {
       })
       .join("")
   );
-}
+};

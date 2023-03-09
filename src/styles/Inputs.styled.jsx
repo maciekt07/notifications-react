@@ -16,12 +16,14 @@ const Inputs = css`
   max-width: 850px;
 
   &::placeholder {
+    user-select: none;
     color: ${themeColors.$colorHex2};
     opacity: 0.75;
   }
 
   &::selection {
     background: ${themeColors.$colorHex5};
+    color: #0e0e0e;
   }
 
   &:focus,

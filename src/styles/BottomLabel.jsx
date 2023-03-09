@@ -7,7 +7,7 @@ import styled from "styled-components";
 export const BottomLabel = styled.div`
   transition: 0.3s all;
   position: fixed;
-  bottom: 50px;
+  bottom: 57px;
   right: 16px;
   font-size: 12px;
   font-weight: lighter;

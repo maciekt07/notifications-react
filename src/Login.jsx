@@ -1,13 +1,16 @@
 import {
   FormControlLabel,
   FormGroup,
-  TextField,
   Checkbox,
   Link,
+  Typography,
 } from "@mui/material";
 import { ThemeProvider } from "@mui/system";
 import { useState } from "react";
 import { toast, Toaster } from "react-hot-toast";
+
+import padlock from "./assets/padlock.png";
+import { Footer } from "./components";
 
 import {
   Container,
@@ -16,7 +19,9 @@ import {
   LoginGlobal,
   theme,
   LoginContainer,
+  LoginTextField,
 } from "./styles";
+import { hexToRgba } from "./utils";
 import { rndChar } from "./utils/rndChar";
 
 /**
@@ -35,9 +40,22 @@ export const Login = () => {
         <Toaster />
         <Container>
           <LoginContainer>
+            <img
+              style={{
+                position: "absolute",
+                PointerEvent: "none",
+                marginBottom: "500px",
+                width: "250px",
+                userSelect: "none",
+                filter: "drop-shadow(0px 0px 40px #f0be48cc)",
+              }}
+              onDragStart={(e) => e.preventDefault()}
+              src={padlock}
+              alt="padlock"
+            />
             <HeaderText>Enter Password</HeaderText>
             <br />
-            <TextField
+            <LoginTextField
               error={error && pass.length > 0}
               helperText={error && pass.length !== 0 && "Wrong Password."}
               sx={{ width: "250px" }}
@@ -68,6 +86,9 @@ export const Login = () => {
                       border: `2px solid #ff443a`,
                       borderRadius: "16px",
                       color: "black",
+                      marginTop: "10px",
+                      background: "#ffffff91",
+                      backdropFilter: "blur(6px)",
                     },
                   });
                   setError(true);
@@ -87,7 +108,18 @@ export const Login = () => {
                     onChange={() => setShowPass(!showPass)}
                   />
                 }
-                label="Show Password"
+                label={
+                  <Typography
+                    sx={{
+                      opacity: showPass ? 1 : 0.7,
+                      transition: "0.2s all",
+                      fontWeight: "400",
+                      fontFamily: "poppins",
+                    }}
+                  >
+                    Show Password
+                  </Typography>
+                }
               />
             </FormGroup>
 
@@ -101,16 +133,23 @@ export const Login = () => {
                     border: `2px solid #672fff`,
                     borderRadius: "16px",
                     color: "black",
+                    background: "#ffffff91",
+                    backdropFilter: "blur(6px)",
                   },
                 })
               }
-              sx={{ width: "250px", cursor: "pointer", userSelect: "none" }}
+              sx={{
+                width: "250px",
+                cursor: "pointer",
+                userSelect: "none",
+              }}
               color="secondary"
             >
               Forgot Password?
             </Link>
           </LoginContainer>
         </Container>
+        <Footer background="#f1f7fe" color="#333" linkColor="#672fff" />
       </ThemeProvider>
     </>
   );
