@@ -36,7 +36,7 @@ export const LoginContainer = styled.div`
   align-items: center;
   flex-direction: column;
   background: hsl(213deg 85% 97%);
-  border-radius: 30px;
+  border-radius: 40px;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 `;
 
@@ -55,6 +55,7 @@ export const HeaderText = styled.h1`
 `;
 
 export const LoginButton = styled.button`
+  font-family: poppins;
   user-select: none;
   width: 250px;
   padding: 1em;

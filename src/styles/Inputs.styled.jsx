@@ -23,7 +23,6 @@ const Inputs = css`
 
   &::selection {
     background: ${themeColors.$colorHex5};
-    color: #0e0e0e;
   }
 
   &:focus,

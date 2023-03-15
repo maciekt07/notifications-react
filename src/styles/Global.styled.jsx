@@ -27,11 +27,18 @@ export const GlobalStyle = createGlobalStyle`
 body {
   background: ${themeColors.$colorHex3};
   transition: 0s all;
-
   margin-top: 25px;
-  &.active-modal {
-    overflow-y: hidden;
-  }
+  .MuiSlider-valueLabel {
+  border-radius: 8px;
+  box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.25);
+  text-shadow: 0px 2px 6px rgba(0, 0, 0, 0.25);
+  color: #000000d2;
+  background: hsl(213deg 85% 97%);
+  /* &::after, &::before {
+    display: none;
+  } */
+}
+ 
 }
 
 

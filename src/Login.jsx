@@ -47,7 +47,7 @@ export const Login = () => {
                 marginBottom: "500px",
                 width: "250px",
                 userSelect: "none",
-                filter: "drop-shadow(0px 0px 40px #f0be48cc)",
+                filter: "drop-shadow(0px 0px 40px #f0be48dc)",
               }}
               onDragStart={(e) => e.preventDefault()}
               src={padlock}

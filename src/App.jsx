@@ -1,4 +1,4 @@
-import { useState, useEffect, Suspense } from "react";
+import { useState, useEffect, Suspense, useRef } from "react";
 import { toast, Toaster } from "react-hot-toast";
 import logo from "./assets/logo192.png";
 import Push from "push.js";
@@ -331,22 +331,36 @@ const App = () => {
                   valueLabelFormat={TextSize + "vh"}
                   onChange={(e) => setTextSize(e.target.value)}
                 />
-
                 <br />
               </FormGroup>
               <Divider />
-              <br />
+              <br style={{ padding: ".5px" }} />
               <Button variant="outlined" onClick={() => setLogoutDialog(true)}>
                 <Logout /> &nbsp;
                 {t("logout")}
               </Button>
             </>
           </Modal>
-          <Dialog open={LogoutDialog} onClose={() => setLogoutDialog(false)}>
+          <Dialog
+            PaperProps={{
+              style: {
+                borderRadius: 18,
+                padding: 4,
+              },
+            }}
+            open={LogoutDialog}
+            onClose={() => setLogoutDialog(false)}
+          >
             <DialogTitle>{t("LogoutDialogTitle")}</DialogTitle>
             <DialogActions>
-              <Button onClick={() => setLogoutDialog(false)}>{t("no")}</Button>
               <Button
+                style={{ fontSize: ".9rem" }}
+                onClick={() => setLogoutDialog(false)}
+              >
+                {t("no")}
+              </Button>
+              <Button
+                style={{ fontSize: ".9rem" }}
                 onClick={() => {
                   localStorage.setItem("v", null);
                   window.location.reload(false);

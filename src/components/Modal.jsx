@@ -16,12 +16,6 @@ import { IoClose } from "react-icons/io5";
  */
 
 export const Modal = ({ show, close, title, children }) => {
-  if (show) {
-    document.body.classList.add("active-modal");
-  } else {
-    document.body.classList.remove("active-modal");
-  }
-
   return (
     <>
       {show && (
@@ -60,18 +54,19 @@ const ModalOverlay = styled.div`
   backdrop-filter: blur(4px);
 `;
 const ModalContent = styled.div`
+  text-transform: capitalize;
   z-index: 3;
   position: absolute;
-  top: 40%;
+  top: 42%;
   left: 50%;
   transform: translate(-50%, -50%);
   line-height: 1.4;
   background: #ffffffa2;
   backdrop-filter: blur(20px);
-  padding: 20px 30px;
+  padding: 25px 35px;
   max-width: 600px;
   min-width: 300px;
-  border-radius: 16px;
+  border-radius: 26px;
   & h2 {
     opacity: 0.8;
   }
@@ -81,8 +76,8 @@ const ModalContent = styled.div`
 `;
 const Close = styled.span`
   position: absolute;
-  top: 10px;
-  right: 10px;
+  top: 14px;
+  right: 14px;
   padding: 5px 7px;
   & svg {
     height: 1.4em;

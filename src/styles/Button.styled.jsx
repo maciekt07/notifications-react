@@ -7,7 +7,9 @@ import { newShade } from "../utils";
  * @returns {JSX.Element} - A styled button component.
  * @example <ButtonComponent background="#03a688">This is button</ButtonComponent>
  */
-export const ButtonComponent = styled.button`
+export const ButtonComponent = styled.button.attrs({
+  type: "button",
+})`
   user-select: none;
   transition: 0.3s all;
   border-radius: 22px;
