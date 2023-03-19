@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.js": "/notifications-react/static/js/main.8424252a.js",
+    "main.js": "/notifications-react/static/js/main.5e68e9ab.js",
     "static/js/27.2af28eb9.chunk.js": "/notifications-react/static/js/27.2af28eb9.chunk.js",
     "service-worker.js": "/notifications-react/service-worker.js",
     "static/media/padlock.png": "/notifications-react/static/media/padlock.f0db8e7e8910f6887141.png",
@@ -9,6 +9,6 @@
     "static/media/pl.svg": "/notifications-react/static/media/pl.7bb91391bef36e2f5b11c5487deaf246.svg"
   },
   "entrypoints": [
-    "static/js/main.8424252a.js"
+    "static/js/main.5e68e9ab.js"
   ]
 }
