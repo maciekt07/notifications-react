@@ -6,7 +6,7 @@ import { FaHeart } from "react-icons/fa";
  * @param {string} background - The background color of the footer.
  * @param {string} color - The color of the text in the footer.
  * @param {string} linkColor - The color of the link in the footer.
- * @param {string} emoji - The emoji to be displayed in the footer. Default is "💙".
+ * @param {string} emoji - The emoji to be displayed in the footer.
  * @returns {JSX.Element} The JSX Element for the footer component.
  * @example <Footer background="#f1f7fe" color="#333" linkColor="#672fff" emoji="💜" />
  */

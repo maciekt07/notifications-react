@@ -1,4 +1,4 @@
-import { useState, useEffect, Suspense, useRef } from "react";
+import { useState, useEffect, Suspense } from "react";
 import { toast, Toaster } from "react-hot-toast";
 import logo from "./assets/logo192.png";
 import Push from "push.js";
@@ -39,7 +39,7 @@ import i18n from "i18next";
 import { useTranslation, initReactI18next, Trans } from "react-i18next";
 import gb from "./assets/gb.svg";
 import pl from "./assets/pl.svg";
-import { Logout } from "@mui/icons-material";
+import { Logout, Settings, SettingsInputComponent } from "@mui/icons-material";
 
 i18n
   .use(initReactI18next) // passes i18n down to react-i18next
@@ -112,6 +112,9 @@ const App = () => {
     Push.create(Header, {
       body: NotificationText(),
       icon: logo,
+      onClick: () => {
+        window.open("http://example.com/page");
+      },
     }).then(() => {
       SetLastUse(getDate(lang));
       toast.success(t("notification"), {
@@ -171,8 +174,7 @@ const App = () => {
             onBlur={() => setFocus(true)}
           ></TextInput>
           <Length length={Text.length} focus={Focus} />
-          <br />
-          <br />
+          <span style={{ padding: "0 0 48px 0" }} />
           <ButtonComponent onClick={createClick} background={btn.create}>
             {t("create")}
           </ButtonComponent>
@@ -203,7 +205,6 @@ const App = () => {
               </ButtonComponent>
             </>
           )}
-
           {localStorage.getItem("Text") !== Text && (
             <>
               <br />
@@ -235,7 +236,8 @@ const App = () => {
             footer={HideFooter}
             visible={Focus}
           >
-            {t("settingsHeader")}
+            {/* {t("settingsHeader")} */}
+            <Settings />
           </SettingsButton>
           <Modal
             show={modal}
@@ -248,6 +250,9 @@ const App = () => {
                 <br />
 
                 <Select
+                  style={{
+                    borderRadius: 12,
+                  }}
                   defaultValue="en"
                   value={lang}
                   onChange={(e) => {
@@ -255,7 +260,15 @@ const App = () => {
                   }}
                 >
                   {langs.map((lang, index) => (
-                    <MenuItem key={index} value={lang.value}>
+                    <MenuItem
+                      style={{
+                        padding: 12,
+                        margin: 12,
+                        borderRadius: 12,
+                      }}
+                      key={index}
+                      value={lang.value}
+                    >
                       <img
                         src={lang.icon}
                         alt={lang.value}
@@ -335,7 +348,14 @@ const App = () => {
               </FormGroup>
               <Divider />
               <br style={{ padding: ".5px" }} />
-              <Button variant="outlined" onClick={() => setLogoutDialog(true)}>
+              <Button
+                style={{
+                  borderRadius: 12,
+                  padding: "8px 16px",
+                }}
+                variant="outlined"
+                onClick={() => setLogoutDialog(true)}
+              >
                 <Logout /> &nbsp;
                 {t("logout")}
               </Button>
@@ -354,13 +374,13 @@ const App = () => {
             <DialogTitle>{t("LogoutDialogTitle")}</DialogTitle>
             <DialogActions>
               <Button
-                style={{ fontSize: ".9rem" }}
+                style={{ fontSize: ".9rem", borderRadius: 12 }}
                 onClick={() => setLogoutDialog(false)}
               >
                 {t("no")}
               </Button>
               <Button
-                style={{ fontSize: ".9rem" }}
+                style={{ fontSize: ".9rem", borderRadius: 12 }}
                 onClick={() => {
                   localStorage.setItem("v", null);
                   window.location.reload(false);

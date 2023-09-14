@@ -8,20 +8,11 @@
  * @example rndChar("d", 16)
  */
 export const rndChar = (c, max) => {
-  let repeatCount = Math.floor(Math.random() * max + 1);
-  if (repeatCount === 0) {
-    repeatCount = 1;
-  }
-  const firstChar =
-    Math.floor(Math.random() * 2) === 0 ? c.toLowerCase() : c.toUpperCase();
-  return (
-    firstChar +
-    [...Array(repeatCount - 1)]
-      .map(() => {
-        const randomCase =
-          Math.floor(Math.random() * 2) === 0 ? "toLowerCase" : "toUpperCase";
-        return c[randomCase]();
-      })
-      .join("")
-  );
+  const repeatCount = Math.floor(Math.random() * max) + 1;
+  const firstChar = Math.random() < 0.5 ? c.toLowerCase() : c.toUpperCase();
+  const repeatChars = Array(repeatCount - 1)
+    .fill()
+    .map(() => (Math.random() < 0.5 ? c.toLowerCase() : c.toUpperCase()))
+    .join("");
+  return firstChar + repeatChars;
 };

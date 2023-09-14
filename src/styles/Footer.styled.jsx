@@ -32,11 +32,11 @@ FooterComponent.defaultProps = {
 };
 /**
  * A styled span component with a shadow.
- * @param {string} color - The emoji color. Defaults to: "#3abdffs".
+ * @param {string} color - The emoji color. Defaults to: "#3abdff".
  */
 export const FooterEmoji = styled.span`
   color: ${(props) => props.color};
-  filter: drop-shadow(0px 0px 12px ${(props) => props.color});
+  filter: drop-shadow(0px 0px 10px ${(props) => props.color});
 `;
 
 FooterEmoji.defaultProps = {

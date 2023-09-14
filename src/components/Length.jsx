@@ -13,15 +13,20 @@ export const Length = ({ focus, length }) => {
   const format = (n) => numberFormatter.format(n);
   return (
     <LengthComponent f={focus} length={length}>
-      Length: <LengthNumber red={length >= 997}>{format(length)}</LengthNumber>
+      Length:{" "}
+      <LengthNumber red={length >= 997}>
+        {format(length)}
+        {/* {length >= 997 && ` -${length - 996}`} */}
+      </LengthNumber>
     </LengthComponent>
   );
 };
 
 const LengthComponent = styled.div`
   pointer-events: none;
-  border-radius: 10px;
-  margin-top: -62px;
+  border-radius: 16px;
+  padding: 10px;
+  margin-top: -70px;
   color: white;
   background: rgba(102, 119, 217, 0.7);
   backdrop-filter: blur(7px);
@@ -30,7 +35,7 @@ const LengthComponent = styled.div`
       ? "0px 0px 20px 2px #ff8383"
       : "0px 0px 20px 2px rgba(102, 119, 217, 0.7)"};
   text-shadow: 0px 2px 9px rgba(0, 0, 0, 0.25);
-  padding: 8px;
+
   transition: 0.3s all;
   transform: scale(${(props) => (props.length <= 0 || props.f ? 0 : 1)});
   opacity: ${(props) => (props.length <= 0 || props.f ? 0 : 1)};

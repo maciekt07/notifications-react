@@ -62,7 +62,7 @@ const ModalContent = styled.div`
   transform: translate(-50%, -50%);
   line-height: 1.4;
   background: #ffffffa2;
-  backdrop-filter: blur(20px);
+  backdrop-filter: blur(16px);
   padding: 25px 35px;
   max-width: 600px;
   min-width: 300px;

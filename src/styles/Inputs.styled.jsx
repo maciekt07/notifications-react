@@ -5,7 +5,7 @@ const Inputs = css`
   font-size: 30px;
   width: 80%;
   border: 5px solid ${themeColors.$colorHex5};
-  border-radius: 25px;
+  border-radius: 26px;
   padding: 16px;
   outline: none;
   color: ${themeColors.$colorHex2};
@@ -75,6 +75,7 @@ export const TextInput = styled.textarea`
   resize: none !important;
   height: ${(props) => props.size + "vh"};
   &:focus {
+    padding-bottom: 72px;
     height: ${(props) => `calc(${props.size}vh + 10vh)`};
   }
 `;

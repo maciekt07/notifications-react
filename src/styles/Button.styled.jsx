@@ -3,7 +3,7 @@ import { themeColors, btn } from "./Variables.styled";
 import { newShade } from "../utils";
 /**
  * A styled button component.
- * @param {string} background - The background color of the button.
+ * @param {string} background - The background color of the button in HEX (e.g. "#RRGGBB").
  * @returns {JSX.Element} - A styled button component.
  * @example <ButtonComponent background="#03a688">This is button</ButtonComponent>
  */
@@ -67,12 +67,16 @@ export const SettingsButton = styled.button`
   user-select: none;
   transition: 0.3s all;
   position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   bottom: ${(props) => (props.footer ? "16px" : "60px")};
   left: 16px;
   outline: none;
-  padding: 10px 14px;
-  border-radius: 100px;
-  background-color: #4f6691;
+  padding: 14px;
+  border-radius: 22px;
+  backdrop-filter: blur(6px);
+  background-color: #3192d7b8;
   cursor: pointer;
   color: white;
   border: 2px solid transparent;
@@ -82,10 +86,13 @@ export const SettingsButton = styled.button`
   &:hover,
   &:focus-visible {
     outline: none;
-    box-shadow: 0px 0px 15px 0px #4f6691;
+    box-shadow: 0px 0px 15px 0px #3d83cfb8;
     text-shadow: 0px 0px 6px rgba(0, 0, 0, 0.25);
   }
-  /* &:hover {
-    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  } */
+  & > svg {
+    transition: 0.3s all;
+  }
+  &:hover > svg {
+    transform: rotate(90deg);
+  }
 `;
