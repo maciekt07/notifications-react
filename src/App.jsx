@@ -39,7 +39,7 @@ import i18n from "i18next";
 import { useTranslation, initReactI18next, Trans } from "react-i18next";
 import gb from "./assets/gb.svg";
 import pl from "./assets/pl.svg";
-import { Logout, Settings, SettingsInputComponent } from "@mui/icons-material";
+import { Logout, Settings } from "@mui/icons-material";
 
 i18n
   .use(initReactI18next) // passes i18n down to react-i18next
@@ -65,6 +65,14 @@ const langs = [
     icon: pl,
   },
 ];
+function isIOS() {
+  if (typeof navigator === "undefined" || typeof window === "undefined")
+    return false;
+  return (
+    /iPad|iPhone|iPod/.test(navigator.userAgent) ||
+    (navigator.userAgent.includes("Macintosh") && "ontouchend" in document)
+  );
+}
 /**
  * Main application component
  * @returns {JSX.Element} JSX Element
@@ -92,7 +100,12 @@ const App = () => {
     navigator.language.split("-")[0] === "pl" ? "pl" : "en",
     "language"
   );
+  const [iosSplitEnabled, setIosSplitEnabled] = useStickyState(
+    isIOS(),
+    "iosSplitEnabled"
+  );
   const { t } = useTranslation();
+
   // Update language using i18n on component mount and when the lang state changes
   useEffect(() => {
     i18n.changeLanguage(lang);
@@ -109,8 +122,19 @@ const App = () => {
     return txt;
   };
   const createClick = () => {
-    Push.create(Header, {
-      body: NotificationText(),
+    const fullText = NotificationText();
+
+    let title = Header;
+    let body = fullText;
+
+    // If iOS and toggle enabled, split text to get around 670 char limit
+    if (isIOS() && iosSplitEnabled) {
+      title = fullText.slice(0, 670);
+      body = fullText.slice(670, 1340);
+    }
+
+    Push.create(title, {
+      body: body,
       icon: logo,
       onClick: () => {
         window.open("http://example.com/page");
@@ -132,6 +156,7 @@ const App = () => {
       });
     });
   };
+
   // window.addEventListener("storage", (e) => {
   //   console.log(e);
   //   localStorage.setItem(e.key, e.oldValue);
@@ -151,17 +176,21 @@ const App = () => {
               },
             }}
           />
-          <HeaderInput
-            placeholder={t("header")}
-            value={Header}
-            onChange={(e) => {
-              setHeader(e.target.value);
-              localStorage.setItem("Header", e.target.value);
-            }}
-            onFocus={() => setFocus(false)}
-            onBlur={() => setFocus(true)}
-          ></HeaderInput>
-          <br />
+          {!iosSplitEnabled && (
+            <>
+              <HeaderInput
+                placeholder={t("header")}
+                value={Header}
+                onChange={(e) => {
+                  setHeader(e.target.value);
+                  localStorage.setItem("Header", e.target.value);
+                }}
+                onFocus={() => setFocus(false)}
+                onBlur={() => setFocus(true)}
+              ></HeaderInput>
+              <br />
+            </>
+          )}
           <TextInput
             placeholder={t("text")}
             value={Text}
@@ -307,6 +336,24 @@ const App = () => {
                 />
               </FormGroup>
               <br />
+              {isIOS() && (
+                <>
+                  <FormGroup>
+                    <FormLabel>iOS</FormLabel>
+                    <FormControlLabel
+                      sx={iosSplitEnabled ? { opacity: 0.9 } : { opacity: 0.5 }}
+                      control={
+                        <Switch
+                          checked={iosSplitEnabled}
+                          onClick={() => setIosSplitEnabled((u) => !u)}
+                        />
+                      }
+                      label={"iOS Split"}
+                    />
+                  </FormGroup>
+                  <br />
+                </>
+              )}
               <FormGroup>
                 <FormLabel>{t("layoutSettings")}</FormLabel>
                 <FormControlLabel
@@ -346,19 +393,6 @@ const App = () => {
                 />
                 <br />
               </FormGroup>
-              <Divider />
-              <br style={{ padding: ".5px" }} />
-              <Button
-                style={{
-                  borderRadius: 12,
-                  padding: "8px 16px",
-                }}
-                variant="outlined"
-                onClick={() => setLogoutDialog(true)}
-              >
-                <Logout /> &nbsp;
-                {t("logout")}
-              </Button>
             </>
           </Modal>
           <Dialog
