@@ -4,6 +4,7 @@
  * @returns {string} A string representing the current date and time formatted according to the specified language.
  * @example getDate("pl")
  */
+
 export const getDate = (lang = navigator.language) => {
   const date = new Date().toLocaleDateString(lang, {
     weekday: "short",

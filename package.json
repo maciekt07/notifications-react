@@ -18,14 +18,12 @@
     "@mui/icons-material": "^5.11.9",
     "@mui/material": "^5.11.5",
     "i18next": "^22.4.9",
-    "push-js": "^1.1.1",
     "push.js": "^1.0.12",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-hot-toast": "^2.4.0",
     "react-i18next": "^12.1.5",
     "react-icons": "^4.7.1",
-    "react-toastify": "^9.1.1",
     "styled-components": "^5.3.6"
   },
   "browserslist": {

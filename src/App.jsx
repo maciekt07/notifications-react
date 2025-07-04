@@ -27,7 +27,6 @@ import {
   Dialog,
   DialogActions,
   DialogTitle,
-  Divider,
   MenuItem,
   Select,
   Slider,
@@ -39,7 +38,7 @@ import i18n from "i18next";
 import { useTranslation, initReactI18next, Trans } from "react-i18next";
 import gb from "./assets/gb.svg";
 import pl from "./assets/pl.svg";
-import { Logout, Settings } from "@mui/icons-material";
+import { Settings } from "@mui/icons-material";
 
 i18n
   .use(initReactI18next) // passes i18n down to react-i18next

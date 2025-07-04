@@ -1,3 +1,2 @@
-export { getDate } from "./GetDate";
-export { newShade } from "./LightenDarkenColor";
-export { hexToRgba } from "./hexToRgba";
+export { getDate } from "./getDate";
+export { newShade, hexToRgba } from "./colorUtils";
